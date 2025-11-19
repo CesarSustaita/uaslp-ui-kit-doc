@@ -1,0 +1,564 @@
+---
+title: Paleta de Colores
+description: Guía completa del sistema de colores del UI Kit para asegurar consistencia, escalabilidad y accesibilidad.
+---
+
+import { Tabs, TabItem, Code, Aside, LinkCard, Card, LinkButton  } from '@astrojs/starlight/components';
+
+Los colores son uno de los principales puntos del sistema de diseño. Constituyen la base visual que garantiza **consistencia, accesibilidad** y una identidad en todas las interfaces asociadas a la ***Universidad Autónoma de San Luis Potosí (UASLP).***
+Esta paleta funciona como el punto de partida para diseñar nuevas pantallas manteniendo una armonía clara con la identidad institucional.
+
+
+<Aside title="UASLP UI Kit Disponible en Figma">
+<div>
+Se muestran las propiedades de cada estilo de texto, los puedes encontrar en Figma sección: ***Styles Guide > Paleta de colores***.
+</div>
+<LinkButton href="https://www.figma.com/community/file/1516891092600893832" variant="secondary">
+    Ir a Figma
+</LinkButton>
+</Aside>
+
+
+## Obtención de colores base
+
+La selección de los colores institucionales se realizó a partir del análisis de los sitios oficiales de la UASLP. A partir de estos recursos, se extrajeron los valores hexadecimales utilizados por la institución, estableciendo así un punto de referencia confiable.
+
+Posteriormente, estos valores fueron trasladados a Figma, donde se construyó una escala completa de tonos del 100 al 900 para cada color principal. Esto permitió crear una paleta estructurada, versátil y lista para ser utilizada en componentes, estados, fondos y elementos semánticos.
+
+
+---
+
+## Paleta de colores base
+Los colores fueron seleccionados para reflejar la identidad visual de la Universidad Autónoma de San Luis Potosí (UASLP), manteniendo el **azul característico de la institución**  como color primario y utilizando los grises para lograr una estructura neutral, equilibrada y adaptable a cualquier tipo de interfaz.
+
+Las escalas de color permiten contar con valores consistentes y versátiles para aplicar en fondos, textos, estados, componentes y jerarquías visuales. 
+
+A continuación, se presenta la tabla con los colores base que conforman esta paleta.
+
+
+<Tabs>
+  <TabItem label="Azul Oscuro">
+    ### Azul oscuro
+
+    | Color | Token | Hex | RGB |
+    | :---: | :--- | :--- | :--- |
+    | <div style="width: 1.5rem; height: 1.5rem; border-radius: 4px; border: 1px solid #ccc; background-color: #e6edf5;"></div> | `blue-50` | `#e6edf5` | `rgb(230, 237, 245)` |
+    | <div style="width: 1.5rem; height: 1.5rem; border-radius: 4px; border: 1px solid #ccc; background-color: #b0c7df;"></div> | `blue-100` | `#b0c7df` | `rgb(176, 199, 223)`|
+    | <div style="width: 1.5rem; height: 1.5rem; border-radius: 4px; border: 1px solid #ccc; background-color: #8aacd0;"></div> | `blue-200` | `#8aacd0` | `rgb(138, 172, 208)`|
+    | <div style="width: 1.5rem; height: 1.5rem; border-radius: 4px; border: 1px solid #ccc; background-color: #5486ba;"></div> | `blue-300` | `#5486ba` | `rgb(84, 134, 186)` |
+    | <div style="width: 1.5rem; height: 1.5rem; border-radius: 4px; border: 1px solid #ccc; background-color: #336ead;"></div> | `blue-400` | `#336ead` | `rgb(51, 110, 173)` |
+    | <div style="width: 1.5rem; height: 1.5rem; border-radius: 4px; border: 1px solid #ccc; background-color: #004a98;"></div> | `blue-500` | `#004a98` | `rgb(0, 74, 152)` |
+    | <div style="width: 1.5rem; height: 1.5rem; border-radius: 4px; border: 1px solid #ccc; background-color: #00438a;"></div> | `blue-600` | `#00438a` | `rgb(0, 67, 138)` |
+    | <div style="width: 1.5rem; height: 1.5rem; border-radius: 4px; border: 1px solid #ccc; background-color: #00356c;"></div> | `blue-700` | `#00356c` | `rgb(0, 53, 108)` |
+    | <div style="width: 1.5rem; height: 1.5rem; border-radius: 4px; border: 1px solid #ccc; background-color: #002954;"></div> | `blue-800` | `#002954` | `rgb(0, 41, 84)` |
+    | <div style="width: 1.5rem; height: 1.5rem; border-radius: 4px; border: 1px solid #ccc; background-color: #001f40;"></div> | `blue-900` | `#001f40` | `rgb(0, 31, 64)` |
+  </TabItem>
+
+  <TabItem label="Azul Claro">
+    ### Azul claro
+
+    | Color | Token | Hex | RGB |
+    | :---: | :--- | :--- | :--- |
+    | <div style="width: 1.5rem; height: 1.5rem; border-radius: 4px; border: 1px solid #ccc; background-color: #e6f7fc;"></div> | `blue-50` | `#e6f7fc` | `rgb(230, 247, 252)` |
+    | <div style="width: 1.5rem; height: 1.5rem; border-radius: 4px; border: 1px solid #ccc; background-color: #b0e7f6;"></div> | `blue-100` | `#b0e7f6` | `rgb(176, 231, 246)`|
+    | <div style="width: 1.5rem; height: 1.5rem; border-radius: 4px; border: 1px solid #ccc; background-color: #8adcf2;"></div> | `blue-200` | `#8adcf2` | `rgb(138, 220, 242)`|
+    | <div style="width: 1.5rem; height: 1.5rem; border-radius: 4px; border: 1px solid #ccc; background-color: #54cbec;"></div> | `blue-300` | `#54cbec` | `rgb(84, 203, 236)` |
+    | <div style="width: 1.5rem; height: 1.5rem; border-radius: 4px; border: 1px solid #ccc; background-color: #33c1e9;"></div> | `blue-400` | `#33c1e9` | `rgb(51, 193, 233)` |
+    | <div style="width: 1.5rem; height: 1.5rem; border-radius: 4px; border: 1px solid #ccc; background-color: #00b2e3;"></div> | `blue-500` | `#00b2e3` | `rgb(0, 178, 227)` |
+    | <div style="width: 1.5rem; height: 1.5rem; border-radius: 4px; border: 1px solid #ccc; background-color: #00a2cf;"></div> | `blue-600` | `#00a2cf` | `rgb(0, 162, 207)` |
+    | <div style="width: 1.5rem; height: 1.5rem; border-radius: 4px; border: 1px solid #ccc; background-color: #007ea1;"></div> | `blue-700` | `#007ea1` | `rgb(0, 126, 161)` |
+    | <div style="width: 1.5rem; height: 1.5rem; border-radius: 4px; border: 1px solid #ccc; background-color: #00627d;"></div> | `blue-800` | `#00627d` | `rgb(0, 98, 125)` |
+    | <div style="width: 1.5rem; height: 1.5rem; border-radius: 4px; border: 1px solid #ccc; background-color: #004b5f;"></div> | `blue-900` | `#004b5f` | `rgb(0, 75, 95)` |
+  </TabItem>
+
+  <TabItem label="Gris Azulado">
+    ### Gris azulado
+
+    | Color | Token | Hex | RGB |
+    | :---: | :--- | :--- | :--- |
+    | <div style="width: 1.5rem; height: 1.5rem; border-radius: 4px; border: 1px solid #ccc; background-color: #fdfdfe;"></div> | `blue-50` | `#fdfdfe` | `rgb(253, 253, 254)` |
+    | <div style="width: 1.5rem; height: 1.5rem; border-radius: 4px; border: 1px solid #ccc; background-color: #f8f9fb;"></div> | `blue-100` | `#f8f9fb` | `rgb(248, 249, 251)` |
+    | <div style="width: 1.5rem; height: 1.5rem; border-radius: 4px; border: 1px solid #ccc; background-color: #f4f6f9;"></div> | `blue-200` | `#f4f6f9` | `rgb(244, 246, 249)` |
+    | <div style="width: 1.5rem; height: 1.5rem; border-radius: 4px; border: 1px solid #ccc; background-color: #eff2f6;"></div> | `blue-300` | `#eff2f6` | `rgb(239, 242, 246)` |
+    | <div style="width: 1.5rem; height: 1.5rem; border-radius: 4px; border: 1px solid #ccc; background-color: #ecf0f4;"></div> | `blue-400` | `#ecf0f4` | `rgb(236, 240, 244)` |
+    | <div style="width: 1.5rem; height: 1.5rem; border-radius: 4px; border: 1px solid #ccc; background-color: #e7ecf1;"></div> | `blue-500` | `#e7ecf1` | `rgb(231, 236, 241)` |
+    | <div style="width: 1.5rem; height: 1.5rem; border-radius: 4px; border: 1px solid #ccc; background-color: #d2d7db;"></div> | `blue-600` | `#d2d7db` | `rgb(210, 215, 219)` |
+    | <div style="width: 1.5rem; height: 1.5rem; border-radius: 4px; border: 1px solid #ccc; background-color: #a4a8ab;"></div> | `blue-700` | `#a4a8ab` | `rgb(164, 168, 171)` |
+    | <div style="width: 1.5rem; height: 1.5rem; border-radius: 4px; border: 1px solid #ccc; background-color: #7f8285;"></div> | `blue-800` | `#7f8285` | `rgb(127, 130, 133)` |
+    | <div style="width: 1.5rem; height: 1.5rem; border-radius: 4px; border: 1px solid #ccc; background-color: #616365;"></div> | `blue-900` | `#616365` | `rgb(97, 99, 101)` |
+  </TabItem>
+
+  <TabItem label="Escala de grises">
+    ### Escala de grises
+
+    | Color | Token | Hex | RGB |
+    | :---: | :--- | :--- | :--- |
+    | <div style="width: 1.5rem; height: 1.5rem; border-radius: 4px; border: 1px solid #ccc; background-color: #f2f2f2;"></div> | `grey-50` | `#f2f2f2` | `rgb(242, 242, 242)` |
+    | <div style="width: 1.5rem; height: 1.5rem; border-radius: 4px; border: 1px solid #ccc; background-color: #d7d7d7;"></div> | `grey-100` | `#d7d7d7` | `rgb(215, 215, 215)` |
+    | <div style="width: 1.5rem; height: 1.5rem; border-radius: 4px; border: 1px solid #ccc; background-color: #c4c4c4;"></div> | `grey-200` | `#c4c4c4` | `rgb(196, 196, 196)` |
+    | <div style="width: 1.5rem; height: 1.5rem; border-radius: 4px; border: 1px solid #ccc; background-color: #a9a9a9;"></div> | `grey-300` | `#a9a9a9` | `rgb(169, 169, 169)` |
+    | <div style="width: 1.5rem; height: 1.5rem; border-radius: 4px; border: 1px solid #ccc; background-color: #989898;"></div> | `grey-400` | `#989898` | `rgb(152, 152, 152)` |
+    | <div style="width: 1.5rem; height: 1.5rem; border-radius: 4px; border: 1px solid #ccc; background-color: #7e7e7e;"></div> | `grey-500` | `#7e7e7e` | `rgb(126, 126, 126)` |
+    | <div style="width: 1.5rem; height: 1.5rem; border-radius: 4px; border: 1px solid #ccc; background-color: #737373;"></div> | `grey-600` | `#737373` | `rgb(115, 115, 115)` |
+    | <div style="width: 1.5rem; height: 1.5rem; border-radius: 4px; border: 1px solid #ccc; background-color: #595959;"></div> | `grey-700` | `#595959` | `rgb(89, 89, 89)` |
+    | <div style="width: 1.5rem; height: 1.5rem; border-radius: 4px; border: 1px solid #ccc; background-color: #454545;"></div> | `grey-800` | `#454545` | `rgb(69, 69, 69)` |
+    | <div style="width: 1.5rem; height: 1.5rem; border-radius: 4px; border: 1px solid #ccc; background-color: #353535;"></div> | `grey-900` | `#353535` | `rgb(53, 53, 53)` |
+  </TabItem>
+</Tabs>
+
+---
+
+## Paleta de colores funcionales
+Los colores funcionales cumplen un papel principal en la interfaz, ya que permiten comunicar estados del sistema de forma clara e intuitiva. 
+
+Estos colores **no deben verse** como una paleta adicional, sino como elementos fundamentales para representar mensajes críticos dentro de la experiencia de usuario
+
+Su propósito es la comprensión del usuario mediante **códigos visuales universales**, aprovechando asociaciones presentes en la vida diaria (como semáforos, señales o indicadores estándar).
+
+
+<Tabs>
+  <TabItem label="Verde">
+    ### Verde
+
+    Confirma acciones exitosas o estados positivos.
+
+    | Color | Token | Hex | RGB |
+    | :---: | :--- | :--- | :--- |
+    | <div style="width: 1.5rem; height: 1.5rem; border-radius: 4px; border: 1px solid #ccc; background-color: #e8f8ee;"></div> | `green-50` | `#e8f8ee` | `rgb(232, 248, 238)` |
+    | <div style="width: 1.5rem; height: 1.5rem; border-radius: 4px; border: 1px solid #ccc; background-color: #b9e9ca;"></div> | `green-100` | `#b9e9ca` | `rgb(185, 233, 202)` |
+    | <div style="width: 1.5rem; height: 1.5rem; border-radius: 4px; border: 1px solid #ccc; background-color: #97dfb0;"></div> | `green-200` | `#97dfb0` | `rgb(151, 223, 176)` |
+    | <div style="width: 1.5rem; height: 1.5rem; border-radius: 4px; border: 1px solid #ccc; background-color: #68d08c;"></div> | `green-300` | `#68d08c` | `rgb(104, 208, 140)` |
+    | <div style="width: 1.5rem; height: 1.5rem; border-radius: 4px; border: 1px solid #ccc; background-color: #4ac776;"></div> | `green-400` | `#4ac776` | `rgb(74, 199, 118)` |
+    | <div style="width: 1.5rem; height: 1.5rem; border-radius: 4px; border: 1px solid #ccc; background-color: #1db954;"></div> | `green-500` | `#1db954` | `rgb(29, 185, 84)` |
+    | <div style="width: 1.5rem; height: 1.5rem; border-radius: 4px; border: 1px solid #ccc; background-color: #1aa84c;"></div> | `green-600` | `#1aa84c` | `rgb(26, 168, 76)` |
+    | <div style="width: 1.5rem; height: 1.5rem; border-radius: 4px; border: 1px solid #ccc; background-color: #15833c;"></div> | `green-700` | `#15833c` | `rgb(21, 131, 60)` |
+    | <div style="width: 1.5rem; height: 1.5rem; border-radius: 4px; border: 1px solid #ccc; background-color: #10662e;"></div> | `green-800` | `#10662e` | `rgb(16, 102, 46)` |
+    | <div style="width: 1.5rem; height: 1.5rem; border-radius: 4px; border: 1px solid #ccc; background-color: #0c4e23;"></div> | `green-900` | `#0c4e23` | `rgb(12, 78, 35)` |
+  </TabItem>
+
+  <TabItem label="Rojo">
+    ### Rojo
+
+    Indica errores, fallas o estados críticos que necesitan acción inmediata.
+
+    | Color | Token | Hex | RGB |
+    | :---: | :--- | :--- | :--- |
+    | <div style="width: 1.5rem; height: 1.5rem; border-radius: 4px; border: 1px solid #ccc; background-color: #fbe9e9;"></div> | `red-50` | `#fbe9e9` | `rgb(251, 233, 233)` |
+    | <div style="width: 1.5rem; height: 1.5rem; border-radius: 4px; border: 1px solid #ccc; background-color: #f3bbbb;"></div> | `red-100` | `#f3bbbb` | `rgb(243, 187, 187)` |
+    | <div style="width: 1.5rem; height: 1.5rem; border-radius: 4px; border: 1px solid #ccc; background-color: #ed9b9b;"></div> | `red-200` | `#ed9b9b` | `rgb(237, 155, 155)` |
+    | <div style="width: 1.5rem; height: 1.5rem; border-radius: 4px; border: 1px solid #ccc; background-color: #e56d6d;"></div> | `red-300` | `#e56d6d` | `rgb(229, 109, 109)` |
+    | <div style="width: 1.5rem; height: 1.5rem; border-radius: 4px; border: 1px solid #ccc; background-color: #e05151;"></div> | `red-400` | `#e05151` | `rgb(224, 81, 81)` |
+    | <div style="width: 1.5rem; height: 1.5rem; border-radius: 4px; border: 1px solid #ccc; background-color: #d82525;"></div> | `red-500` | `#d82525` | `rgb(216, 37, 37)` |
+    | <div style="width: 1.5rem; height: 1.5rem; border-radius: 4px; border: 1px solid #ccc; background-color: #c52222;"></div> | `red-600` | `#c52222` | `rgb(197, 34, 34)` |
+    | <div style="width: 1.5rem; height: 1.5rem; border-radius: 4px; border: 1px solid #ccc; background-color: #991a1a;"></div> | `red-700` | `#991a1a` | `rgb(153, 26, 26)` |
+    | <div style="width: 1.5rem; height: 1.5rem; border-radius: 4px; border: 1px solid #ccc; background-color: #771414;"></div> | `red-800` | `#771414` | `rgb(119, 20, 20)` |
+    | <div style="width: 1.5rem; height: 1.5rem; border-radius: 4px; border: 1px solid #ccc; background-color: #5b1010;"></div> | `red-900` | `#5b1010` | `rgb(91, 16, 16)` |
+  </TabItem>
+
+  <TabItem label="Amarillo">
+    ### Amarillo
+
+    Comunica advertencias o situaciones que requieren atención.
+
+    | Color | Token | Hex | RGB |
+    | :---: | :--- | :--- | :--- |
+    | <div style="width: 1.5rem; height: 1.5rem; border-radius: 4px; border: 1px solid #ccc; background-color: #fff9e7;"></div> | `yellow-50` | `#fff9e7` | `rgb(255, 249, 231)` |
+    | <div style="width: 1.5rem; height: 1.5rem; border-radius: 4px; border: 1px solid #ccc; background-color: #ffebb4;"></div> | `yellow-100` | `#ffebb4` | `rgb(255, 235, 180)` |
+    | <div style="width: 1.5rem; height: 1.5rem; border-radius: 4px; border: 1px solid #ccc; background-color: #ffe18f;"></div> | `yellow-200` | `#ffe18f` | `rgb(255, 225, 143)` |
+    | <div style="width: 1.5rem; height: 1.5rem; border-radius: 4px; border: 1px solid #ccc; background-color: #ffd35c;"></div> | `yellow-300` | `#ffd35c` | `rgb(255, 211, 92)` |
+    | <div style="width: 1.5rem; height: 1.5rem; border-radius: 4px; border: 1px solid #ccc; background-color: #ffcb3d;"></div> | `yellow-400` | `#ffcb3d` | `rgb(255, 203, 61)` |
+    | <div style="width: 1.5rem; height: 1.5rem; border-radius: 4px; border: 1px solid #ccc; background-color: #ffbe0c;"></div> | `yellow-500` | `#ffbe0c` | `rgb(255, 190, 12)` |
+    | <div style="width: 1.5rem; height: 1.5rem; border-radius: 4px; border: 1px solid #ccc; background-color: #e8ad0b;"></div> | `yellow-600` | `#e8ad0b` | `rgb(232, 173, 11)` |
+    | <div style="width: 1.5rem; height: 1.5rem; border-radius: 4px; border: 1px solid #ccc; background-color: #b58709;"></div> | `yellow-700` | `#15833c` | `rgb(181, 135, 9)` |
+    | <div style="width: 1.5rem; height: 1.5rem; border-radius: 4px; border: 1px solid #ccc; background-color: #8c6907;"></div> | `yellow-800` | `#8c6907` | `rgb(140, 105, 7)` |
+    | <div style="width: 1.5rem; height: 1.5rem; border-radius: 4px; border: 1px solid #ccc; background-color: #6b5005;"></div> | `yellow-900` | `#6b5005` | `rgb(107, 80, 5)` |
+  </TabItem>
+</Tabs>
+
+---
+
+## Uso y clasificación de colores
+
+La organización del color dentro del sistema de diseño permite mantener **coherencia visual, jerarquía clara** y una buena comunicación en la interfaz. Para lograrlo, los colores se clasifican en cuatro grupos principales: primarios, secundarios, grises y funcionales. 
+
+Cada categoría cumple un propósito específico y está diseñada para **resolver necesidades distintas** dentro del diseño.
+
+<LinkCard
+  title="Jerarquía visual"
+  href="https://www.nngroup.com/articles/visual-hierarchy-ux-definition/"
+  description="Conoce más sobre este concepto"
+/>
+
+### Colores Primarios
+Los colores primarios representan la **identidad visual** central del sistema. Se utilizan en elementos clave que requieren protagonismo o que refuerzan directamente la marca, institución o producto, como:
+
+- Botones principales 
+- Acciones críticas o destacadas
+- Elementos que deben ser rápidamente identificables
+
+Su objetivo es guiar al usuario hacia las **interacciones** más importantes y mantener la identidad.
+
+### Colores Secundarios
+
+Los colores secundarios funcionan como apoyo a los primarios.
+Estos tonos permiten:
+
+- Destacar información complementaria
+- Señalar elementos interactivos de menor jerarquía
+- Crear variaciones visuales sin competir con el color primario
+
+Ayudan a **equilibrar** la interfaz y a construir una **jerarquía visual** más clara sin saturar los elementos principales.
+
+### Escala de Grises
+La escala de grises es el cimiento sobre el cual se construyen la mayoría de los elementos **neutrales** de la interfaz.
+Se utiliza para:
+
+- Textos en diferentes niveles jerárquicos
+- Fondos y superficies
+- Bordes, divisores y contenedores
+- Componentes que requieren neutralidad visual
+
+El uso correcto de los grises permite una lectura clara, reduce el **ruido visual** y ayuda a que los colores primarios y funcionales **resalten** cuando sea necesario.
+
+---
+
+## Uso Directo de Tokens de Color
+
+Aunque los componentes del UI Kit ya incluyen y encapsulan sus propios estilos, es esencial que tu proyecto aproveche los **Design Tokens de color** para asegurar la **coherencia visual** en todos los elementos que construyas externamente.
+
+### Implementación Instantánea de Colores
+Gracias a la arquitectura del UI kit, la implementación de los tokens de color es **automática** y completamente **instantánea**.
+
+Al ejecutar `import uaslp-ui-kit`, todos los tokens de color se inyectan como **variables CSS globales** en tu página. Esto significa que están disponibles para su uso inmediato en **cualquier parte de tu código** (***CSS, componentes React, Vue, o Vanilla JS***).
+
+<Aside type="tip" title="Ejemplo:">
+export const css = `
+    .mi-clase-personalizada {
+      background-color: var(--background-background-component);
+    }`;
+export const cssName = 'ejemplo.css';
+
+Para aplicar la paleta de colores a un elemento independiente, simplemente usa el token ***ejemplo***: `--background-background-component` en tus propios archivos CSS:
+
+<Code code={css} lang="css" title={cssName} />
+
+</Aside>
+---
+
+## Tokens de diseño
+Los tokens de diseño son valores que definen los atributos visuales de los elementos de la interfaz de usuario. Organizar y definir tokens de manera efectiva es muy importante para mantener la consistencia y escalabilidad de un sistema de diseño.
+
+**Existen tokens primitivos y semánticos**. Cada uno de estos tipos de tokens tienen funciones muy importantes y únicas en la creación y el mantenimiento de sistemas de diseño.
+
+<LinkCard
+  title="Acerca de los Design Tokens"
+  href="https://www.uifrommars.com/design-tokens-que-son-ventajas/"
+  description="Conoce más sobre este concepto"
+/>
+
+### Tokens primitivos o de valores brutos
+En un sistema de diseño, un token primitivo es la unidad más básica e indivisible de un valor de diseño.
+
+En el caso de los colores, los tokens primitivos contienen los **valores directos de la paleta** ***(como códigos hexadecimales o RGB).*** Estos valores son la base sobre la cual se construyen los tokens semánticos.
+
+A continuación, se muestra la paleta en su forma más limpia:
+
+
+
+<Tabs>
+
+export const blueDark = `
+    :root {
+      /* blue-dark */
+        --blue-dark-50: #e6edf5;
+        --blue-dark-100: #b0c7df;
+        --blue-dark-200: #8aacd0;
+        --blue-dark-300: #5486ba;
+        --blue-dark-400: #336ead;
+        --blue-dark-500: #004a98;
+        --blue-dark-600: #00438a;
+        --blue-dark-700: #00356c;
+        --blue-dark-800: #002954;
+        --blue-dark-900: #001f40;
+    }`;
+export const fileName = 'ui-tokens.css';
+
+export const blueLight = `
+    :root {
+      /* blue-light */
+        --blue-light-50: #e6f7fc;
+        --blue-light-100: #b0e7f6;
+        --blue-light-200: #8adcf2;
+        --blue-light-300: #54cbec;
+        --blue-light-400: #33c1e9;
+        --blue-light-500: #00b2e3;
+        --blue-light-600: #00a2cf;
+        --blue-light-700: #007ea1;
+        --blue-light-800: #00627d;
+        --blue-light-900: #004b5f;
+    }`;
+
+export const grayBlue = `
+    :root {
+      /* gray-blue */
+        --gray-blue-50: #fdfdfe;
+        --gray-blue-100: #f8f9fb;
+        --gray-blue-200: #f4f6f9;
+        --gray-blue-300: #eff2f6;
+        --gray-blue-400: #ecf0f4;
+        --gray-blue-500: #e7ecf1;
+        --gray-blue-600: #d2d7db;
+        --gray-blue-700: #a4a8ab;
+        --gray-blue-800: #7f8285;
+        --gray-blue-900: #616365;
+    }`;
+
+export const gray = `
+    :root {
+      /* gray */
+        --gray-50: #f8f8f8;
+        --gray-100: #ededed;
+        --gray-200: #d4d4d4;
+        --gray-300: #bfbfbf;
+        --gray-400: #9e9e9e;
+        --gray-500: #7e7e7e;
+        --gray-600: #5f5f5f;
+        --gray-700: #3f3f3f;
+        --gray-800: #222222;
+        --gray-900: #101010;
+    }`;
+
+  <TabItem label="Azul Oscuro">
+    <Code code={blueDark} lang="css" title={fileName} />
+  </TabItem>
+  <TabItem label="Azul Claro">
+    <Code code={blueLight} lang="css" title={fileName} />
+  </TabItem>
+  <TabItem label="Gris Azulado">
+    <Code code={grayBlue} lang="css" title={fileName} />
+  </TabItem>
+  <TabItem label="Gris">
+    <Code code={gray} lang="css" title={fileName} />
+  </TabItem>
+</Tabs>
+
+
+**Implementación Colores Funcionales:**
+
+<Tabs>
+
+export const green = `
+    :root {
+      /* green */
+        --green-50: #e8f8ee;
+        --green-100: #b9e9ca;
+        --green-200: #97dfb0;
+        --green-300: #68d08c;
+        --green-400: #4ac776;
+        --green-500: #1db954;
+        --green-600: #1aa84c;
+        --green-700: #15833c;
+        --green-800: #10662e;
+        --green-900: #0c4e23;
+  }`;
+
+export const yellow = `
+    :root {
+      /* yellow */
+        --yellow-50: #fff9e7;
+        --yellow-100: #ffebb4;
+        --yellow-200: #ffe18f;
+        --yellow-300: #ffd35c;
+        --yellow-400: #ffcb3d;
+        --yellow-500: #ffbe0c;
+        --yellow-600: #e8ad0b;
+        --yellow-700: #b58709;
+        --yellow-800: #8c6907;
+        --yellow-900: #6b5005;
+  }`;
+
+export const red = `
+    :root {
+      /* red */
+        --red-50: #fbe9e9;
+        --red-100: #f3bbbb;
+        --red-200: #ed9b9b;
+        --red-300: #e56d6d;
+        --red-400: #e05151;
+        --red-500: #d82525;
+        --red-600: #c52222;
+        --red-700: #991a1a;
+        --red-800: #771414;
+        --red-900: #5b1010;
+  }`;  
+
+<TabItem label="Verde">
+    <Code code={green} lang="css" title={fileName} />
+  </TabItem>
+  <TabItem label="Amarillo">
+    <Code code={yellow} lang="css" title={fileName} />
+  </TabItem>
+  <TabItem label="Rojo">
+    <Code code={red} lang="css" title={fileName} />
+  </TabItem>
+</Tabs>
+
+### Tokens semánticos
+Un token semántico es un valor de diseño que tiene un significado específico y un contexto de uso definido. Estos tokens se basan en tokens primitivos (los valores más básicos de diseño) y les añaden información sobre cómo y dónde deben utilizarse.
+
+Los tokens semánticos son una capa más de abstracción en un sistema de diseño. Añaden significado y contexto a los tokens primitivos, lo que facilita la comprensión, el mantenimiento y la evolución del sistema de diseño.
+
+A continuación, se muestra la paleta en su forma semantica: 
+
+<Tabs>
+
+export const background = `
+    :root {
+      /* BACKGROUND */
+        /* BACKGROUND-BACKGROUND */
+    --background-background-default: var(--gray-50);
+    --background-background-component: var(--gray-blue-50);
+
+        /* BACKGROUND-BRAND */
+    --background-brand-default: var(--blue-dark-500);
+    --background-brand-default-hover: var(--blue-dark-700);
+    --background-brand-default-disabled: var(--blue-dark-100);
+    --background-brand-secondary-disabled: var(--blue-dark-50);
+    --background-brand-secondary-hover: var(--blue-dark-100);
+    --background-brand-secondary: var(--blue-dark-50);
+    --background-brand-tertiary-hover: var(--gray-blue-100);
+    --background-brand-tertiary: var(--gray-blue-50);
+    --background-brand-disabled: var(--gray-blue-50);
+
+        /* BACKGROUND-NEUTRO */
+    --background-neutro-default: var(--gray-700);
+    --background-neutro-default-hover: var(--gray-800);
+    --background-neutro-default-disabled: var(--gray-500);
+    --background-neutro-secondary: var(--gray-600);
+    --background-neutro-secondary-hover: var(--gray-400);
+    --background-neutro-secondary-disabled: var(--gray-500);
+    --background-neutro-tertiary: var(--gray-200);
+    --background-neutro-tertiary-hover: var(--gray-300);
+    --background-neutro-disabled: var(--gray-100);
+
+        /* BACKGROUND-POSITIVE */
+    --background-positive-default: var(--green-700);
+    --background-positive-default-hover: var(--green-800);
+    --background-positive-secondary: var(--green-400);
+    --background-positive-secondary-hover: var(--green-500);
+    --background-positive-tertiary: var(--green-50);
+    --background-positive-tertiary-hover: var(--green-100);
+    --background-positive-disabled: var(--green-100);
+
+        /* BACKGROUND-NEGATIVE */
+    --background-warning-default: var(--yellow-600);
+    --background-warning-default-hover: var(--yellow-700);
+    --background-warning-secondary: var(--yellow-300);
+    --background-warning-secondary-hover: var(--yellow-400);
+    --background-warning-tertiary: var(--yellow-100);
+    --background-warning-tertiary-hover: var(--yellow-200);
+    --background-warning-disabled: var(--yellow-50);
+
+        /* BACKGROUND-DANGER */
+    --background-danger-default: var(--red-500);
+    --background-danger-default-hover: var(--red-700);
+    --background-danger-secondary: var(--red-400);
+    --background-danger-secondary-hover: var(--red-600);
+    --background-danger-tertiary: var(--red-50);
+    --background-danger-tertiary-hover: var(--red-100);
+    --background-danger-disabled: var(--red-100);
+    }`;
+export const uitokens = 'ui-tokens.css';
+
+export const text = `
+    :root {
+      /* TEXT */
+        /* TEXT-DEFAULT */
+    --text-default-default: var(--gray-800);
+    --text-default-secondary: var(--gray-700);
+    --text-default-tertiary: var(--gray-600);
+    --text-default-disabled: var(--gray-300);
+    --text-default-on-element-primary: var(--gray-50);
+    --text-default-on-element-secondary: var(--gray-500);
+    --text-default-on-element-tertiary: var(--gray-800);
+
+        /* TEXT-BRAND */
+    --text-brand-default: var(--blue-dark-500);
+    --text-brand-secondary: var(--blue-dark-400);
+    --text-brand-tertiary: var(--blue-dark-300);
+    --text-brand-disabled: var(--blue-dark-100);
+
+        /* TEXT-POSITIVE */
+    --text-positive-default: var(--green-800);
+    --text-positive-secondary: var(--green-700);
+    --text-positive-tertiary: var(--green-600);
+    --text-positive-disabled: var(--green-200);
+
+        /* TEXT-WARNING */
+    --text-warning-default: var(--yellow-800);
+    --text-warning-secondary: var(--yellow-700);
+    --text-warning-tertiary: var(--yellow-600);
+    --text-warning-disabled: var(--yellow-200);
+
+        /* TEXT-DANGER */
+    --text-danger-default: var(--red-800);
+    --text-danger-secondary: var(--red-700);
+    --text-danger-tertiary: var(--red-600);
+    --text-danger-disabled: var(--red-200);
+    }`;
+
+export const border = `
+    :root {
+      /* BORDER */
+        /* BORDER-DEFAULT */
+    --border-default-default: var(--gray-800);
+    --border-default-secondary: var(--gray-600);
+    --border-default-tertiary: var(--gray-400);
+    --border-default-disabled: var(--gray-200);
+    --border-default-on-element-tertiary: var(--gray-800);
+    --border-default-on-element-secondary: var(--gray-500);
+    --border-default-on-element-primary: var(--gray-50);
+
+        /* BORDER-BRAND */
+    --border-brand-default: var(--blue-dark-500);
+    --border-brand-secondary: var(--blue-dark-400);
+    --border-brand-tertiary: var(--blue-dark-300);
+    --border-brand-disabled: var(--blue-dark-100);
+
+        /* BORDER-POSITIVE */
+    --border-positive-primary: var(--green-500);
+    --border-positive-secondary: var(--green-700);
+    --border-positive-tertiary: var(--green-900);
+    --border-positive-disabled: var(--green-200);
+
+        /* BORDER-WARNING */
+    --border-warning-primary: var(--yellow-500);
+    --border-warning-secondary: var(--yellow-700);
+    --border-warning-tertiary: var(--yellow-900);
+    --border-warning-disabled: var(--yellow-200);
+
+        /* BORDER-DANGER */
+    --border-danger-primary: var(--red-500);
+    --border-danger-secondary: var(--red-700);
+    --border-danger-tertiary: var(--red-900);
+    --border-danger-disabled: var(--red-200);
+    }`;
+
+
+  <TabItem label="Background">
+    <Code code={background} lang="css" title={uitokens} />
+  </TabItem>
+  <TabItem label="Text">
+    <Code code={text} lang="css" title={uitokens} />
+  </TabItem>
+  <TabItem label="Border">
+    <Code code={border} lang="css" title={uitokens} />
+  </TabItem>
+
+</Tabs>
+
+
+
+<Aside type="caution" >
+Al aplicar la paleta de colores puedes usar los colores en su forma **Tokens Primitivos** o **Tokens Semánticos** en ambos casos los colores se aplicaran correctamente, sin embargo es recomendable utilizar los **Tokens Semánticos** para seguir manteniendo el uso correcto de los ***Design Tokens***.
+</Aside>

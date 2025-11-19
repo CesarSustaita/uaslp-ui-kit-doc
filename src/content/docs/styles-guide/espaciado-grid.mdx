@@ -1,0 +1,83 @@
+---
+title: Breakpoints y Grid
+description: Guía completa del sistema de colores del UI Kit para asegurar consistencia, escalabilidad y accesibilidad.
+---
+import { Tabs, TabItem, Code, Aside, LinkCard, Card, LinkButton  } from '@astrojs/starlight/components';
+
+Los **Breakpoints** (Puntos de Quiebre) y el Sistema de **Grid** (Rejilla) son secciones para mantener la coherencia visual y la armonía en la estructuración de cualquier proyecto que estés desarrollando.
+
+Conoce los breakpoints y grid en Figma: ve a Figma y visualiza en styles guides la sección de grids y break points. 
+
+<Aside title="UASLP UI Kit Disponible en Figma">
+<div>
+Se muestran las propiedades de cada estilo de texto, los puedes encontrar en Figma sección: ***Styles Guide > Breakpoints y Grid***.
+</div>
+<LinkButton href="https://www.figma.com/community/file/1516891092600893832" variant="secondary">
+    Ir a Figma
+</LinkButton>
+</Aside>
+
+## Breakpoints (Puntos de Quiebre)
+Los breakpoints definen los límites de **ancho de pantalla** en los que el diseño realiza una reestructuración adaptativa. Esto es el núcleo del **diseño responsivo**, asegurando que la información clave sea **visible y usable**, independientemente del tamaño del dispositivo.
+
+<LinkCard
+  title="Los breakpoints en el diseño responsivo"
+  href="https://www.nngroup.com/articles/breakpoints-in-responsive-design/"
+  description="Conoce más sobre este concepto"
+/>
+
+### Reglas de Aplicación
+Para simplificar la adopción y seguir los estándares, el UI Kit en Figma utiliza tres puntos de quiebre base que funcionan como reglas de composición:
+
+
+| Punto de Quiebre | Rango de Pantalla     | Uso Principal                          |
+|------------------|------------------------|-----------------------------------------|
+| Mobile           | 0 px a 599 px          | Experiencia vertical y compacta.        |
+| Tablet           | 600 px a 1023 px       | Diseño intermedio con mayor espacio horizontal. |
+| Desktop          | 1024 px en adelante    | Diseño amplio y uso completo de pantalla. |
+
+
+<Aside type="caution" title="Nota">
+Estas medidas son un estándar sugerido que puedes utilizar sin complicaciones. Si tu proyecto requiere reglas específicas ***(ej. un quiebre para pantallas ultra-anchas)***, eres libre de crear tus propios breakpoints adaptados a tus necesidades.
+</Aside>
+
+## Sistema de Grid 
+El sistema de grid establece una estructura para alinear el contenido, asegurar el balance visual y organizar los elementos del diseño.
+
+El grid se adapta dinámicamente en cada breakpoint para maximizar el espacio útil y mantener la legibilidad.
+
+<LinkCard
+  title="Uso de Grid en el diseño"
+  href="https://www.uifrommars.com/mejora-tu-diseno-ui-utilizando-reticulas/"
+  description="Conoce más sobre este concepto"
+/>
+
+### Estructura de Grid 
+
+El sistema está definido por tres propiedades principales: Columnas, Margen (Padding lateral) y Gutter (Espacio entre columnas).
+
+
+| Breakpoint | Columnas | Margen lateral | Gutter (entre columnas) |
+|-----------|----------|----------------|--------------------------|
+| **Desktop** | 12 | 16 px | 16 px |
+| **Tablet** | 8 | 16 px | 16 px |
+| **Mobile** | 4 | 16 px | 16 px |
+ 
+<Aside type="caution" title="Nota">
+Valores representados para crear un diseño implementando en figma y mantener esta estructuración, eres libre de crear tus propios grids adaptados a tus necesidades.
+</Aside>
+
+## Recomendación de implementación
+
+Estas guías ***(Breakpoints y Grid)*** se basan en **principios de diseño web** estándar utilizados al crear las interfaces en Figma. Fueron diseñadas para mantener la armonía estructural y el orden visual en tu proyecto.
+
+<Aside type="danger" title="Importante">
+- **No son obligatorias:** El UI Kit no fuerza estas reglas. El kit te da los **componentes** ***(botones, tarjetas)***, pero no impone el **layout** ***(la estructura donde pones esos componentes)***.
+
+- **Referencia para Figma:** Las columnas y puntos de quiebre mencionados reflejan la estructura de diseño que se utilizó en Figma y puedes usarlas al diseñar tus propias interfaces. 
+
+- **Adaptación Flexible:** Puedes implementar estas reglas de Grid utilizando tu framework de preferencia ***(CSS Grid, Flexbox, Tailwind CSS, etc.)*** o modificarlas completamente para adaptarlas a las **necesidades específicas** de tu proyecto. El kit continuará funcionando perfectamente.
+</Aside>
+
+
+

@@ -1,0 +1,103 @@
+---
+title: Shadows y Bordes
+description: Guía completa del sistema de colores del UI Kit para asegurar consistencia, escalabilidad y accesibilidad.
+---
+import { Tabs, TabItem, Code, Aside, LinkCard, Card, LinkButton  } from '@astrojs/starlight/components';
+
+Esta guía define las reglas de estilización complementarias que dan profundidad, jerarquía y un acabado profesional a la interfaz. 
+
+Es importante notar que estas son reglas de diseño y referencia y **no están implementadas como estilos obligatorios** en los componentes del UI Kit.
+
+<Aside title="UASLP UI Kit Disponible en Figma">
+<div>
+Se muestran las propiedades de cada estilo de texto, los puedes encontrar en Figma sección: ***Styles Guide > Shadows y Bordes***.
+</div>
+<LinkButton href="https://www.figma.com/community/file/1516891092600893832" variant="secondary">
+    Ir a Figma
+</LinkButton>
+</Aside>
+
+
+## Shadows
+
+Las sombras se utilizan para dar una sensación de elevación a los componentes. Esto crea una jerarquía visual, indicando que ciertos elementos son interactivos, importantes o están en un plano superior ***(como popups o menús flotantes).***
+
+
+### Principios de Sombreado
+ 
+La sombra es un valor agregado. Debe usarse con moderación para dirigir la atención del usuario hacia elementos específicos. No usar sombras en todos los componentes es una decisión válida.
+
+### Implementación en Figma: 
+Para mantener la estandarización, en el archivo de Figma se han definido **5 valores base de sombra**. Esto evita la inconsistencia y garantiza que cualquier sombra que utilices mantenga armonía con el resto del sistema.
+
+
+<Aside type="danger" title="Nota de Referencia">
+Los componentes del UI Kit **no tienen sombras aplicadas por defecto**.
+
+Si deseas aplicar sombreado a nuevos diseños o contenedores en tu proyecto, puedes usar los valores definidos en Figma como punto de partida.
+</Aside>
+
+## Bordes y Espaciado 
+
+Los bordes y el espaciado ***(padding y margin)*** son elementos clave para reflejar la identidad visual. Un sistema de bordes refinado comunica formalidad o confianza, mientras que un espaciado ordenado reduce el ruido visual.
+
+### Regla del Sistema de 8 Puntos
+
+La armonía en el diseño se mantiene utilizando una regla principal: **el Sistema de Cuadrícula de 8 Puntos**.
+
+Este enfoque se basa en utilizar un número base ***(comúnmente **8px**)*** y aplicar sus múltiplos para definir espaciados, bordes redondeados y dimensiones en una interfaz ***(ejemplos: 8px, 16px, 24px, 32px, etc.).***
+
+<LinkCard
+  title="La cuadrícula de 8 puntos"
+  href="https://blog.prototypr.io/the-8pt-grid-consistent-spacing-in-ui-design-with-sketch-577e4f0fd520"
+  description="Conoce más sobre este concepto"
+/>
+
+### Tabla de Referencia
+
+| Elemento            | Regla de 8 Puntos                   | Propósito                                                         |
+|---------------------|--------------------------------------|-------------------------------------------------------------------|
+| **Espaciado**       | Múltiplos de 8 (o de 4 en algunos casos) | Mantener jerarquía y un flujo visual coherente.                  |
+| **Bordes redondeados** | 4 px, 8 px o 12 px                    | Estandarizar la forma de contenedores y botones.                  |
+| **Dimensiones**     | Altura basada en múltiplos de 8 (ej. 48 px) | Asegurar que todos los elementos encajen en el grid.             |
+
+
+## Recomendación de Implementación
+
+Al igual que las sombras, estas reglas son de aplicación general y sirven como estándar de diseño usado para construir el UI Kit en Figma.
+
+<Aside type="tip" title="Consistencia en Componentes">
+Los componentes internos del UI Kit sí mantienen esta **jerarquía de 8 puntos**
+***(ej. un botón tiene padding basado en un múltiplo de 8 o 4).***
+</Aside>
+
+### Libertad en su uso  
+Esta guía te ayuda a crear tus propios layouts y componentes externos. Si quieres lograr una excelente jerarquía visual y un diseño limpio, se recomienda usar el Sistema de 8 Puntos para el espaciado.
+
+Si te interesa conocer más sobre la teoría detrás de esta regla y su implementación en código, puedes explorar recursos adicionales en línea.
+
+
+### Recursos recomendados
+
+  <LinkCard
+  title="Métodos de espaciado"
+  href="https://m2.material.io/design/layout/spacing-methods.html#baseline-grid"
+  />
+
+  <LinkCard
+  title="Espaciado y cuadrículas en las interfaces de usuario"
+  href="https://medium.com/design-with-figma/everything-you-need-to-know-as-a-ui-designer-about-spacing-layout-grids-2bc269e12321"
+  />
+
+  <LinkCard
+  title="Conceptos básicos de flexbox"
+  href="https://developer.mozilla.org/es/docs/Web/CSS/Guides/Flexible_box_layout/Basic_concepts"
+  />
+
+  <LinkCard
+  title="Conceptos básicos de CSS Grid Layout"
+  href="https://developer.mozilla.org/es/docs/Web/CSS/Guides/Grid_layout"
+  />
+  
+
+

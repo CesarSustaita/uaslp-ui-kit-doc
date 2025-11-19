@@ -1,0 +1,44 @@
+---
+title: Uso de Estilos
+description: Guía completa del sistema de colores del UI Kit para asegurar consistencia, escalabilidad y accesibilidad.
+---
+import { Aside, Card, LinkButton } from '@astrojs/starlight/components';
+
+La Guía de Estilos del UASLP UI Kit establece las **bases visuales** y funcionales que aseguran **coherencia, escalabilidad y accesibilidad** en todos los proyectos que utilizan este sistema. Su objetivo es proporcionar un medio de trabajo común entre diseñadores y desarrolladores, permitiendo construir interfaces consistentes.
+
+Como ya se ha mencionado, el UI kit está diseñado bajo una arquitectura basada en **Web Components y Design Tokens**, lo que garantiza que cada elemento visual ***—colores, tipografía, espaciado, sombras, iconografía —*** se aplique de forma uniforme.  
+
+Esta sección te guiará en cómo **interpretar y utilizar** estos estilos dentro de tus interfaces, entendiendo cómo se integran de forma práctica en tus componentes que estás por implementar.
+
+<Card title="UASLP UI Kit Disponible en Figma">
+  <div>
+    Visita la sección "Guide Styles" en Figma
+  </div>
+  
+  <LinkButton href="https://www.figma.com/community/file/1516891092600893832" icon="external" iconPlacement="start">
+    Ir a Figma
+  </LinkButton>
+</Card>
+
+### Qué encontrarás en esta guía
+
+A lo largo de las siguientes secciones aprenderás a utilizar los elementos que definen el estilo visual del sistema, incluyendo:
+
+- **Colores:** Paleta de colores y tokens  
+- **Tipografía:** Jerarquías, escalas tipográficas y usos recomendados  
+- **Espaciado y Grid:** Columnas y uso responsivo  
+- **Shadows y Bordes:** Sombras y contornos  
+- **Elementos:** Iconos, Avatar  
+
+### ¿Cómo se aplican los estilos en tu proyecto?
+
+En el paquete **NPM del UI Kit**, todos los estilos de los componentes están encapsulados para garantizar la coherencia visual automática ***(lo que ves en Figma es lo que obtienes en el código).***
+
+Sin embargo, para darte la flexibilidad de crear nuevos elementos o contenedores con los mismos estilos del kit, esta guía presenta las reglas de estilo de manera explícita:
+
+- **Tokens Globales (Colores y Tipografía)**: Se proporcionan los ***tokens*** en **variables CSS** `(var(--...))` para que puedas usar la paleta y la escala de fuentes en **cualquier elemento externo.**
+
+- **Reglas de Referencia (Shadows y Grid)**: Se proporcionan las guías de composición que puedes aplicar en tus layouts.
+
+
+<Aside type="tip">Utiliza las siguientes secciones para obtener los **tokens** y construir una interfaz unificada.</Aside>

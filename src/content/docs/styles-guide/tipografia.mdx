@@ -1,0 +1,291 @@
+---
+title: Tipografía
+description: Guía completa del sistema de colores del UI Kit para asegurar consistencia, escalabilidad y accesibilidad.
+---
+
+import { Tabs, TabItem, Code, Aside, LinkCard, Card, LinkButton  } from '@astrojs/starlight/components';
+
+La tipografía es un punto principal para asegurar la legibilidad, la jerarquía visual y la identidad institucional en nuestras interfaces.
+
+### Open Sans como fuente principal
+
+La selección de **Open Sans** como la fuente principal. Es una tipografía sans-serif reconocida por su excelente claridad y neutralidad.
+
+- **Accesibilidad**: Su diseño amplio y abierto es ideal para la lectura en pantalla, asegurando una buena experiencia incluso en tamaños pequeños y para usuarios con diferentes capacidades visuales.
+- **Disponibilidad**: Es una fuente fácil de obtener, lo que garantiza que la implementación en cualquier entorno sea sencilla.
+
+
+### Implementación automática
+
+El uso de la tipografía es **automático e inmediato en tu proyecto**, gracias a la arquitectura del UI Kit.
+
+Al ejecutar `import 'uaslp-ui-kit';`, la fuente **Open Sans**, junto con todas sus características, se **inyecta automáticamente** en el head del documento. No es necesario agregar enlaces externos ni reglas `@font-face` en tu proyecto. La tipografía está **lista para usarse globalmente.**  
+
+Si no utilizas un token específico, el texto de cuerpo (body) en tu proyecto adoptará automáticamente el **estilo base** ***(Regular, 16px)***.
+
+
+### Escala Tipográfica 
+
+La escala tipográfica sigue una escala modular para establecer una jerarquía visual clara. Existen tres grandes intenciones de uso para cada tamaño ideal para la contrucción de tu proyecto:
+
+- **Encabezados (Headings)**: Para títulos y subtítulos funcionales para páginas principales o páginas de texto general para mantener una jerarquía visual de fácil lectura. 
+- **Texto de Flujo (txt)**: Para párrafos y contenido de lectura que necesitan un espaciado relajado (150%).
+- **Texto de Componente (body)**: Para elementos de interfaz (botones, labels) que necesitan un diseño compacto (espaciado de 100%).
+
+<Aside title="UASLP UI Kit Disponible en Figma">
+<div>
+Se muestran las propiedades de cada estilo de texto, los puedes encontrar en Figma sección: ***Styles Guide > Tipografía***.
+</div>
+<LinkButton href="https://www.figma.com/community/file/1516891092600893832" variant="secondary">
+    Ir a Figma
+</LinkButton>
+</Aside>
+
+<Tabs>
+  <TabItem label="Heading ">
+    ### Heading (H1 - H6)
+
+    Usado comunmente para **titulos y encabezados**.
+
+    | Type         | Font Size ***Rem***  | Font Size ***px*** | Line Height (%) | Font Weight |
+    |--------------|-------------|-------------|------------------|-------------|
+    | **Heading** ***H1*** | 3.815 rem   | 61 px       | 120%             | ***bold 700***    |
+    | **Heading** ***H2*** | 3.05 rem    | 48.83 px    | 120%             | ***bold 700***    |
+    | **Heading** ***H3*** | 2.44 rem    | 39.06 px    | 120%             | ***bold 700***    |
+    | **Heading** ***H4*** | 1.95 rem    | 31.25 px    | 120%             | ***bold 700***    |
+    | **Heading** ***H5*** | 1.56 rem    | 25 px       | 120%             | ***bold 700***    |
+    | **Heading** ***H6*** | 1.25 rem    | 20 px       | 120%             | ***bold 700***    |
+  </TabItem>
+
+  <TabItem label="Text">
+    ### Text
+    Textos usados en parrafos para una **lectura fácil** ***(mayor espaciado)***.
+
+    | Type        | Font Size ***Rem***                             | Font Size ***px*** | Line Height (%) | Font Weight |
+    |-------------|------------------------------------------------ |-------------|------------------|-------------|
+    | **Txt Extrabold** | 1.25 rem / 1.125 rem / 1 rem / 0.875 rem  | 20 px / 18 px / 16 px / 14 px | 150% | ***800*** |
+    | **Txt Bold**      | 1.25 rem / 1.125 rem / 1 rem / 0.875 rem  | 20 px / 18 px / 16 px / 14 px | 150% | ***700*** |
+    | **Txt Semibold**  | 1.25 rem / 1.125 rem / 1 rem / 0.875 rem  | 20 px / 18 px / 16 px / 14 px | 150% | ***600*** |
+    | **Txt Regular**   | 1.25 rem / 1.125 rem / 1 rem / 0.875 rem  | 20 px / 18 px / 16 px / 14 px | 150% | ***400*** |
+    | **Txt Light**     | 1.25 rem / 1.125 rem / 1 rem / 0.875 rem  | 20 px / 18 px / 16 px / 14 px | 150% | ***300*** |
+  </TabItem>
+
+  <TabItem label="Body">
+    ### Body
+
+    De cuerpo usados para **textos pequeños** que no necesitan un espaciado entre ellos, perfectos en componentes.
+
+    | Type          | Font Size  ***Rem***                           | Font Size ***px*** | Line Height (%) | Font Weight |
+    |---------------|------------------------------------------------|-------------|------------------|-------------|
+    | **Body Extrabold** | 1.25 rem / 1.125 rem / 1 rem / 0.875 rem  | 20 px / 18 px / 16 px / 14 px | 100% | ***800*** |
+    | **Body Bold**      | 1.25 rem / 1.125 rem / 1 rem / 0.875 rem  | 20 px / 18 px / 16 px / 14 px | 100% | ***700*** |
+    | **Body Semibold**  | 1.25 rem / 1.125 rem / 1 rem / 0.875 rem  | 20 px / 18 px / 16 px / 14 px | 100% | ***600*** |
+    | **Body Regular**   | 1.25 rem / 1.125 rem / 1 rem / 0.875 rem  | 20 px / 18 px / 16 px / 14 px | 100% | ***400*** |
+    | **Body Light**     | 1.25 rem / 1.125 rem / 1 rem / 0.875 rem  | 20 px / 18 px / 16 px / 14 px | 100% | ***300*** |
+  </TabItem>
+</Tabs>
+
+
+## Uso y aplicación de tokens
+La tipografía de tu proyecto está completamente unificada gracias a la arquitectura del UI Kit. Al importar la librería, todos los **estilos** y **valores** de la escala **tipográfica** se inyectan automáticamente como **variables CSS globales**.
+
+Esto te da dos formas potentes de construir tu interfaz:
+
+- **Tokens Primitivos:** Acceso al valor exacto ***(ej. solo el tamaño: `font size: var(--font-size-h1)`).***
+- **Tokens Semánticos ***(Shorthand)***:** Estilos completos que combinan familia, tamaño, peso y altura de línea en una sola variable ***(ej. `font: var(--text-h1)`).***
+
+A continuación, se muestra el listado completo de ambos tipos de tokens para su referencia y uso.
+
+## Tokens Primitivos
+Estos tokens definen los valores atómicos de la tipografía y son la base de los tokens semánticos.
+
+<Aside type="tip" title="Modo de aplicación">
+Puedes usar los tokens primitivos de la siguiente manera, ajustándolo a las necesidades para la creación de tu proyecto. 
+
+export const css = `
+    .mi-css-personalizado-para-texto {
+    /*Uso de tokens primitivos de fuente*/
+      font-family: var(--font-open-sans);
+      font-size: var(--font-size-body-md);
+      font-weight: var(--font-weight-bold);
+      line-height: var(--line-height-text);
+
+    /*Mediente el uso de tokens primitivos puedes ajustar 
+    y crear el formato de tipografía como lo necesites*/
+
+    /*Uso de tokens primitivos de color*/
+      color: var(--text-default-default);
+    }`;
+export const cssName = 'ejemplo.css';
+
+<Code code={css} lang="css" title={cssName} />
+
+</Aside>
+
+### Valores definidos
+<Tabs>
+
+export const weight = `
+    :root {
+      /* -------------------------------------------
+       2. FONT WEIGHT (Pesos de Fuente)
+      ------------------------------------------- */
+      --font-weight-light: 300;
+      --font-weight-regular: 400;
+      --font-weight-medium: 500;
+      --font-weight-semibold: 600;
+      --font-weight-bold: 700;
+      --font-weight-extrabold: 800;
+    }`;
+
+export const fileName = 'ui-tokens.css';
+
+export const size = `
+    :root {
+       /* -------------------------------------------
+       3. FONT SIZE (Tokens Primitivos de Tamaño)
+      ------------------------------------------- */
+      /* Display / Títulos de página (61px a 20px) */
+      /*Heading H1 - H6*/
+      --font-size-h1: 3.815rem;  /* 61.04px */
+      --font-size-h2: 3.05rem;   /* 48.83px */
+      --font-size-h3: 2.44rem;   /* 39.06px */
+      --font-size-h4: 1.95rem;   /* 31.25px */
+      --font-size-h5: 1.56rem;   /* 25px */
+      --font-size-h6: 1.25rem;   /* 20px */
+
+      /* texto y body */
+      --font-size-body-lg: 1.25rem;  /* 20px */
+      --font-size-body-md: 1.125rem; /* 18px */
+      --font-size-body-base: 1rem;   /* 16px */
+      --font-size-body-sm: 0.875rem; /* 14px */
+    }`;
+
+export const lh = `
+    :root {
+      /* -------------------------------------------
+       4. LINE HEIGHT (Altura de Línea)
+      ------------------------------------------- */
+      --line-height-h: 1.2;     /* 120% */
+      --line-height-text: 1.5;  /* 150% */
+      --line-height-body: 1;    /* 100% */
+    }`;  
+
+<TabItem label="Peso de Fuente">
+    <Code code={weight} lang="css" title={fileName} />
+  </TabItem>
+  <TabItem label="Tamaño de Fuente">
+    <Code code={size} lang="css" title={fileName} />
+  </TabItem>
+  <TabItem label="Line Height">
+    <Code code={lh} lang="css" title={fileName} />
+  </TabItem>
+</Tabs>
+
+
+## Tokens Semánticos (Uso de Shorthand)
+Estos tokens combinan todos los valores anteriores en una sola ***variable `font: var(...);`***, facilitando la aplicación del estilo completo con fidelidad de Figma.
+
+<Aside type="tip" title="Modo de aplicación">
+Puedes usar los tokens semánticos únicamente con una **línea corta** ***(Shorthand)*** donde contiene toda la **especificación** necesaria para el **estilo predeterminado** realizado en Figma. 
+
+<Tabs>
+export const css2 = `
+    .mi-css-personalizado-para-texto {
+    /*Uso de tokens semantico de fuente*/
+      font: var(--txt-base);
+    /* Esta única variable contiene: 
+    Tamaño de fuente, Line Height y Tipografía*/
+
+    /* Puedes ajustar el Line Height usando los valores primitivos*/
+      line-height: var(--line-height-text);
+
+    /*Uso de tokens primitivos de color*/
+      color: var(--text-default-default);
+    }`;
+export const cssName2 = 'ejemplo.css';
+
+
+export const css3 = `
+    .mi-css-personalizado-para-texto {
+    /*Uso de tokens semantico de fuente*/
+      font: var(--txt-h4);
+    /* Aplicando texto de "Heading H4": 
+    Tamaño de fuente, Line Height, Tipografía, Peso de fuente y Tipografía (Open Sans predeterminada)*/
+
+    /*Uso de tokens primitivos de color*/
+      color: var(--text-default-default);
+    }`;
+   
+
+    <TabItem label="Ejemplo I">
+        Se muestra el uso de los tokens semánticos, en una sola variable contiene varios valores previamente aplicados.
+        <Code code={css2} lang="css" title={cssName2} />
+    </TabItem>
+    <TabItem label="Ejemplo II">
+        Las variables de ***Heading H1 - H6*** contienen por defecto el valor **"Font Weight"** para su correcta aplicación a textos de titulo o encabezados.
+        <Code code={css3} lang="css" title={cssName2} />
+    </TabItem>
+</Tabs>
+
+</Aside>
+
+### Valores definidos
+
+<Tabs>
+
+export const heading = `
+    :root {
+      /* HEADINGS */
+      /*ejemplo "--txt-h1:" valores -> font weight:700, font size: 3.815rem / Line Height: 1.2 Fuente: Open Sans*/
+
+      --txt-h1: var(--font-weight-bold) var(--font-size-h1) / var(--line-height-h) var(--font-open-sans);
+      --txt-h2: var(--font-weight-bold) var(--font-size-h2) / var(--line-height-h) var(--font-open-sans);
+      --txt-h3: var(--font-weight-bold) var(--font-size-h3) / var(--line-height-h) var(--font-open-sans);
+      --txt-h4: var(--font-weight-bold) var(--font-size-h4) / var(--line-height-h) var(--font-open-sans);
+      --txt-h5: var(--font-weight-bold) var(--font-size-h5) / var(--line-height-h) var(--font-open-sans);
+      --txt-h6: var(--font-weight-bold) var(--font-size-h6) / var(--line-height-h) var(--font-open-sans);
+    }`;
+
+
+export const text = `
+    :root {
+      /* TEXT SCALE */
+      /*ejemplo "--txt-lg:" valores -> font size: 1.25rem / Line Height: 1.5 Fuente: Open Sans*/ 
+
+      --txt-lg:   var(--font-size-body-lg)   / var(--line-height-text) var(--font-open-sans);
+      --txt-md:   var(--font-size-body-md)   / var(--line-height-text) var(--font-open-sans);
+      --txt-base: var(--font-size-body-base) / var(--line-height-text) var(--font-open-sans);
+      --txt-sm:   var(--font-size-body-sm)   / var(--line-height-text) var(--font-open-sans);
+
+      /*El valor de FONT WEIGHT (Peso de fuente) no esta implementado por defecto*/
+    }`;
+
+export const body = `
+    :root {
+      /* BODY  */
+      /*ejemplo "--txt-lg:" valores -> font size: 1.25rem / Line Height: 1 Fuente: Open Sans*/
+
+      --body-lg:   var(--font-size-body-lg)   / var(--line-height-body) var(--font-open-sans);
+      --body-md:   var(--font-size-body-md)   / var(--line-height-body) var(--font-open-sans);
+      --body-base: var(--font-size-body-base) / var(--line-height-body) var(--font-open-sans);
+      --body-sm:   var(--font-size-body-sm)   / var(--line-height-body) var(--font-open-sans);
+
+      /*El valor de FONT WEIGHT (Peso de fuente) no esta implementado por defecto*/
+    }`;  
+
+<TabItem label="Heading">
+    <Code code={heading} lang="css" title={fileName} />
+  </TabItem>
+  <TabItem label="Texto">
+    <Code code={text} lang="css" title={fileName} />
+  </TabItem>
+  <TabItem label="Body">
+    <Code code={body} lang="css" title={fileName} />
+  </TabItem>
+</Tabs>
+
+
+
+
+
