@@ -1,0 +1,55 @@
+---
+title: Inicio Rápido
+description: Cómo integrar el UASLP UI Kit en tu proyecto.
+---
+
+import { Aside, Steps, Code } from '@astrojs/starlight/components';
+
+Esta guía te mostrará cómo integrar el UASLP UI Kit a tu proyecto. Gracias a su arquitectura basada en **Web Components**, el kit es compatible con cualquier entorno de **desarrollo moderno (React, Vue, Vanilla JS) que utilice Node.js y un bundler (como Vite o Webpack).**
+
+<Aside type="tip" title="Desarrollo Moderno y Bundler">
+  El término **desarrollo moderno** agrupa las herramientas como **React, Vue,** que se usan para construir interfaces. Para que estas aplicaciones funcionen, se requiere un **empaquetador (bundler)** como **Vite**, que compila y optimiza todos los archivos de código.
+</Aside>
+
+## Agregando el UI Kit a tu proyecto
+
+<Aside type="note" title="Pre-requisito">
+  Asegúrate de tener instalado **[Node.js](https://nodejs.org/es/download) (versión LTS recomendada)** en tu sistema.
+</Aside>
+
+### Instalación del paquete
+
+<Steps>
+
+export const js = `import 'uaslp-ui-kit';`;
+export const jsname = 'main.js';
+
+export const exampleCode = `
+<body>
+<ui-button> UI Button </ui-button>
+</body>`;
+export const fileName = 'index.html';
+
+1. **Instala el paquete** oficial desde el registro de NPM en tu proyecto:
+
+   ```bash
+   npm install uaslp-ui-kit
+   ```
+   El kit está diseñado para ser cargado con un solo `import`. Esta línea de JavaScript se encarga de **inyectar automáticamente** todos los estilos y registrar los componentes en tu proyecto.
+
+2. Añade la siguiente línea en tu archivo principal de JavaScript **(ej: main.js o app.js)**:
+
+    <Code code={js} lang="js" title={jsname} />
+
+4. Una vez que has importado la librería, puedes usar inmediatamente cualquier componente en tu archivo HTML, como si fuera una **etiqueta nativa.**
+
+    <Code code={exampleCode} lang="js" title={fileName} />
+    
+    
+    **¡Y eso es todo!** Tu componente ya está activo, estilizado con los tokens antes mencionados y listo para interactuar.
+   
+
+</Steps>
+
+
+
