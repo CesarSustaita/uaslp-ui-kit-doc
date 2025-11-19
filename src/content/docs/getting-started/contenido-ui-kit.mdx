@@ -1,0 +1,182 @@
+---
+title: Contenido del Ui Kit
+description: Componentes, estructura y fundamentos visuales del UASLP UI Kit, incluyendo sus activos en Figma y tokens de diseño.
+---
+import { Card, LinkButton, Aside, LinkCard } from '@astrojs/starlight/components';
+
+El Kit se compone de **dos activos principales** que trabajan en conjunto para conectar el diseño con el desarrollo. 
+
+Para asegurar la consistencia, el proyecto fue concebido primero como una librería de diseño en Figma. En esta sección, exploraremos esos activos de diseño y su contraparte de software: **los componentes programados y los tokens de estilo.**
+
+<Card title="UASLP UI Kit Disponible en Figma">
+  <div>
+    Visita la comunidad de figma para ver el archivo de diseño y crear tus propias interfaces
+  </div>
+  
+  <LinkButton href="https://www.figma.com/community/file/1516891092600893832" icon="external" iconPlacement="start">
+    Ir a Figma
+  </LinkButton>
+</Card>
+---
+
+## Componentes del UI Kit
+
+El **UASLP UI Kit** ofrece una colección de **16 componentes** de uso general diseñados para cubrir las necesidades más comunes en el desarrollo de interfaces para proyectos web y móviles.  
+
+Esta colección representa la primera fase del kit, enfocada en proporcionar una base sólida y estandarizada para que puedas construir rápidamente.
+
+### El sistema minimo viable (MVS)
+
+Los componentes representan el **Sistema de Diseño Mínimo Viable (MVS)** para el ecosistema del UI Kit.
+
+En lugar de incluir elementos altamente específicos (que solo se usan una o dos veces), se concentro en los **componentes atómicos** ***(Atomic Design: botones, tarjetas, inputs).*** Esto permite que el kit se mantenga **ligero y fácil de mantener.**
+
+La combinación de estas 16 piezas clave, junto con la guía de estilos _(explicada más adelante)_, ofrece una solución completa para la creación de interfaces. Esto asegura que al momento de desarrollar siempre tenga las bases necesarias para construir por **composición**, garantizando la **coherencia** en el diseño final.
+
+<LinkCard
+  title="Acerca de la Atomic Design"
+  href="https://www.uifrommars.com/atomic-design-ventajas/"
+  description="Conoce más sobre este concepto"
+/>
+
+---
+
+### Lista de componentes
+
+A continuación, se detallan los componentes incluidos:
+
+| **Componente**      | **Número de Variantes** |
+|---------------------|--------------------------|
+| Button              | 18                       |
+| Icon Button         | 18                       |
+| State Button        | 12                       |
+| Switch              | 6                        |
+| Checkbox            | 6                        |
+| Radio Button        | 6                        |
+| Tag                 | 30                       |
+| Label (Checkbox)    | 4                        |
+| Label (Radio)       | 4                        |
+| Label (Switch)      | 4                        |
+| Input               | 20                       |
+| Cards               | 8                        |
+| List                | 9                        |
+| Dialog              | 2                        |
+| Tooltip             | 4                        |
+| Tabs                | 6                        |
+| Pagination          | 7                        |
+| Accordion           | 2                        |
+| Menu                | 2                        |
+| Notifications       | 8                        |
+
+---
+
+### ¿Qué pasa si falta un componente?
+
+Es posible que no encuentres un componente complejo para cada caso de uso específico (como un “Panel de Perfil” completo) en este kit. Y eso está perfectamente bien. El UI Kit está diseñado para ser **flexible y fomentar la composición.**
+
+---
+
+### Componer con componentes base
+
+La mayoría de las **interfaces complejas pueden (y deben)** construirse ensamblando los componentes base que ya se ofrecen. Por ejemplo, si necesitas un “Login”, puedes componerlo usando algunos labels y un botón.  
+
+Esto te da **flexibilidad total** para crear el componente exacto que necesitas, mientras garantizas que se mantenga **100% consistente** con el resto del sistema.
+
+---
+
+### Crear nuevos componentes como punto de partida
+
+Ahora, **¿qué pasa si necesitas un componente que no está en la lista?** Uno que no puedes construir combinando los bloques existentes. Es entonces cuando debes recurrir a la **Guía de Estilos y Tokens** (Colores, Tipografía, Espaciado).
+
+Las guías te proporcionan la **materia prima** (los colores, fuentes y sombras exactos) para que tu nuevo componente mantenga una sinergia visual perfecta con el resto del ecosistema del UI Kit. Esto te da un gran punto de inicio y la confianza de que, incluso al crear algo nuevo, **nunca estás diseñando desde cero.**
+
+---
+
+## Uso de Figma
+
+El flujo de trabajo del UASLP UI Kit comienza en la **etapa de diseño**.  
+
+El ecosistema completo de componentes, estilos y variantes se conceptualizó e implementó primero en **Figma**, sirviendo como el punto de partida oficial para toda la interfaz.  
+
+La librería de código es una implementación precisa de ese sistema.  
+Esta disciplina garantiza que **no existan discrepancias entre el diseño final y el producto implementado.**
+
+<LinkButton href="https://www.figma.com/community/file/1516891092600893832" variant="secondary">
+    Ir a Figma
+</LinkButton>
+---
+
+### El propósito en el diseño
+
+Al haber creado todos los activos desde Figma, se garantiza que el diseño visual y la guía de estilos sean la base de todo.  
+Esto permite:
+
+- **Crear prototipos de alta fidelidad:**  
+  Utiliza el "UASLP UI Kit" (disponible gratuitamente en la comunidad de Figma, [ver sitio](https://www.figma.com/community/file/1516891092600893832)) para ensamblar interfaces web o móviles.
+
+- **Consistencia:**  
+  El uso de componentes asegura que no habrá desviaciones visuales respecto al kit de la universidad.
+
+---
+
+### Visualización y ejemplos
+
+Para que puedas ver el kit en acción, en la sección **“UASLP Examples”** dentro de **Figma**, encontrarás un ejemplo de rediseño para el **portal de alumnos de la Facultad de Ingeniería.**
+
+Este ejemplo sirve como una **muestra de alta fidelidad**, demostrando cómo los componentes y las guías de estilo pueden combinarse.  
+
+Te invito a explorarlo para inspirarte en tus propios prototipos y ver todo el potencial que se puede alcanzar.
+
+---
+
+## Design Token
+
+Los **Design Tokens** son los bloques fundamentales de nuestro sistema de diseño.  
+Son variables que almacenan las características visuales de los elementos de la interfaz, tales como el color, la tipografía, el espaciado y las sombras.
+
+Los Tokens toman un valor fijo (ej: `#004A98`) y le dan un nombre que tiene significado (ej: `--color-brand-primary`).  
+
+Esto nos permite utilizar esos valores en cualquier plataforma (web, móvil, etc.).
+
+---
+
+### La base de una estructura sólida
+
+Contar con Design Tokens definidos desde la fase inicial de diseño proporciona una **base principal**.  
+Esta estructuración permite a los equipos:
+
+- **Garantizar la Coherencia:**  
+  Asegurar que cada decisión de diseño esté centralizada y correctamente implementada en todos los productos digitales.
+
+- **Diseño sin Fricción:**  
+  Evitar la necesidad de tomar decisiones estéticas básicas una y otra vez, lo que se traduce en una reducción significativa del tiempo invertido en la fase de diseño.
+
+---
+
+### Ventajas para el trabajo en equipo
+
+Cuando se trabaja en un proyecto con un equipo, los **Design Tokens** se convierten en un potente **lenguaje de comunicación**.
+
+El uso de Tokens facilita el desarrollo colaborativo ya que hay:
+
+- **Alineación del equipo:**  
+  Se **garantiza** que todos los desarrolladores y diseñadores están utilizando exactamente las mismas decisiones de diseño, eliminando errores de coloración o espaciado.
+
+- **Mantenimiento sencillo:**  
+  Si el color principal previamente definido para la universidad cambia, solo se modifica el valor del Token central **(Colores/tokens primitivos)**, y todos los componentes se actualizarán automáticamente **(Colores/Tokens Semánticos)**.
+
+---
+
+### Beneficios si trabajas por cuenta propia
+
+Si trabajas de manera individual o estás comenzando un proyecto sin experiencia previa en diseño, los Tokens son tu guía principal:
+
+- **Dirección Clara:**  
+  Te proporcionan una dirección de diseño inmediata y una estructura sólida para comenzar, sin perder tiempo en debates sobre qué color usar.
+
+- **Profesionalismo:**  
+  Tienes la certeza de que tu diseño se está implementando correctamente, siguiendo estándares de espaciado y contraste previamente validados.
+
+---
+<Aside type="tip">Considera este Kit como **la base de inicio** que te libera de decisiones básicas, permitiéndote enfocarte en la **creatividad** y la **funcionalidad** de tu software.</Aside>
+
