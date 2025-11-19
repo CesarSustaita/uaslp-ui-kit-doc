@@ -1,0 +1,95 @@
+---
+title: Arquitectura y Tecnología
+description: Arquitectura, tecnologías y fundamentos técnicos utilizados en la construcción del UASLP UI Kit.
+---
+import { Aside, LinkCard  } from '@astrojs/starlight/components';
+
+Para la construcción de este Kit, se eligió una arquitectura centrada en la **portabilidad**, el **rendimiento** y los **estándares web**. En lugar de solo usar un framework (de desarrollo frontend) específico para crear cada uno de los diseños (como React o Vue), se tomó la decisión de construir cada componente utilizando **Web Components nativos**.
+
+Gracias a esta decisión, los componentes permiten ofrecer una librería que funciona en cualquier lugar donde funcione HTML. Para hacer este proceso de desarrollo más eficiente y optimizado, la tecnología utilizada es **LitElement**.  
+
+<Aside title="Lit Element"> **Lit** es una librería base simple y ligera hecha por Google que elimina el código repetitivo de los Web Components y proporciona un rendimiento excepcional. </Aside>
+
+
+## Distribución y Construcción
+
+La usabilidad y el rendimiento de la librería se deben en gran medida a **Vite**, la herramienta de desarrollo y empaquetado (*bundling*). Vite fue elegida por su capacidad de construir y optimizar proyectos modernos de JavaScript.
+
+Su principal ventaja es que se integra con **Rollup** (un sistema de compilación) para generar una librería eficiente y optimizada. Esto permite que el paquete se compile de tal manera que inyecte automáticamente todos los estilos CSS y los archivos dentro del código JavaScript.
+
+Esta implementación garantiza que el desarrollador solo necesite el simple `import` para que los componentes, tokens de diseño y tipografía se carguen y funcionen al instante, sin requerir ninguna configuración adicional.
+
+---
+
+## Web Components
+
+Los **Web Components** son un conjunto de tecnologías web que te permiten crear elementos HTML personalizados, reutilizables y con su funcionalidad completamente encapsulada (separada) del resto de tu página.
+
+El concepto de “componente” es fundamental en el diseño y desarrollo. El objetivo es simple: **no tener que construir el mismo elemento una y otra vez.**
+
+<LinkCard
+  title="Conoce más"
+  href="https://www.webcomponents.org/introduction"
+/>
+
+---
+
+### En la parte del diseño (Figma)
+
+Cuando un diseñador trabaja en una interfaz, no dibuja 10 botones si los necesita 10 veces.  
+En su lugar, crea un solo componente de botón “base” y luego “instancia” (reutiliza) ese componente en todo su diseño. Si necesita cambiar el color, solo edita el componente base y los 10 botones se actualizan automáticamente.
+
+---
+
+### En la parte del desarrollo (Código)
+
+De la misma manera, un desarrollador no debería escribir el código (HTML, CSS y lógica) de un botón 10 veces. Los Web Components nos permiten aplicar esa misma lógica de Figma al código.  
+
+Creamos un solo elemento personalizado (ej: `<button>`) que encapsula toda su funcionalidad y estilos. Luego, podemos reutilizar ese componente 10, 20 o 100 veces en la aplicación, sabiendo que siempre se verá y funcionará igual.
+
+Los Componentes Web apuntan a resolver dichos problemas. Consisten principalmente en tres tecnologías: **Custom elements**, **Shadow DOM** y **HTML templates**, que se pueden usar juntas para crear elementos personalizables y versátiles que encapsulan la funcionalidad y pueden ser reutilizados donde sea, sin miedo a colisiones de código.
+
+---
+
+## Custom Elements
+
+Un conjunto de **APIs de JavaScript** que permiten definir elementos personalizados y su comportamiento, que entonces puede ser utilizado como se desea en la interfaz del usuario.
+
+<Aside title="API"> Es un conjunto de herramientas y comandos que un software (como el navegador) te presta para que puedas interactuar con él y pedirle que haga cosas.</Aside>
+
+<LinkCard
+  title="Conoce más"
+  href="https://developer.mozilla.org/es/docs/Web/API/Web_components/Using_custom_elements"
+/>
+
+---
+
+## Shadow DOM
+
+Es un **encapsulamiento** por completo del funcionamiento del componente; **se renderiza por separado del DOM principal** y controla funcionalidades asociadas.  
+
+De esta forma, se pueden mantener características de un elemento en privado, así puede tener el estilo y los scripts sin miedo a colisiones con otras partes del documento.
+
+<Aside title="El DOM es el mapa lógico de tu página web.  "> Es la forma en que el navegador y JavaScript organiza y entiende todo el contenido (etiquetas HTML, texto, imágenes) de una página.</Aside>
+
+<LinkCard
+  title="Conoce más"
+  href="https://developer.mozilla.org/es/docs/Web/API/Web_components/Using_shadow_DOM"
+/>
+---
+
+## HTML templates
+
+Estos son los elementos `<template>` y `<slot>`, que proporcionan la estructura y la flexibilidad:
+
+- **`<template>` (Plantilla):**  
+  Este elemento define la **estructura interna (el HTML y CSS)** de tu componente.  
+  Es un marcado que **no se despliega** en la página renderizada por defecto.  
+  Es un bloque de contenido inerte que se clona y utiliza cuando el **Custom Element** es creado, asegurando un rendimiento eficiente.
+
+- **`<slot>` (Ranura):**  
+  Este elemento es el **marcador de posición** para el contenido del usuario.  
+  Permite que los componentes sean **personalizables.**  
+  Cuando escribes `<ui-button> Mi Texto </ui-button>`, el **“Mi Texto”** se inserta en el lugar donde el componente definió un `<slot>`.
+
+Juntos, permiten que los componentes mantengan los estilos visuales planificados en el diseño ([ver la sección de Figma](https://www.figma.com/community/file/1516891092600893832)), al tiempo que permiten al usuario final proveer el contenido.
