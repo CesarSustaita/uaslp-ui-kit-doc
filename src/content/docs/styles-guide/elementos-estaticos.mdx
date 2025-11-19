@@ -1,0 +1,171 @@
+---
+title: Elementos
+description: Guía completa del sistema de colores del UI Kit para asegurar consistencia, escalabilidad y accesibilidad.
+---
+import { Tabs, TabItem, Code, Aside, LinkCard, Card, LinkButton, Steps  } from '@astrojs/starlight/components';
+
+Esta sección define los recursos visuales auxiliares que puedes utilizar para añadir claridad, usabilidad y vida a tus interfaces. Estos elementos están disponibles en **Figma** y **no están incluidos en el paquete NPM** para mantener la librería ligera.
+
+---
+
+## Iconografía
+
+Los iconos son vectores esenciales que comunican información de forma instantánea, mejorando la usabilidad de la interfaz sin necesidad de usar palabras. La consistencia en el estilo es crucial para lograr un sistema profesional.
+
+### Origen y consistencia
+Todos los iconos utilizados en Figma siguen un **patrón visual unificado** ***(grosor de línea, radio de esquina y estilo).***
+Los iconos fueron seleccionados y adaptados de la librería de código abierto [**Free SVG Icons by Untitled UI**](https://www.untitledui.com/free-icons).
+
+<Aside type="tip" title="Recomendación">
+Descarga estos iconos **SVG totalmente gratuitos** para usarlos en tus diseños web y de interfaz de usuario. **Untitled UI Icons** es una biblioteca de iconos limpia, coherente y neutra, creada específicamente para el diseño de interfaces de usuario modernas.
+</Aside>
+
+### Uso e Implementación de Iconos
+
+El **UI Kit no incluye** un set de iconos **dentro del paquete NPM**, ya que se busca mantener la librería ligera y flexible.
+
+Sin embargo, sí proporciona un **punto de partida sólido en Figma**, donde encontrarás una selección de iconos **extraídos** de la biblioteca gratuita [**Free SVG Icons by Untitled UI**](https://www.untitledui.com/free-icons). Esta selección está diseñada para cubrir las necesidades más comunes en interfaces académicas y administrativas, evitando que tengas que buscar iconos externamente mientras diseñas.
+
+### Iconos en Figma (Diseño)
+
+En Figma, los iconos están disponibles como componentes listos para usar. 
+
+Su propósito es:
+
+- Facilitar la creación de prototipos y pantallas de alta fidelidad.
+- Mantener una línea visual consistente durante el proceso de diseño.
+- Asegurar que cualquier iconografía utilizada en tus layouts siga el estilo del sistema.
+
+<Aside> Estos iconos sí están implementados dentro del archivo de Figma, pero no forman parte del paquete NPM.</Aside>
+
+### Iconos en Código (Implementación con el UI Kit)
+
+Cuando implementas interfaces con el paquete NPM del UI Kit, tú decides qué iconos utilizar.
+Para garantizar calidad y compatibilidad:
+
+<Aside type="tip" title="Recomendación fundamental">
+**Usa siempre iconos en formato SVG**.
+</Aside>
+Este formato ofrece:
+
+- Escalabilidad perfecta sin pérdida de nitidez.
+- Menor peso y mejor rendimiento.
+- Flexibilidad para modificar color, tamaño y estilo mediante CSS o propiedades inline.
+
+A continuación, se describen los pasos para obtener, preparar y utilizar correctamente los iconos SVG dentro del UI Kit.
+
+### Obtén el icono en formato SVG
+
+Puedes obtener el SVG desde tres fuentes distintas:
+
+<Tabs>
+  <TabItem label="Figma">
+  **Desde Figma (exportación manual)**
+    <Steps>
+    1. Selecciona el icono dentro del archivo del UI Kit en Figma.  
+    2. Ve a **Export → SVG**.  
+    3. Haz clic en **Export** y descarga el archivo.  
+    4. Abre el archivo `.svg` en tu editor para copiar el código.
+    </Steps>
+  </TabItem>
+
+  <TabItem label="Figma Dev Mode">
+  **Desde Figma con Dev Mode (requiere Figma Pro)**
+  <Steps>
+    1. Activa el **Dev Mode (modo desarrollador)**.  
+    2. Selecciona el icono.  
+    3. En el panel derecho aparecerá el código SVG listo para copiar.  
+    4. Copia ese código y pégalo directamente en tu proyecto.
+    </Steps>
+  </TabItem>
+
+  <TabItem label="Librería Oficial">
+  **Desde la librería oficial** [**Free SVG Icons by Untitled UI**](https://www.untitledui.com/free-icons)
+  <Steps>
+    1. Busca el icono que necesitas.  
+    2. Descárgalo en formato **SVG**.  
+    3. Abre el archivo `.svg` y copia su contenido.  
+    
+    </Steps>
+        <Aside type="tip">
+        Esta opción es ideal cuando el icono que deseas **no está incluido** en la selección preestablecida dentro del UI Kit en Figma.
+        </Aside>
+  </TabItem>
+</Tabs>
+
+### Ajuste del SVG para su correcta implementación
+Muchos SVGs vienen con valores predeterminados que no son totalmente compatibles con el sistema visual del UI Kit.
+
+Antes de utilizarlos, revisa estos atributos:
+
+**Valores comunes por defecto**
+
+export const exampleCode = `
+/*Ejemplo de codigo de Formato SVG*/
+
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+<path d="M18 6L6 18M6 6L18 18" stroke="#101010" stroke-width="2.0" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+
+`;
+export const fileName = 'ejemplo.html';
+export const highlights = ['stroke="#101010"', 'stroke-width="2.0"'];
+
+export const exampleCode2 = `
+/*Ejemplo de codigo de Formato SVG*/
+
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+<path d="M18 6L6 18M6 6L18 18" stroke="#currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+
+`;
+export const highlights2 = ['stroke="#currentColor"', 'stroke-width="1.6"'];
+
+<Code code={exampleCode} lang="js" title={fileName} mark={highlights} />
+
+**Valores recomendados para el UI Kit**
+
+<Code code={exampleCode2} lang="js" title={fileName} mark={highlights2} />
+
+### ¿Por qué estos cambios son importantes?
+
+**`stroke="currentColor"`**  
+Permite que el icono adopte automáticamente el color del componente del UI Kit donde se utiliza. Esto mantiene consistencia con los tokens y estilos del sistema.
+
+**`stroke-width="1.6"`**  
+Mantiene un grosor más equilibrado y adecuado dentro del estilo visual del UI Kit.  
+Algunos SVG vienen con `2.0`, lo cual puede hacer que se vean más pesados o fuera de proporción.
+
+<Aside type="danger" title="Nota">
+**No todos los SVG necesitarán cambios.** Algunos pueden venir ya configurados correctamente. 
+Siempre revisa los atributos antes de usarlos.
+</Aside>
+
+
+En las próximas secciones, al aplicar los componentes del UI Kit, se **mostrará** la forma de integrar los iconos SVG en el **código**. Sin embargo, es importante haber realizado previamente los pasos mencionados para obtener y ajustar el SVG, de modo que su implementación sea compatible con el sistema.
+
+
+---
+
+## Avatares
+
+Los avatares son activos visuales diseñados para mejorar el prototipado y aportar identidad a tus interfaces.
+
+**Propósito:**
+- Representar perfiles de usuario.  
+- Mostrar responsables de un documento.  
+- Dar más vida a interfaces de alta fidelidad.
+
+### Uso y recomendación
+
+Puedes descargar los avatares desde Figma en **PNG** o **SVG**.  
+El formato **SVG es el recomendado** para evitar pixelación y asegurar compatibilidad con el UI Kit.
+
+---
+
+<Aside type="tip" title="Nota">
+Tanto los **iconos** como los **avatares** son herramientas de estilización general.  
+Aportan valor visual, pero **no son obligatorios** para el funcionamiento correcto del UI Kit.
+</Aside>
+
+
