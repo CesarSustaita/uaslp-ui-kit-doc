@@ -36,6 +36,29 @@ export default defineConfig({
                     { label: 'Elementos Estáticos', link: 'styles-guide/elementos-estaticos' },
                 ]
             },
+            {
+                label: 'Components',
+                items: [
+                    // Se asume que los archivos están en docs/StylesGuide/
+                    { label: 'Uso de Componentes', link: 'components/uso-componentes' }, 
+                    { label: 'Buttons', link: 'components/buttons' }, 
+                    { label: 'Switch', link: 'components/switch' }, 
+                    { label: 'Checkbox', link: 'components/checkbox' }, 
+                    { label: 'Radio Button', link: 'components/radio-button' }, 
+                    { label: 'Tag', link: 'components/tag' }, 
+                    { label: 'Labels', link: 'components/labels' }, 
+                    { label: 'Inputs', link: 'components/inputs' }, 
+                    { label: 'Cards', link: 'components/cards' }, 
+                    { label: 'List', link: 'components/list' }, 
+                    { label: 'Dialog', link: 'components/dialog' }, 
+                    { label: 'Tooltip', link: 'components/tooltip' }, 
+                    { label: 'Tabs', link: 'components/tabs' }, 
+                    { label: 'Pagination', link: 'components/pagination' }, 
+                    { label: 'Accordion', link: 'components/accordion' }, 
+                    { label: 'Menu', link: 'components/menu' }, 
+                    { label: 'Notifications', link: 'components/notification' }, 
+                ]
+            },
         ],
         customCss:[
             //Ruta alternativa al css personalizado
