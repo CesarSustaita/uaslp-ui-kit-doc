@@ -11,6 +11,7 @@
 	--sl-color-gray-5: #35393d;
 	--sl-color-gray-6: #24272b;
 	--sl-color-black: #17181a;
+	 
 }
 /* Light mode colors. */
 :root[data-theme='light'] {
@@ -26,4 +27,47 @@
 	--sl-color-gray-6: #eceef0;
 	--sl-color-gray-7: #f5f6f7;
 	--sl-color-black: #ffffff;
+	
+}
+
+
+.components-structure {
+  display: flex !important;
+  flex-wrap: nowrap !important;
+  flex-direction: column !important;
+  /*border: 1px solid var(--text-default-disabled);*/
+  gap: 20px !important;
+  padding: 16px !important;
+  background: var(--background-background-component) !important;
+  border-radius: 8px !important;
+}
+
+.components-structure > * {
+  display: inline-flex !important;
+  margin: 0 !important;
+  max-width: none !important;
+  vertical-align: middle !important;
+}
+
+.responsive-structure {
+  flex-wrap: wrap !important;
+  flex-direction: row !important;
+  justify-content: space-evenly !important;
+  gap: 16px !important;
+  align-items: center !important;
+}
+
+.responsive-structure > * {
+  display: inline-flex !important;
+  margin: 0 !important;
+  max-width: none !important;
+}
+
+.responsive-structure-full {
+  display: block !important;
+}
+
+.responsive-structure-full > * {
+  display: block !important; 
+    width: 100%;
 }
