@@ -1,4 +1,45 @@
 ---
-title: Buttons
+title: Componentes
 description: Sección de Componentes del UI Kit de NPM .
 ---
+
+import { Aside, Steps, Code, Card } from '@astrojs/starlight/components';
+
+La sección de Componentes reúne todos los elementos desarrollados a partir del diseño original en Figma, junto con las guías para utilizarlos correctamente dentro de tus proyectos. Aquí encontrarás la descripción, propiedades y ejemplos de uso de cada componente, de manera que puedas integrarlos sin complicaciones en cualquier entorno de desarrollo.
+
+Los componentes pueden ser implementados tanto en proyectos vanilla (HTML, CSS y JavaScript sin frameworks) como en aplicaciones construidas con Vue, React u otros frameworks frontend.
+
+
+## Uso Básico
+
+Una vez que la librería ha sido cargada en tu proyecto _(a través del import en tu layout base)_, puedes utilizar los componentes como si fueran etiquetas HTML nativas.
+
+<Aside> Los Web Components se definen utilizando la sintaxis **kebab-case** **`(ej. ui-button)`**. Simplemente escribe la etiqueta: El navegador la reconocerá y la estilizará automáticamente, aplicando todos los tokens de color y tipografía encapsulados.</Aside>
+
+## Manejo de eventos en los componentes
+
+Todos los componentes del sistema utilizan eventos personalizados para comunicar acciones al exterior. Internamente, cada componente emite eventos a través de:
+
+export const exampleCode = `
+this.dispatchEvent(new CustomEvent("nombre-del-evento", {
+  detail: { ... }
+}));`;
+
+<Code code={exampleCode} lang="js"  />
+
+Esto significa que cualquier entorno que soporte Web Components (HTML puro, Vue, React, Angular, etc.) puede escuchar esos eventos sin requerir configuraciones especiales.
+El navegador es quien maneja la propagación del evento, por lo que no hay diferencias en cómo el evento viaja, solo cambia cómo cada framework permite escucharlo.
+
+### ¿Cómo recibe el usuario un evento del componente?
+
+Dependiendo del entorno, el evento puede obtenerse de distintas maneras:
+
+- **HTML nativo:** mediante **`addEventListener`**.
+- **Frameworks modernos _(Vue, React, Angular):_** mediante su propia sintaxis para escuchar eventos sobre elementos HTML, sin necesidad de usar **`addEventListener`** directamente.
+- **Atributos inline como `onclick="..."`:** **No funcionan** con Web Components; los navegadores no conectan automáticamente esos atributos con eventos personalizados, por lo que no deben usarse.
+
+### Consideraciones generales
+
+- Los componentes **no están acoplados** a ningún framework.
+- La comunicación siempre es **unidireccional**: el componente emite; el entorno escucha.
+- Como desarrollador puedes usar el método **propio** de su **framework** para manejar eventos _(con limitaciones)_, o recurrir a **`addEventListener`** si prefiere un enfoque nativo.
