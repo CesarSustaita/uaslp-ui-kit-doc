@@ -1,4 +1,250 @@
 ---
-title: Buttons
+title: Tabs
 description: Sección de Componentes del UI Kit de NPM .
 ---
+
+<script type="module" src="/public/ui-kit.js"></script>
+import { Aside, Steps, Code, Card, Tabs, TabItem} from '@astrojs/starlight/components';
+
+El componente **Tab** `<ui-tab>` es un patrón de navegación que organiza contenido en secciones distintas, mostrando solo una porción del contenido a la vez. Este componente se implementa mediante dos elementos:
+
+- `<ui-tab-list>`: El contenedor principal que gestiona el estado de qué pestaña está activa.
+- `<ui-tab>`: La pestaña individual que funciona como el botón de selección.
+
+Permite al usuario alternar entre diferentes paneles o vistas de información dentro del mismo contexto o página, reduciendo el scroll y mejorando la legibilidad.
+
+**Vista previa del componente**
+
+<div class="components-structure">
+    <div class="responsive-structure"> 
+        <ui-tab-list >
+        
+        <ui-tab name="tab1" variant="text-only" label="Tab 1"></ui-tab>
+        <ui-tab name="tab2" variant="text-only" label="Tab 2"></ui-tab>
+        <ui-tab name="tab3" variant="text-only" label="Tab 3"></ui-tab>
+        <ui-tab name="tab4" variant="text-only" label="Tab 4"></ui-tab>
+
+        </ui-tab-list>
+    </div>
+</div>
+
+
+## ¿Cuándo debería usarse?
+Usa este componente cuando quieras:
+
+- Organizar Paneles de Configuración: Separar ajustes generales, de seguridad y de notificaciones en un único formulario.
+- Mostrar Vistas de Datos: Presentar información relacionada en secciones _(ej. "Actividad", "Detalles", "Historial")_ de un mismo objeto _(usuario, producto)_.
+
+## Estructura de Uso Básico
+El sistema de **Tabs** requiere que uno o más componentes `<ui-tab>` sean insertados directamente dentro del contenedor `<ui-tab-list>`.
+
+
+export const exampleCode = `
+<!-- Estructura de tabs: usando <ui-tab> dentro del <ui-tab-list> -->
+
+<ui-tab-list>
+    <ui-tab name="tab1" label="Tab 1"></ui-tab>
+    <ui-tab name="tab2" label="Tab 2"></ui-tab>
+    <ui-tab name="tab3" label="Tab 3"></ui-tab>
+    <ui-tab name="tab4" label="Tab 4"></ui-tab>
+</ui-tab-list>
+`;
+export const fileName = 'ejemplo.html';
+
+export const s = ['<ui-tab-list>', 'ui-tab' ];
+
+<Code code={exampleCode} lang="js" title={fileName} mark={s}/>
+
+
+## Atributos y Variantes 
+El componente `<ui-tab>` define el aspecto y el identificador único de cada opción de navegación. La lista utiliza el atributo name para controlar cuál de ellas debe estar activa.
+
+### Atributos de `Control` y `Contenido`
+El uso de los atributos en `<ui-tab>` para su correcto funcionamiento.
+
+export const e = ['name=', 'label=' ];
+
+<Code code={exampleCode} lang="js" title={fileName} mark={e}/>
+
+| Atributo (HTML) | Tipo    | Propósito |
+|------------------|---------|-----------|
+| `label`          | **string**  | Texto de la Pestaña. El título visible que describe el contenido del panel (ej. "General", "Seguridad"). |
+| `name`           | **string**  | **Obligatorio.** Identificador único de la pestaña. |
+| `active`         | **boolean** | Estado Visual. Propiedad controlada exclusivamente por el padre (`ui-tab-list`). No debe ser manipulada directamente por el usuario. |
+
+
+### Variante de `Apariencia`
+Este atributo permite elegir si la pestaña debe mostrar texto, un icono, o ambos.
+
+**Vista previa del componente**
+
+<div class="components-structure">
+    <div class="responsive-structure"> 
+        <ui-tab-list>
+        <ui-tab name="tab1" variant="text-only" label="Solo texto">
+            <svg slot="icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+            </svg>
+        </ui-tab>
+
+    <ui-tab name="tab2" variant="default" label="Texto e Icono">
+        <svg slot="icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+        </svg>
+    </ui-tab>
+
+    <ui-tab name="tab3" variant="icon-only" label="Solo Icono">
+        <svg slot="icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+        </svg>
+    </ui-tab>
+
+    </ui-tab-list>
+    </div>
+</div>
+
+export const variant = `
+<!-- Estructura de tabs: usando <ui-tab> dentro del <ui-tab-list> -->
+
+<ui-tab-list>
+  <ui-tab name="tab1" variant="text-only" label="Tab 1">
+      <svg slot="icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+      </svg>
+  </ui-tab>  
+  <ui-tab name="tab2" variant="default" label="Tab 2">
+      <svg slot="icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+      </svg>
+  </ui-tab>  
+  <ui-tab name="tab3" variant="icon-only" label="Tab 3">
+      <svg slot="icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+      </svg>
+  </ui-tab>
+</ui-tab-list>
+`;
+
+export const v = ['variant="text-only" ', 'variant="default"', 'variant="icon-only"' ];
+
+<Code code={variant} lang="js" title={fileName} mark={v}/>
+
+| Atributo variant | Contenido Visible          | Uso Recomendado |
+|------------------|----------------------------|------------------|
+| `default`        | Texto + Icono (si el icono está disponible) | Estándar. Proporciona contexto visual y textual completo. |
+| `text-only`      | Solo Texto                 | Ideal cuando la lista de pestañas es muy larga y el espacio es limitado. |
+| `icon-only`      | Solo Icono                 | Se utiliza cuando las acciones son muy conocidas (ej. una pestaña de ajustes representada por un engranaje). |
+
+
+### Uso de Slot en iconos
+
+export const icon = `
+
+<ui-tab-list>
+  <ui-tab name="tab1" variant="text-only" label="Tab 1">
+      <svg slot="icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+      </svg>
+  </ui-tab>  
+</ui-tab-list>
+`;
+
+export const i = ['slot="icon"'];
+
+<Code code={icon} lang="js" title={fileName} mark={i}/>
+
+| Atributo variant | Contenido Visible          | Uso Recomendado |
+|------------------|----------------------------|------------------|
+| `icon`        | Un icono en formato SVG | Espacio reservado para el elemento visual que acompaña al label. Se oculta o muestra automáticamente según el atributo `variant`. |
+
+## Disparador de Eventos
+El sistema de Tabs `ui-tab-list` y `ui-tab` utiliza un patrón de Eventos Personalizados para coordinar el estado. El objetivo principal es que el componente padre gestione la apariencia, y tu como desarrollador gestiones el contenido.
+
+### Componente emisor de la señal
+
+El `ui-tab` no cambia su propio estado. En su lugar lanza el evento `tab-select`.
+
+El propósito de este evento es notificar al sistema que una pestaña ha sido seleccionada, y el dato que se envía es el identificador de esa pestaña
+
+
+| Componente | Evento      | Mecanismo                                               |
+|------------|-------------|---------------------------------------------------------|
+| `<ui-tab>` | `tab-select` | Se dispara cuando el usuario hace clic en la pestaña. |
+
+
+### Componente receptor de la señal
+El `<ui-tab-list>` es el **controlador de estado**. Él es el componente que escucha el evento `tab-select` lanzado por cualquier `<ui-tab>`
+
+Se encarga de cambiar el diseño visual de la pestaña activa, manteniendo la correcta apariencia de la navegación.
+
+## Obtención del evento
+El desarrollador utiliza el mismo evento `tab-select` en su código externo para realizar el cambio de información. La aplicación necesita saber qué pestaña está activa para poder mostrar el panel de contenido correspondiente.
+
+
+Para escuchar los eventos emitidos por los componentes de este UI Kit, la opción más confiable es usar **`addEventListener`**, ya que garantiza que los eventos personalizados se reciban **correctamente**.
+
+En **frameworks** _(Vue.js, React, Angular)_ también puede usarse **`addEventListener`**, aunque cada uno ofrece su propia forma de manejar eventos, que igualmente es válida y en la mayoría de los casos funcionan sin problema. Sin embargo, cada framework tiene particularidades importantes que tu como desarrollador debes considerar:
+
+- **Vue**: Normalmente funciona de forma nativa, ya que Vue respeta los **eventos del DOM** tal como se emiten.
+- **Angular**: Suele funcionar, en algunas versiones antiguas del framework tenían **limitaciones** con eventos provenientes de Web Components.
+- **React**: Puede detectar eventos personalizados pero no siempre. Su sistema interno de `Synthetic Events` no garantiza la **compatibilidad al 100%**, por lo que el comportamiento puede variar entre navegadores y versiones.
+
+
+export const js = `
+<style>
+.tab-panel:not(.active) {
+    display: none;
+}
+</style>
+
+<div class="tabs-example-container">
+    
+    <!-- El Gestor de Pestañas (con nombres clave) -->
+    <ui-tab-list id="tabs-manager">
+        <ui-tab label="Tab 1" name="Tab-1"></ui-tab>
+        <ui-tab label="Tab 2" name="Tab-2"></ui-tab>
+    </ui-tab-list>
+    
+    <!-- Simulador de datos en div de información -->
+    <div id="Tab-1" class="tab-panel active">
+        <h3>Tab 1 Seleccionado</h3>
+    </div>
+    <div id="Tab-2" class="tab-panel">
+        <h3>Tab 2 Seleccionado</h3>
+    </div>
+
+</div>
+
+<script>
+    // Se obtienen las referencias al gestor de pestañas y a los paneles
+    const tabsManager = document.getElementById('tabs-manager');
+    const allPanels = document.querySelectorAll('.tab-panel'); // Obtiene ambos divs
+
+    tabsManager.addEventListener('tab-select', (event) => {
+        
+        // se obtiene el el dato seleccionado 
+        const activePanelId = event.detail.tabName;
+
+        console.log(\`Pestaña seleccionada: \${activePanelId}\`);
+        
+        allPanels.forEach(panel => {
+            panel.classList.remove('active');
+            
+            if (panel.id === activePanelId) {
+                panel.classList.add('active');
+            }
+        });
+    });
+    
+</script>
+
+`;
+export const m = ['label="Tab 1"', 'label="Tab 2"', 'addEventListener', 'name="Tab-1"', 'name="Tab-2"', 'id="Tab-1"' , 'id="Tab-2"'];
+
+
+<Aside type="tip" title="Uso de 'addEventListener' usando el atributo 'isInteractive'">
+
+Ejemplo de obtención del evento usando `addEventListener` y cambio de pestañas
+<Code code={js} lang="js" mark={m}/>
+
+</Aside>
