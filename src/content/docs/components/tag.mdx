@@ -1,4 +1,294 @@
 ---
-title: Buttons
+title: Tag
 description: Sección de Componentes del UI Kit de NPM .
 ---
+
+<script type="module" src="/public/ui-kit.js"></script>
+import { Aside, Steps, Code, Card, Tabs, TabItem} from '@astrojs/starlight/components';
+
+El componente **Tag** `<ui-tag>` _(o Etiqueta)_ es un elemento compacto utilizado para categorizar, filtrar o mostrar metadatos de forma rápida y visual. Se utiliza comúnmente para mostrar estados, categorías de artículos o selecciones activas.
+
+**Vista previa del componente**
+
+<div class="components-structure">
+    <div class="responsive-structure"> 
+        <ui-tag type="primary" tag="base" >Componente Tag</ui-tag>
+        <ui-tag >Componente Tag</ui-tag>
+    </div>
+</div>
+
+## ¿Cuándo debería usarse?
+Usa este componente cuando quieras:
+
+- Categorización: Mostrar etiquetas de artículos _("Noticias", "Deportes")_.
+- Estado: Indicar el estado de una entidad _("Activo", "Pendiente")_.
+- Filtros: Mostrar filtros aplicados que pueden ser removidos por el usuario.
+
+## Uso básico del componente
+
+El componente se integra directamente en el DOM. Para renderizarlo en el sistema, utiliza la siguiente etiqueta:
+
+export const exampleCode = `<ui-tag> Tag </ui-tag>`;
+export const fileName = 'ejemplo.html';
+
+<Code code={exampleCode} lang="js" title={fileName} />
+
+## Variantes
+Para adaptar el **Tag** a diferentes contextos y estados, puedes modificar sus atributos directamente en la etiqueta HTML. Cada atributo controla una variación específica de diseño o comportamiento.
+
+### Atributo `type`
+**Vista previa**
+
+<div class="components-structure">
+    <div class="responsive-structure"> 
+        <ui-tag type="primary" tag="base" >Tag Primary</ui-tag>
+        <ui-tag type="secondary" tag="base" >Tag Secondary</ui-tag>
+    </div>
+</div>
+
+export const estado = `
+<!-- Type Primary -->
+  <ui-tag type="primary"> Tag Primary </ui-tag>
+
+<!-- Type Secondary -->
+  <ui-tag type="secondary"> Tag Secondary </ui-tag>
+
+`;
+export const type = 'HTML';
+
+**Aplicación en código**
+
+<Code code={estado} lang="js" title={type} />
+
+**Tabla de los atributos implementados**
+
+|<span style={{whiteSpace: "nowrap"}}>Atributo `type`</span>      | Uso Recomendado |
+|------------------------|-----------------------------|
+| `primary` _(Defecto)_ | Ideal para llamar la atención sobre el estado más importante o como parte de un filtro activado _(ej. mostrar el estado de "Crítico" o "En Proceso")_. |
+| `secondary`          | Perfecto para categorías, listas de filtros aplicados o metadatos de baja prioridad, donde el objetivo es ser sutil y no saturar la interfaz.. |
+
+
+### Atributo `tag`
+**Vista previa**
+
+<div class="components-structure">
+    <div class="responsive-structure"> 
+        <ui-tag type="primary" tag="base" >Base</ui-tag>
+        <ui-tag type="primary" tag="neutral" >Neutral</ui-tag>
+        <ui-tag type="primary" tag="positive" >Positive</ui-tag>
+        <ui-tag type="primary" tag="negative" >Negative</ui-tag>
+        <ui-tag type="primary" tag="warning" >Warning</ui-tag>
+    </div>
+    <div class="responsive-structure"> 
+        <ui-tag type="secondary" tag="base" >Base</ui-tag>
+        <ui-tag type="secondary" tag="neutral" >Neutral</ui-tag>
+        <ui-tag type="secondary" tag="positive" >Positive</ui-tag>
+        <ui-tag type="secondary" tag="negative" >Negative</ui-tag>
+        <ui-tag type="secondary" tag="warning" >Warning</ui-tag>
+    </div>
+</div>
+
+export const tag = `
+<!-- Type Primary -->
+  <ui-tag type="primary" tag="base" >Tag</ui-tag>
+  <ui-tag type="primary" tag="neutral" >Tag</ui-tag>
+  <ui-tag type="primary" tag="positive" >Tag</ui-tag>
+  <ui-tag type="primary" tag="negative" >Tag</ui-tag>
+  <ui-tag type="primary" tag="warning" >Tag</ui-tag>
+
+<!-- Type Secondary -->
+  <ui-tag type="secondary" tag="base" >Tag</ui-tag>
+  <ui-tag type="secondary" tag="neutral" >Tag</ui-tag>
+  <ui-tag type="secondary" tag="positive" >Tag</ui-tag>
+  <ui-tag type="secondary" tag="negative" >Tag</ui-tag>
+  <ui-tag type="secondary" tag="warning" >Tag</ui-tag>
+
+`;
+
+**Aplicación en código**
+
+<Code code={tag} lang="js" title={type} />
+
+**Tabla de los atributos implementados**
+
+| Atributo tag       | Significado Semántico                        | Estilo primary (Fondo Sólido)                                                                 | Estilo secondary (Fondo Suave)                                                                      |
+|--------------------|----------------------------------------------|------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------|
+| `base`               | Identidad / Primario                         | Uso del color Azul Institucional. Fondo sólido blanco/azul en primary.                        | El más sutil. Color de texto Azul Institucional sobre un fondo muy claro.                           |
+| `neutral` _(Defecto)_  | Información General                          | Fondo Sólido Gris Oscuro. Se usa para categorías o metadatos comunes sin énfasis emocional.   | Fondo Gris claro o blanco. Color de texto neutro.                                                |
+| `positive`           | Éxito / Confirmación                         | Fondo Sólido Verde. Indica acciones completadas con éxito o estados favorables.               | Fondo Verde suave con texto Verde. Sutil.                                                        |
+| `negative`           | Peligro / Error / Crítico                    | Fondo Sólido Rojo/Naranja. Indica un error, estado crítico o acción destructiva.              | Fondo Rojo suave con texto Rojo/Naranja. Sutil.                                                  |
+| `warning`            | Advertencia / Precaución                     | Fondo Sólido Amarillo/Naranja. Indica algo que requiere atención pero no es crítico.          | Fondo Amarillo suave con texto Amarillo/Naranja. Sutil.                                          |
+
+
+### Atributo `hasBorder`
+
+El atributo booleano `hasBorder` permite añadir un borde a la etiqueta. Su propósito es aumentar la visibilidad de los tags cuando se encuentran sobre fondos que ya son muy claros o blancos.
+
+> Este atributo solo tiene efecto cuando el tag se utiliza con el atributo `type=secondary`.
+
+**Vista previa**
+<div class="components-structure">
+    <div class="responsive-structure"> 
+        <ui-tag type="secondary" hasBorder tag="base" >Tag</ui-tag>
+        <ui-tag type="secondary" hasBorder tag="neutral" >Tag</ui-tag>
+        <ui-tag type="secondary" hasBorder tag="positive" >Tag</ui-tag>
+        <ui-tag type="secondary" hasBorder tag="negative" >Tag</ui-tag>
+        <ui-tag type="secondary" hasBorder tag="warning" >Tag</ui-tag>
+    </div>
+</div>
+
+export const tags = `
+<!-- Atributo hasBorder en type = Secondary -->
+  <ui-tag type="secondary" hasBorder tag="base" >Tag</ui-tag>
+  <ui-tag type="secondary" hasBorder tag="neutral" >Tag</ui-tag>
+  <ui-tag type="secondary" hasBorder tag="positive" >Tag</ui-tag>
+  <ui-tag type="secondary" hasBorder tag="negative" >Tag</ui-tag>
+  <ui-tag type="secondary" hasBorder tag="warning" >Tag</ui-tag>
+
+`;
+
+**Aplicación en código**
+
+<Code code={tags} lang="js" title={type} />
+
+### Atributo `removable`
+
+El atributo booleano **removable** le da al Tag la funcionalidad interactiva al agregar un **botón de cierre** _("X")_ al final de la etiqueta.
+
+Este atributo es importante para contextos donde el usuario debe gestionar una lista activa de filtros o categorías _(ej. el Tag representa un filtro que el usuario desea eliminar)_.
+
+<Aside type="danger" title="Fundamental">
+Es fundamental entender que el componente `<ui-tag>` NUNCA se elimina a sí mismo del DOM.
+- **Acción del Componente:** Al hacer clic en la "X", el componente emite un evento.
+- **Como Desarrollador**: Es responsabilidad del desarrollador escuchar el evento y ejecutar la acción de eliminar el elemento del DOM o actualizar el estado de la aplicación.
+</Aside>
+
+**Vista previa**
+<div class="components-structure">
+    <div class="responsive-structure"> 
+        <ui-tag type="primary" removable tag="base" >Tag</ui-tag>
+        <ui-tag type="primary" removable tag="neutral" >Tag</ui-tag>
+        <ui-tag type="primary" removable tag="positive" >Tag</ui-tag>
+        <ui-tag type="primary" removable tag="negative" >Tag</ui-tag>
+        <ui-tag type="primary" removable tag="warning" >Tag</ui-tag>
+    </div>
+    <div class="responsive-structure"> 
+        <ui-tag type="secondary" removable tag="base" >Tag</ui-tag>
+        <ui-tag type="secondary" removable tag="neutral" >Tag</ui-tag>
+        <ui-tag type="secondary" removable tag="positive" >Tag</ui-tag>
+        <ui-tag type="secondary" removable tag="negative" >Tag</ui-tag>
+        <ui-tag type="secondary" removable tag="warning" >Tag</ui-tag>
+    </div>
+    <div class="responsive-structure"> 
+        <ui-tag type="secondary" hasBorder removable tag="base" >Tag</ui-tag>
+        <ui-tag type="secondary" hasBorder removable tag="neutral" >Tag</ui-tag>
+        <ui-tag type="secondary" hasBorder removable tag="positive" >Tag</ui-tag>
+        <ui-tag type="secondary" hasBorder removable tag="negative" >Tag</ui-tag>
+        <ui-tag type="secondary" hasBorder removable tag="warning" >Tag</ui-tag>
+    </div>
+</div>
+
+export const removable = `
+<!-- Atributo removable activa los estilos de acción: Button y hover -->
+  <ui-tag type="primary" removable tag="base" >Tag</ui-tag>
+  <ui-tag type="primary" removable tag="neutral" >Tag</ui-tag>
+  <ui-tag type="primary" removable tag="positive" >Tag</ui-tag>
+  <ui-tag type="primary" removable tag="negative" >Tag</ui-tag>
+  <ui-tag type="primary" removable tag="warning" >Tag</ui-tag>
+
+  <ui-tag type="secondary" removable tag="base" >Tag</ui-tag>
+  <ui-tag type="secondary" removable tag="neutral" >Tag</ui-tag>
+  <ui-tag type="secondary" removable tag="positive" >Tag</ui-tag>
+  <ui-tag type="secondary" removable tag="negative" >Tag</ui-tag>
+  <ui-tag type="secondary" removable tag="warning" >Tag</ui-tag>
+
+  <ui-tag type="secondary" hasBorder removable tag="base" >Tag</ui-tag>
+  <ui-tag type="secondary" hasBorder removable tag="neutral" >Tag</ui-tag>
+  <ui-tag type="secondary" hasBorder removable tag="positive" >Tag</ui-tag>
+  <ui-tag type="secondary" hasBorder removable tag="negative" >Tag</ui-tag>
+  <ui-tag type="secondary" hasBorder removable tag="warning" >Tag</ui-tag>
+
+`;
+
+**Aplicación en código**
+
+<Code code={removable} lang="js" title={type} />
+
+
+## Disparador de eventos
+
+El componente `<ui-tag>` no gestiona el cambio de estado, sino una acción de notificación al sistema mediante un **Evento Personalizado _(CustomEvent)_** llamado `tag-remove`.
+
+Este evento se dispara cuando el usuario hace clic en el botón de cierre ("X"), notificando a la aplicación que el Tag debe ser eliminado o procesado.
+
+### Estructura de `detail`
+
+| Propiedad | Tipo   | Descripción |
+|-----------|--------|-------------|
+| `id` | <span style={{whiteSpace: "nowrap"}}>`string` </span>| El ID de la etiqueta marcada para eliminación pendiente. Este valor es crítico para que la lógica del sistema identifique y remueva el Tag correcto. |
+
+
+<Aside type="danger" title="Práctica Obligatoria:">
+Dado que el Tag **NO genera** un ID aleatorio, es obligatorio asignar el atributo **id** manualmente a todas las instancias de **Tags** con el **atributo** removibles (**removable**) para que la aplicación pueda localizarlos y eliminarlos.
+</Aside>
+
+export const id = `
+<!-- Ejemplo: tag removible con su id -->
+  <ui-tag id="tag-1" type="primary" tag="base" removable> Compras </ui-tag>
+`;
+export const ids = ['id="tag-1"', 'removable'];
+
+**Aplicación del ID en código**
+
+<Code code={id} lang="js" title={type} mark={ids}/>
+
+## Obtención del evento
+Para escuchar los eventos emitidos por los componentes de este UI Kit, la opción más confiable es usar **`addEventListener`**, ya que garantiza que los eventos personalizados se reciban **correctamente**.
+
+En **frameworks** _(Vue.js, React, Angular)_ también puede usarse **`addEventListener`**, aunque cada uno ofrece su propia forma de manejar eventos, que igualmente es válida y en la mayoría de los casos funcionan sin problema. Sin embargo, cada framework tiene particularidades importantes que tu como desarrollador debes considerar:
+
+- **Vue**: Normalmente funciona de forma nativa, ya que Vue respeta los **eventos del DOM** tal como se emiten.
+- **Angular**: Suele funcionar, en algunas versiones antiguas del framework tenían **limitaciones** con eventos provenientes de Web Components.
+- **React**: Puede detectar eventos personalizados pero no siempre. Su sistema interno de `Synthetic Events` no garantiza la **compatibilidad al 100%**, por lo que el comportamiento puede variar entre navegadores y versiones.
+
+
+export const js = `
+<!-- Ejemplo del Tags Removible en HTML -->
+<script>
+  // Seleccion del contenedor padre
+  const lista = document.getElementById('lista-tags');
+
+  lista.addEventListener('tag-remove', (event) => {
+    
+    // Extraer el ID del elemento
+    const tagId = event.detail.id;
+
+    if (tagId) {
+        // Obtener la referencia al elemento Tag
+        const tagElement = document.getElementById(tagId);
+        
+        // Eliminar el Tag del DOM 
+        tagElement.remove();
+        console.log(\`Tag con ID: \${tagId} ha sido eliminado\`);
+    } else {
+        console.error("No se pudo eliminar: El Tag no tenía un ID asignado.");
+    }
+  });
+</script>
+
+<div id="lista-tags">
+  <ui-tag id="filtro-1" type="primary" tag="negative" removable>Filtro 1 seleccionado</ui-tag>
+  <ui-tag id="filtro-2" type="secondary" hasBorder tag="positive" removable>Filtro 2 seleccionado</ui-tag>
+  <ui-tag id="filtro-3" type="secondary" tag="base" removable>Filtro 3 seleccionado</ui-tag>
+</div>
+
+`;
+export const m = ['tag-remove', 'addEventListener', 'id="filtro-1"','id="filtro-2"','id="filtro-3"','removable' ];
+
+
+<Aside type="tip" title="Uso de 'addEventListener' usando el atributo 'removable'">
+
+Ejemplo sencillo de obtención del evento usando `addEventListener`
+<Code code={js} lang="js" mark={m}/>
+
+</Aside>
