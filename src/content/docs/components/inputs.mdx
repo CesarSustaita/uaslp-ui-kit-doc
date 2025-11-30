@@ -1,4 +1,355 @@
 ---
-title: Buttons
+title: Inputs
 description: Sección de Componentes del UI Kit de NPM .
 ---
+
+<script type="module" src="/public/ui-kit.js"></script>
+import { Aside, Steps, Code, Card, Tabs, TabItem} from '@astrojs/starlight/components';
+
+El componente **Input** `ui-input` es el campo estándar para la recolección de datos de formato libre del usuario (texto, números, etc.). Este componente centraliza la gestión de toda la experiencia de entrada: etiquetas, descripciones, íconos y estados de error. 
+
+Proporcionar una experiencia de entrada de datos pre-estilizada y validada que se adapta a las reglas de tu sistema.
+
+**Vista previa del componente**
+
+<div class="components-structure">
+    <div class="responsive-structure-full"> 
+        <ui-input label="Buscar" description="Ingresa palabras clave"  placeholder="Busca en tus archivos" >
+       
+        <svg slot="icon-end" width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M21 21L16.65 16.65M19 11C19 15.4183 15.4183 19 11 19C6.58172 19 3 15.4183 3 11C3 6.58172 6.58172 3 11 3C15.4183 3 19 6.58172 19 11Z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        
+    </ui-input>
+    </div>
+</div>
+
+## ¿Cuándo debería usarse?
+Usa este componente cuando quieras:
+
+- Recoger texto, correo electrónico o contraseñas.
+- Guiar al usuario con un label y una descripción clara.
+
+## Uso básico del componente
+
+El componente se integra directamente en el DOM. Para renderizarlo en el sistema, utiliza la siguiente etiqueta:
+
+export const exampleCode = `<ui-input></ui-input>`;
+export const fileName = 'ejemplo.html';
+
+<Code code={exampleCode} lang="js" title={fileName} />
+
+## Variantes
+
+### Atributos de `contenido` y `estructura`
+Estos atributos controlan el texto visible y el comportamiento del campo de entrada nativo.
+
+**Vista previa**
+<div class="components-structure">
+    <div class="responsive-structure-full"> 
+        <ui-input 
+        label="Correo Electrónico" 
+        description="Usaremos este correo para enviarte la confirmación del trámite." 
+        placeholder="ejemplo@uaslp.mx" 
+        inputmode="email">
+        </ui-input>
+    </div>
+    <div class="responsive-structure-full"> 
+        <ui-input 
+        label="Monto a Pagar" 
+        placeholder="0.00" 
+        value="250.00" 
+        inputmode="numeric"
+        id="monto-pago">
+        </ui-input>
+    </div>
+</div>
+
+export const estado = `
+<!-- Atributos usados: label, description, placeholder, inputmode -->
+  <ui-input 
+    label="Correo Electrónico" 
+    description="Usaremos este correo para enviarte la confirmación del trámite." 
+    placeholder="ejemplo@uaslp.mx" 
+    inputmode="email">
+  </ui-input>
+
+<!-- Atributos usados: label, placeholder, value, inputmode-->
+  <ui-input 
+    label="Monto a Pagar" 
+    placeholder="0.00" 
+    value="250.00" 
+    inputmode="numeric">
+  </ui-input>
+
+`;
+export const type = 'HTML';
+
+export const s = ['label', 'description', 'placeholder', 'inputmode', 'value'  ];
+
+**Aplicación en código**
+
+<Code code={estado} lang="js" title={type} mark={s}/>
+
+**Tabla de los atributos implementados**
+
+| Atributo (HTML) | Función      | Propósito y Contenido                                                                                                      |
+|------------------|--------------|-----------------------------------------------------------------------------------------------------------------------------|
+| `label`            | **Obligatorio**  | El texto principal que identifica el campo.                                                                                |
+| `description`      | **Opcional**     | Texto auxiliar que proporciona contexto o guía al usuario sobre el formato de entrada esperado.                            |
+| `placeholder`      | **Opcional**     | Texto que aparece dentro del campo vacío para dar una pista de lo que se debe ingresar.                                    |
+| `value`            | **Opcional**     | El contenido actual del campo. Se puede establecer al inicio y refleja la entrada del usuario.                              |
+| `inputmode`        | **Opcional**     | Sugiere al navegador qué tipo de teclado mostrar en móviles (ej. `numeric`, `email`).                                      |
+
+
+### Atributos de `slot para iconos`
+El componente soporta la integración de íconos en formato SVG para decorar el campo y mejorar la comprensión.
+
+**Vista previa**
+<div class="components-structure">
+    <div class="responsive-structure-full"> 
+        <ui-input 
+          label="Correo Electrónico" 
+          description="Usaremos este correo para enviarte la confirmación del trámite." 
+          placeholder="ejemplo@uaslp.mx" 
+          inputmode="email">
+
+        <svg slot="icon-start" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+            <polyline points="22,6 12,13 2,6"></polyline>
+        </svg>
+        </ui-input>
+    </div>
+    <div class="responsive-structure-full"> 
+        <ui-input 
+          label="Monto a Pagar" 
+          placeholder="0.00" 
+          value="250.00" 
+          inputmode="numeric">
+
+        <svg slot="icon-end" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="12" y1="1" x2="12" y2="23"></line>
+            <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+        </svg>
+        </ui-input>
+    </div>
+</div>
+
+export const slot = `
+<!-- slot="icon-start"-->
+  <ui-input 
+        label="Correo Electrónico" 
+        description="Usaremos este correo para enviarte la confirmación del trámite." 
+        placeholder="ejemplo@uaslp.mx" 
+        inputmode="email">  
+
+      <svg slot="icon-start" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+          <polyline points="22,6 12,13 2,6"></polyline>
+      </svg>
+    </ui-input>
+
+<!-- slot="icon-end"-->
+  <ui-input 
+        label="Monto a Pagar" 
+        placeholder="0.00" 
+        value="250.00" 
+        inputmode="numeric"> 
+
+      <svg slot="icon-end" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="12" y1="1" x2="12" y2="23"></line>
+          <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+      </svg>
+    </ui-input>
+
+`;
+export const m = ['slot="icon-start"', 'slot="icon-end"' ];
+
+**Aplicación en código**
+
+<Code code={slot} lang="js" title={type} mark={m}/>
+
+<Aside type="tip" title="Recomendación">Para obtener más detalles sobre el **formato de los íconos**, consulta la sección de _"Ajuste del SVG para su correcta implementación"_ en la Guía de Estilos _"Elementos Estáticos"_.</Aside>
+
+### Atributo de `Estados`
+El Input soporta los estados más importantes para la interacción y la validación de formularios.
+
+**Vista previa**
+<div class="components-structure">
+    <div class="responsive-structure-full"> 
+        <ui-input 
+          label="ID de Expediente" 
+          placeholder="Generado Automáticamente" 
+          value="UASLP-2025-A1092" 
+          id="id-expediente"
+          disabled
+        >
+
+        <svg slot="icon-start"  width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+            <polyline points="14 2 14 8 20 8"></polyline>
+        </svg>
+        </ui-input>
+    </div>
+    <div class="responsive-structure-full"> 
+        <ui-input 
+          label="Contraseña" 
+          description="Debe tener al menos 8 caracteres y un número." 
+          placeholder="••••••••" 
+          error="La contraseña no cumple con los requisitos de seguridad."
+          id="contraseña">
+
+        <svg slot="icon-end" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"></circle>
+            <line x1="12" y1="8" x2="12" y2="12"></line>
+            <line x1="12" y1="16" x2="12.01" y2="16"></line>
+        </svg>
+        </ui-input>
+    </div>
+</div>
+
+export const estados = `
+<!-- Ejemplo usando: id y disabled-->
+    <ui-input 
+      label="ID de Expediente" 
+      placeholder="Generado Automáticamente" 
+      value="UASLP-2025-A1092" 
+      id="id-expediente"
+      disabled>
+
+    <svg slot="icon-start"  width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+        <polyline points="14 2 14 8 20 8"></polyline>
+    </svg>
+    </ui-input>
+
+<!-- Ejemplo usando: error y id-->
+    <ui-input 
+      label="Contraseña" 
+      description="Debe tener al menos 8 caracteres y un número." 
+      placeholder="••••••••" 
+      error="La contraseña no cumple con los requisitos de seguridad."
+      id="contraseña">
+
+    <svg slot="icon-end" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="10"></circle>
+        <line x1="12" y1="8" x2="12" y2="12"></line>
+        <line x1="12" y1="16" x2="12.01" y2="16"></line>
+    </svg>
+    </ui-input>
+
+`;
+export const e = ['disabled', 'id="id-expediente', 'error="La contraseña no cumple con los requisitos de seguridad."', 'id="contraseña"'];
+
+**Aplicación en código**
+
+<Code code={estados} lang="js" title={type} mark={e}/>
+
+**Tabla de los atributos implementados**
+| Atributo (HTML) | Función     | Propósito de la Interacción                                                                                  |
+|------------------|-------------|---------------------------------------------------------------------------------------------------------------|
+| `disabled`         | **Opcional**    | Atributo booleano. Desactiva el campo, impidiendo la entrada de datos.                                       |
+| `error`            | **Opcional**    | Manejo de errores. Si se establece con una cadena (ej. `error="Campo obligatorio"`), activa el estilo visual de error y muestra el mensaje. |
+| `id`               | **Obligatorio** | Trazabilidad. ID único para debugging y para identificar correctamente el campo en eventos.                   |
+
+
+## Disparador de Eventos
+El componente `<ui-input>` es un proxy para los eventos del campo de entrada nativo. **Re-emite** dos eventos **clave** para la gestión de datos, ambos como Eventos Personalizados ***(CustomEvent)***:
+
+- `input`: Se dispara en cada pulsación de tecla, ideal para binding instantáneo ***(ej. autocompletar, previsualización de datos)***.
+- `change`: Se dispara cuando el usuario **finaliza la entrada** y el campo pierde el foco _(blur)_, ideal para validaciones finales de formulario.
+
+
+### Estructura de `detail`
+Ambos eventos ***(input y change)*** emiten un objeto detail, manteniendo la consistencia:
+
+| Propiedad | Tipo          | Descripción                                                                              |
+|-----------|---------------|--------------------------------------------------------------------------------------------|
+| `value`   | <span style={{whiteSpace: "nowrap"}}>`string` </span> | El contenido actual del campo de texto.                   |
+| `id`      | <span style={{whiteSpace: "nowrap"}}>`string` </span>     | El ID único del Input. Obligatorio para la trazabilidad y el debugging.|
+
+<Aside type="caution" title='Importante'> Por lo tanto, es una **práctica obligatoria** asignar manualmente el atributo `id` a todas las instancias de los inputs para saber identificarlos</Aside>
+
+## Obtención del evento
+Para escuchar los eventos emitidos por los componentes de este UI Kit, la opción más confiable es usar **`addEventListener`**, ya que garantiza que los eventos personalizados se reciban **correctamente**.
+
+En **frameworks** _(Vue.js, React, Angular)_ también puede usarse **`addEventListener`**, aunque cada uno ofrece su propia forma de manejar eventos, que igualmente es válida y en la mayoría de los casos funcionan sin problema. Sin embargo, cada framework tiene particularidades importantes que tu como desarrollador debes considerar:
+
+- **Vue**: Normalmente funciona de forma nativa, ya que Vue respeta los **eventos del DOM** tal como se emiten.
+- **Angular**: Suele funcionar, en algunas versiones antiguas del framework tenían **limitaciones** con eventos provenientes de Web Components.
+- **React**: Puede detectar eventos personalizados pero no siempre. Su sistema interno de `Synthetic Events` no garantiza la **compatibilidad al 100%**, por lo que el comportamiento puede variar entre navegadores y versiones.
+
+export const check = `
+<!-- Ejemplo de obtención del evento en cada click -->
+
+<ui-input label="Usuario" placeholder="Tu nombre de usuario" id="input-usuario"></ui-input>
+
+<script>
+  /*Se obtiene el input id*/
+  const inputControl = document.getElementById('input-usuario');
+  // se obtiene el evento 'input' para capturar la entrada en tiempo real
+  inputControl.addEventListener('input', (event) => {
+    // Valor y el ID
+    const { id, value } = event.detail; 
+    console.log(\`Input ID: \${id}\`);
+    console.log(\`Valor Actual: \${value}\`);
+  });
+</script>
+
+`;
+export const checkm = ['id="input-usuario"', 'addEventListener', 'input-usuario'];
+
+export const rs = `
+<!-- Ejemplo de obtención del evento al hacer click en un btn simulando un formulario -->
+
+<ui-input label="Usuario" placeholder="Ingrese su usuario" id="input-usuario"></ui-input>
+<ui-button id="btn-submit-form" type="primary">Enviar</ui-button>
+
+<script>
+    // Inicio del objeto de datos del formulario 
+    let formData = {
+        'input-usuario': ''
+    };
+    const inputUsuario = document.getElementById('input-usuario');
+    const btnSubmit = document.getElementById('btn-submit-form');
+    
+    // Función para actualizar el dato al perder el foco (evento 'change')
+    const updateFormData = (event) => {
+        const { id, value } = event.detail;
+        if (formData.hasOwnProperty(id)) {
+            formData[id] = value;
+            console.log(\`Dato actualizado: \${id} = \${value}\`);
+        }
+    };
+    
+    /*Escuchar el evento 'change' en el input (se dispara al salir del campo de manera auto)*/
+
+    inputUsuario.addEventListener('change', updateFormData);
+    
+    /*Escuchar el click en el botón para enviar los datos finales*/
+
+    btnSubmit.addEventListener('click', () => {
+        console.log(formData);
+        /*Simulación de envío de datos*/
+        alert("Dato Obtenido: Usuario = " + formData['input-usuario']);
+    });
+</script>
+
+`;
+export const rsm = ['id="input-usuario"','id="btn-submit-form"', 'addEventListener'];
+
+<Aside type="tip" title="Uso de 'addEventListener'">
+
+Ejemplo sencillo de obtención del evento usando `addEventListener`
+
+<Tabs>
+  <TabItem label="Obtención del valor">
+    <Code code={check} lang="js" mark={checkm}/>
+  </TabItem>
+  <TabItem label="Simulando un formulario">
+    <Code code={rs} lang="js" mark={rsm}/>
+  </TabItem>
+
+</Tabs>
+
+</Aside>
