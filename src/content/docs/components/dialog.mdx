@@ -1,4 +1,245 @@
 ---
-title: Buttons
+title: Dialog
 description: Sección de Componentes del UI Kit de NPM .
 ---
+
+<script type="module" src="/public/ui-kit.js"></script>
+import { Aside, Steps, Code, Card, Tabs, TabItem} from '@astrojs/starlight/components';
+
+El componente **Dialog** `<ui-dialog>` _(conocido como Modal)_ es una ventana flotante que se superpone al contenido principal de la aplicación, desactivando temporalmente la interacción con el fondo. Su propósito principal son:
+
+- Atención Focalizada: Capturar la atención total del usuario para una tarea crítica o una decisión urgente.
+- Flujos Interrumpidos: Permitir al usuario realizar una acción (como editar un dato o confirmar una eliminación) sin perder el contexto de la página actual.
+
+**Comportamiento**: ***Por defecto***, el componente se renderiza oculto (`display: none`). Se controla mediante una propiedad booleana **open** que gestiona su visibilidad y la activación de la capa de fondo.
+
+
+**Vista previa del componente**
+
+<div class="components-structure">
+    <div class="responsive-structure-full"> 
+        <img src="/public/img/Dialog-Body.svg" alt="IMG - Vista previa del componente Dialog" />
+    </div>
+</div>
+
+## ¿Cuándo debería usarse?
+Usa este componente cuando quieras:
+
+- Confirmar acciones críticas: Preguntar "¿Estás seguro?" antes de eliminar o guardar cambios irreversibles.
+- Formularios cortos: Capturar datos rápidos (ej. "Añadir nueva dirección") sin navegar a otra página.
+- Alertas importantes: Mostrar mensajes de éxito, error o advertencia que el usuario debe reconocer explícitamente.
+
+## Uso Básico del Componente
+La estructura del componente `<ui-dialog>` se basa **completamente** en el uso de **Slots Nombrados** para organizar el contenido interno. Esto le permite inyectar cualquier tipo de HTML _(títulos, párrafos o botones)_ en las áreas predefinidas.
+
+Para visualizar el **Dialog**, debe ser abierto dinámicamente mediante JavaScript.
+
+export const exampleCode = `
+<!-- Uso del componente Dialog-->
+
+<ui-dialog>
+    <span slot="header">Confirmación Requerida</span>
+    <span slot="body">
+        ¿Estás seguro de que deseas eliminar permanentemente este elemento? Esta acción no se puede deshacer.
+    </span>
+    <div slot="footer">
+        <ui-button type="secondary">Cancelar</ui-button>
+        <ui-button type="primary">Confirmar</ui-button>
+    </div>
+</ui-dialog>
+`;
+export const fileName = 'ejemplo.html';
+
+export const s = ['slot="header"', 'slot="body"', 'slot="footer"' ];
+
+<Code code={exampleCode} lang="js" title={fileName} mark={s}/>
+
+## Estructura con Slots
+El Dialog se compone de tres áreas fundamentales:
+
+- `slot="header"` Para el título principal.
+- `slot="body"` Para el contenido del mensaje.
+- `slot="footer"` Para las acciones y botones.
+
+### Control de Contenido 
+El uso de estos slots **no es obligatorio**. Esta es la gran ventaja de la modularidad del **Dialog** puedes omitir cualquier sección que no necesites. 
+
+Por ejemplo, puedes quitar el `slot="body"` si el mensaje es corto y solo cabe en el encabezado, o eliminar el `slot="footer"` si el diálogo solo necesita el botón de cierre "X" (pre-establecido). 
+
+Si bien el `slot="header"` es técnicamente opcional, es altamente **recomendado** para proporcionar contexto y un título claro al usuario, lo cual es esencial para una buena usabilidad.
+
+
+## Variantes
+Los atributos del Dialog se centran en el control de su estado `open`, su mecanismo de cierre `disableClose` y su adaptación al dispositivo `type`.
+
+### Atributo `type`
+El atributo type permite adaptar el diseño del Dialog a la plataforma, modificando las dimensiones y la disposición de los botones del pie de página para optimizar la usabilidad.
+
+
+**Vista previa del componente**
+
+<div class="components-structure">
+    <div class="responsive-structure-full"> 
+        <img src="/public/img/Dialog-Body.svg" alt="IMG - Vista previa del componente Dialog" />
+    </div>
+    <div class="responsive-structure"> 
+        <img src="/public/img/Dialog-Body-mobile.svg" alt="IMG - Vista previa del componente Dialog" />
+    </div>
+</div>
+
+export const dialog = `
+<!-- Dialog: type = Web-->
+<ui-dialog type="web">
+  <span slot="header">Confirmación Requerida</span>
+  <span slot="body">
+      ¿Estás seguro de que deseas eliminar permanentemente este elemento? Esta acción no se puede deshacer.
+  </span
+  <div slot="footer">
+      <ui-button type="secondary">Cancelar</ui-button>
+      <ui-button type="primary">Confirmar</ui-button>
+  </div>
+</ui-dialog>
+
+<!-- Dialog: type = Mobile-->
+<ui-dialog type="mobile">
+  <span slot="header">Confirmación Requerida</span>
+  <span slot="body">
+      ¿Estás seguro de que deseas eliminar permanentemente este elemento? Esta acción no se puede deshacer.
+  </span>
+  <div slot="footer">
+      <ui-button fullWidth type="secondary">Cancelar</ui-button>
+      <ui-button fullWidth type="primary">Confirmar</ui-button>
+  </div>
+</ui-dialog>
+`;
+
+export const d = ['type="web"', 'type="mobile"', 'fullWidth' ];
+
+**Aplicación en código**
+
+<Code code={dialog} lang="js" title={fileName} mark={d}/>
+
+**Tabla de los atributos implementados**
+| Atributo `type` | Dispositivo de Enfoque        | Características de Diseño                                                                 |
+|---------------|--------------------------------|---------------------------------------------------------------------------------------------|
+| `web` _(Defecto)_  | Escritorio / Tabletas         | Ancho generoso (ej. 600px). Los botones del footer se disponen horizontalmente.             |
+| `mobile`          | Móvil / Pantalla Pequeña      | Ancho reducido (ej. 280px). Los botones del footer se apilan verticalmente para facilitar la pulsación. |
+
+<Aside type="tip" title='Observación'> Vea el uso de los button en `type=mobile` con su atributo `fullWidth` para aplicar el ancho completo de los buttons al dialog.</Aside>
+
+
+### Atributos de Control y Estado
+Estos atributos gestionan la visibilidad y las reglas de interacción del **Dialog**.
+
+export const dialogs = `
+<!-- Dialog: type = Web-->
+<ui-dialog id="dialog-form" open type="web" disabledClose >
+  <span slot="header">Confirmación Requerida</span>
+  <span slot="body">
+      ¿Estás seguro de que deseas eliminar permanentemente este elemento? Esta acción no se puede deshacer.
+  </span
+  <div slot="footer">
+      <ui-button type="secondary">Cancelar</ui-button>
+      <ui-button type="primary">Confirmar</ui-button>
+  </div>
+</ui-dialog>
+
+`;
+
+export const a = ['id="dialog-form"', 'open', 'disabledClose' ];
+
+**Aplicación en código**
+
+<Code code={dialogs} lang="js" title={fileName} mark={a}/>
+
+**Tabla de los atributos implementados**
+
+| Atributo (HTML) | Tipo    | Propósito y Comportamiento |
+|-----------------|---------|-----------------------------|
+| <span style={{whiteSpace: "nowrap"}}>`open`</span>        | **boolean** | **Control de Visibilidad.** Controla cuándo el modal está abierto. Se recomienda manipularlo solo con JavaScript (ej. `dialog.setAttribute('open', '')`) para mantener control dinámico del flujo. |
+| <span style={{whiteSpace: "nowrap"}}>`disableClose`</span>   | **boolean** | **Restricción de Cierre.**<br/>• **Por defecto:** El dialog se cierra con Escape o clic en el overlay.<br/>• **Con este atributo:** Se bloquea ese comportamiento, obligando al usuario a cerrar solo mediante los botones del footer o el botón “X”. |
+| <span style={{whiteSpace: "nowrap"}}>`id`</span>   | **string**  | **Identificación Única.** Necesario para: 1) abrir/cerrar el dialog desde JavaScript; 2) rastrear el evento `modal-close`. |
+
+
+## Disparador de Eventos
+El evento `modal-close` es el mecanismo para que la aplicación padre _(el código que llama al Dialog)_ sepa que el usuario ha salido de la ventana modal, ya sea por acción directa o por mecanismos del propio componente.
+
+Este evento se dispara en cuatro escenarios distintos _(si disableClose no está activo):_
+
+- Al hacer clic en el botón de cierre ("X").
+- Al hacer clic en el área oscura (overlay).
+- Al presionar la tecla Escape.
+- Al ejecutar el método interno .close() desde JavaScript.
+
+### Estructura de detail
+El evento proporciona un objeto `detail` con el identificador único del Dialog que acaba de cerrarse.
+
+| Propiedad | Tipo   | Descripción |
+|-----------|--------|-------------|
+| `id`      | string | El ID único del Dialog. Es indispensable para que la aplicación identifique qué ventana se cerró, especialmente cuando hay múltiples diálogos en la misma página. |
+
+## Obtención del evento
+Para escuchar los eventos emitidos por los componentes de este UI Kit, la opción más confiable es usar **`addEventListener`**, ya que garantiza que los eventos personalizados se reciban **correctamente**.
+
+En **frameworks** _(Vue.js, React, Angular)_ también puede usarse **`addEventListener`**, aunque cada uno ofrece su propia forma de manejar eventos, que igualmente es válida y en la mayoría de los casos funcionan sin problema. Sin embargo, cada framework tiene particularidades importantes que tu como desarrollador debes considerar:
+
+- **Vue**: Normalmente funciona de forma nativa, ya que Vue respeta los **eventos del DOM** tal como se emiten.
+- **Angular**: Suele funcionar, en algunas versiones antiguas del framework tenían **limitaciones** con eventos provenientes de Web Components.
+- **React**: Puede detectar eventos personalizados pero no siempre. Su sistema interno de `Synthetic Events` no garantiza la **compatibilidad al 100%**, por lo que el comportamiento puede variar entre navegadores y versiones.
+
+
+export const js = `
+<!-- Se implementa btn para abrir el modal -->
+<div class="preview-container">
+    <ui-button id="btn-abrir-dialogo" type="primary">Abrir Diálogo</ui-button>
+</div>
+
+<!-- El Dialog inicialmente cerrado -->
+<ui-dialog id="dialogo-confirmacion-preview">
+  <span slot="header">Puedes probar cerrando el dialog con:</span>
+  <div slot="body">
+    <p> Click fuera, presionando [Escape] Click en "X" o en Btn Cancelar para cerrar.</p>
+  </div>
+  <div slot="footer">
+    <ui-button type="secondary" id="btn-cancelar-dialogo">Cancelar</ui-button>
+    <ui-button type="danger">Confirmar</ui-button>
+  </div>
+</ui-dialog>
+
+<!-- Funcionalidad -->
+<script>
+    // Referencias a los elementos
+    const btnAbrir = document.getElementById('btn-abrir-dialogo');
+    const dialogo = document.getElementById('dialogo-confirmacion-preview');
+    const btnCancelar = document.getElementById('btn-cancelar-dialogo'); 
+
+    // Lógica para ABRIR el diálogo
+    btnAbrir.addEventListener('click', () => {
+        dialogo.setAttribute('open', ''); // Se Abre el dialog
+        console.log("Diálogo Abierto."); //confirmación en console
+    });
+
+    // Lógica para CERRAR el diálogo (Botón de Cancelar en el Footer)
+    btnCancelar.addEventListener('click', () => {
+        // Metodo de cierre interno del Dialog
+        dialogo.close(); 
+    });
+
+    // Lógica para capturar el evento de Cierre
+    dialogo.addEventListener('modal-close', (event) => {
+        const cerradoId = event.detail.id;
+        dialogo.removeAttribute('open'); 
+        console.log(\`Diálogo cerrado (ID: \${cerradoId}).\`);
+    });
+</script>
+
+`;
+export const m = ['id="btn-abrir-dialogo"', 'addEventListener', 'id="dialogo-confirmacion-preview"', 'id="btn-cancelar-dialogo"' ];
+
+
+<Aside type="tip" title="Uso de 'addEventListener' usando el atributo 'isInteractive'">
+
+Ejemplo de obtención del evento usando `addEventListener`
+<Code code={js} lang="js" mark={m}/>
+
+</Aside>
