@@ -1,4 +1,209 @@
 ---
-title: Buttons
+title: Pagination
 description: Sección de Componentes del UI Kit de NPM .
 ---
+
+<script type="module" src="/public/ui-kit.js"></script>
+import { Aside, Steps, Code, Card, Tabs, TabItem} from '@astrojs/starlight/components';
+
+
+El componente **Pagination** `<ui-pagination>` es un control avanzado diseñado para la navegación entre un gran número de páginas o resultados de búsqueda.
+
+Ofrecer una interfaz compacta que permita al usuario saltar directamente a una página específica o navegar secuencialmente, incluso cuando el número total de páginas es muy alto.
+
+**Vista previa del componente**
+
+<div class="components-structure">
+    <div class="responsive-structure"> 
+        <ui-pagination></ui-pagination>
+    </div>
+</div>
+
+## ¿Cuándo debería usarse?
+Usa este componente cuando quieras:
+
+- Resultados de Búsqueda: Listas que contienen una gran cantidad de resultados _(más de 6-7 páginas)._
+- Tablas de Datos: Navegación entre páginas de una tabla de datos extensa.
+
+## Estructura de Uso Básico
+La lógica de la paginación es controlada por dos atributos numéricos que definen su estado y su alcance. El componente gestiona internamente la generación de los botones.
+
+export const exampleCode = `
+<!-- Por defecto se muestra: total de páginas: 13 y página actual: 1 -->
+<ui-pagination></ui-pagination>
+`;
+export const fileName = 'ejemplo.html';
+
+<Code code={exampleCode} lang="js" title={fileName} />
+
+### Atributos de Control y Estado
+
+**Vista previa del componente**
+
+<div class="components-structure">
+    <div class="responsive-structure"> 
+        <ui-pagination currentPage="20" totalPages="50"></ui-pagination>
+    </div>
+</div>
+
+export const pag = `
+<ui-pagination currentPage="20" totalPages="50"></ui-pagination>
+`;
+
+export const p = ['currentPage', 'totalPages' ];
+
+<Code code={pag} lang="js" title={fileName} mark={p}/>
+
+| Atributo (HTML) | Tipo   | Requisito               | Propósito |
+|------------------|--------|--------------------------|-----------|
+| <span style={{whiteSpace: "nowrap"}}>`totalPages` </span>  | **number** | Obligatorio              | Define el número total de páginas disponibles. Si este valor es 0 o 1, la paginación no se muestra o solo muestra el botón de la página 1. |
+| <span style={{whiteSpace: "nowrap"}}>`currentPage` </span> | **number** | Opcional (Defecto: 1)    | Define la página que se está mostrando actualmente. Se actualiza automáticamente al hacer clic en un botón y refleja el estado activo. |
+| <span style={{whiteSpace: "nowrap"}}>`id` </span> | **string** | Obligatorio  | Define el ID unico para el uso del componente |
+
+## Navigation Button
+El componente **Navigation Button** `<ui-navigation-btn>` es un control simple y estilizado diseñado para movimientos secuenciales _(ir a la página anterior o siguiente)_. Actúa como una alternativa o un complemento a la paginación numérica.
+
+
+**Vista previa del componente**
+
+<div class="components-structure">
+    <div class="responsive-structure"> 
+        <ui-navigation-btn type="previous" label="Atras"></ui-navigation-btn>
+        <ui-navigation-btn type="next" label="Siguiente"></ui-navigation-btn>
+    </div>
+    <div class="responsive-structure"> 
+        <ui-navigation-btn type="previous"> </ui-navigation-btn>
+        <ui-navigation-btn type="next"></ui-navigation-btn>
+    </div>
+    <div class="responsive-structure"> 
+        <ui-navigation-btn type="previous" disabled></ui-navigation-btn>
+        <ui-navigation-btn type="next" disabled></ui-navigation-btn>
+    </div>
+</div>
+
+export const btn = `
+<!-- ui-navigation usando labels -->
+<ui-navigation-btn type="previous" label="Atras"></ui-navigation-btn>
+<ui-navigation-btn type="next" label="Siguiente" ></ui-navigation-btn>
+
+<!-- ui-navigation usando solo flechas -->
+<ui-navigation-btn type="previous" ></ui-navigation-btn>
+<ui-navigation-btn type="next" ></ui-navigation-btn>
+
+<!-- ui-navigation en estado disabled -->
+<ui-navigation-btn type="previous" label="Atras" disabled></ui-navigation-btn>
+<ui-navigation-btn type="next" label="Siguiente"  disabled></ui-navigation-btn>
+`;
+
+export const e = ['currentPage', 'totalPages' ];
+
+<Code code={btn} lang="js" title={fileName} mark={e}/>
+
+### Atributos de Control y Estado
+
+| Atributo (HTML) | Tipo              | Propósito |
+|------------------|-------------------|-----------|
+| `type`           | previous \| next | Variante de Acción. Define si el botón es para avanzar o retroceder. Esto determina la flecha y el layout (flecha antes o después del texto). |
+| `label`          | string            | Texto Opcional. Permite personalizar el texto del botón (ej. "Siguiente Paso"). Si se omite, usa "Previous" o "Next" por defecto. |
+| `disabled`       | boolean           | Deshabilita el botón, eliminando el efecto hover y la emisión del evento. |
+
+## Disparador de Eventos
+Los eventos se disparan desde dos componentes: `<ui-pagination>` y `<ui-navigation-btn>`.
+
+Ambos emiten eventos propios que el desarrollador puede escuchar para implementar por completo la lógica de navegación y actualizar el estado de la paginación según sea necesario.
+
+### Evento de `<ui-pagination>`
+
+| Evento       | Se dispara por                                                                                   | Propósito                                                               |
+|--------------|--------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------|
+| <span style={{whiteSpace: "nowrap"}}>`page-change` </span> | El usuario hace clic en cualquier botón numérico o en los botones de flecha (Anterior/Siguiente) dentro del componente. | Notifica que se debe cargar una página específica de datos.            |
+
+#### Estructura de detail
+Este evento proporciona la página exacta que debe ser solicitada a la fuente de datos.
+
+| Propiedad | Tipo   | Descripción                                                                                      |
+|-----------|--------|--------------------------------------------------------------------------------------------------|
+| `page`      | **number** | El número de la página seleccionada, listo para ser usado en la llamada a la API (ej. `...?page=5`). |
+| `id`  | **string** | Define el ID unico para el uso del componente |
+
+
+### Evento de `<ui-navigation-btn>`
+
+| Evento           | Se dispara por                              | Propósito                                                                  |
+|------------------|----------------------------------------------|----------------------------------------------------------------------------|
+| <span style={{whiteSpace: "nowrap"}}>`click-navigation` </span> | El usuario hace clic en el botón de flecha/texto. | Notifica que se ha solicitado una acción secuencial (previous o next).     |
+
+
+#### Estructura de detail
+Este evento informa qué acción específica ***(action)*** fue solicitada por el usuario.
+
+| Propiedad | Tipo                      | Descripción                                    |
+|-----------|---------------------------|------------------------------------------------|
+| `id`        | **string**                    | ID del botón que fue presionado.               |
+| `action`    | **string** _(previous o next)_  | La dirección de la navegación solicitada.      |
+
+
+## Obtención del evento
+
+Para escuchar los eventos emitidos por los componentes de este UI Kit, la opción más confiable es usar **`addEventListener`**, ya que garantiza que los eventos personalizados se reciban **correctamente**.
+
+En **frameworks** _(Vue.js, React, Angular)_ también puede usarse **`addEventListener`**, aunque cada uno ofrece su propia forma de manejar eventos, que igualmente es válida y en la mayoría de los casos funcionan sin problema. Sin embargo, cada framework tiene particularidades importantes que tu como desarrollador debes considerar:
+
+- **Vue**: Normalmente funciona de forma nativa, ya que Vue respeta los **eventos del DOM** tal como se emiten.
+- **Angular**: Suele funcionar, en algunas versiones antiguas del framework tenían **limitaciones** con eventos provenientes de Web Components.
+- **React**: Puede detectar eventos personalizados pero no siempre. Su sistema interno de `Synthetic Events` no garantiza la **compatibilidad al 100%**, por lo que el comportamiento puede variar entre navegadores y versiones.
+
+
+export const check = `
+<!-- Obtención de datos del evento -->
+
+<ui-pagination id="ui-pag"></ui-pagination>
+
+<script>
+    const pagination = document.getElementById('ui-pag');
+    pagination.addEventListener('page-change', (event) => {
+        const { id, page } = event.detail;
+        
+        console.log(\`ID del componente: \${id}\`);
+        console.log(\`Página solicitada: \${page}\`);   
+    });
+</script>
+
+`;
+export const checkm = ['id="ui-pag"', 'addEventListener', 'input-usuario'];
+
+export const rs = `
+<!-- Obtención de datos del evento en los btn -->
+
+<div id="btn-nav">
+  <ui-navigation-btn type="previous" id="id-atras"> Atras </ui-navigation-btn>
+  <ui-navigation-btn type="next" id="id-adelante"> Continuar </ui-navigation-btn>
+</div>
+
+<script>
+  const nav = document.getElementById('btn-nav');
+  nav.addEventListener('click-navigation', (event) => {
+      const { id, action } = event.detail;
+      
+      console.log(\`ID del btn: \${id}\`);
+      console.log(\`Action: \${action}\`);
+      
+  });
+</script>
+
+`;
+export const rsm = ['id="btn-nav"','id="id-atras"' ,'id="id-adelante"', 'addEventListener'];
+
+<Aside type="tip" title="Uso de 'addEventListener'">
+
+Ejemplos sencillos de obtención del evento usando `addEventListener`
+
+<Tabs>
+  <TabItem label="Evento ui-pagination">
+    <Code code={check} lang="js" mark={checkm}/>
+  </TabItem>
+  <TabItem label="Evento ui-navigation-btn">
+    <Code code={rs} lang="js" mark={rsm}/>
+  </TabItem>
+</Tabs>
+</Aside>
