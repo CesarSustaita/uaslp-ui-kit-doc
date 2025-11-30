@@ -1,4 +1,72 @@
 ---
-title: Buttons
+title: Accordion
 description: Sección de Componentes del UI Kit de NPM .
 ---
+
+<script type="module" src="/public/ui-kit.js"></script>
+import { Aside, Steps, Code, Card, Tabs, TabItem} from '@astrojs/starlight/components';
+
+El componente **Accordion** `ui-accordion` es un control de interfaz que permite mostrar u ocultar secciones de contenido mediante un encabezado clicable. Es ideal para organizar información extensa de forma compacta.
+
+**Vista previa del componente**
+
+<div class="components-structure">
+    <div class="responsive-structure-full"> 
+        <ui-accordion name="acc"
+        title="Accordion"
+        label="Vista previa del componente accordion en estado abierto."
+        ></ui-accordion>
+    </div>
+</div>
+
+## ¿Cuándo debería usarse?
+Usa este componente cuando quieras:
+
+- Listas Largas: Organizar preguntas y respuestas, guías o tutoriales en secciones colapsables.
+- Información Secundaria: Ocultar detalles técnicos, legales o secundarios que no todos los usuarios necesitan ver de inmediato.
+
+
+## Estructura de Uso Básico
+
+**Vista previa del componente**
+<div class="components-structure">
+    <div class="responsive-structure-full"> 
+        <ui-accordion name="acc"
+        title="Accordion"
+        label="Vista previa del componente accordion en estado abierto."
+        ></ui-accordion>
+        <ui-accordion open
+        title="Accordion"
+        label="Vista previa del componente accordion en estado abierto."
+        ></ui-accordion>
+    </div>
+</div>
+
+**Vista previa del código**
+
+export const exampleCode = `
+<ui-accordion
+  title="Accordion"
+  label="Vista previa del componente accordion en estado abierto.">
+</ui-accordion>>
+
+<ui-accordion open
+  title="Accordion"
+  label="Vista previa del componente accordion en estado abierto.">
+</ui-accordion>>
+`;
+export const fileName = 'ejemplo.html';
+
+<Code code={exampleCode} lang="js" title={fileName} />
+
+| Atributo (HTML) | Tipo    | Propósito y Comportamiento                                                                                                                                                 |
+|------------------|---------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `title`          | **string**  | Encabezado Visible. El texto que siempre será visible y en el que el usuario hace clic para expandir/colapsar el contenido.                                               |
+| `label`          | **string**  | Cuerpo de Contenido. El texto que se muestra cuando el acordeón está abierto. Este es el contenido que se oculta.                                                         |
+| `open`           | **boolean** | Estado Inicial. Si se establece, el acordeón se mostrará abierto por defecto. Se puede manipular con JavaScript para abrir/cerrar.                                        |
+
+
+## Disparador de Eventos
+El componente está diseñado para ser autónomo. La acción de abrir y cerrar es gestionada internamente, lo que significa que el desarrollador no necesita escribir código extra para controlar el estado visual ***(open)***.
+
+Simplemente proporciona el **title** y el **label**, y el componente se encarga del resto.
