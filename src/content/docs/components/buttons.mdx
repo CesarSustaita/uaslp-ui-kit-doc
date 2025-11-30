@@ -2,3 +2,314 @@
 title: Buttons
 description: Sección de Componentes del UI Kit de NPM .
 ---
+
+<script type="module" src="/public/ui-kit.js"></script>
+import { Aside, Steps, Code, Card, Tabs, TabItem} from '@astrojs/starlight/components';
+
+El **Button** `<ui-button>`es uno de los elementos interactivos más importantes en cualquier interfaz. Su propósito principal es **iniciar una acción**, como enviar un formulario, abrir un modal, confirmar una tarea, navegar a otra vista, etc.
+
+Dentro del sistema de diseño, el botón establece **consistencia**, **jerarquía visual** y **claridad** en las acciones disponibles para el usuario.
+
+
+**Vista previa del componente**
+
+<div class="components-structure">
+    <div class="responsive-structure"> 
+        <ui-button type="primary">Button</ui-button>
+        <ui-button type="secondary">Button</ui-button>
+        <ui-button type="tertiary">Button</ui-button>
+    </div>
+</div>
+
+### ¿Cuándo debería usarse?
+
+Usa este componente cuando quieras:
+
+- Ejecutar una acción directa (submit, guardar, enviar, continuar).
+- Destacar una acción primaria dentro de una pantalla.
+- Representar tareas secundarias o alternativas sin perder consistencia.
+- Incluir iconos antes o después del texto de la acción.
+
+
+## Uso básico del componente
+
+El componente se integra directamente en el DOM. Para renderizarlo en el sistema, utiliza la siguiente etiqueta y define el texto de la acción en su contenido interno:
+
+export const exampleCode = `<ui-button> UI Button </ui-button>`;
+export const fileName = 'ejemplo.html';
+
+<Code code={exampleCode} lang="js" title={fileName} />
+
+## Variantes
+Para adaptar el botón a diferentes contextos y estados, puedes modificar sus atributos directamente en la etiqueta HTML. Cada atributo controla una variación específica de diseño o comportamiento.
+
+### Atributo `type`
+
+**Vista previa**
+<div class="components-structure">
+    <div class="responsive-structure"> 
+        <ui-button type="primary">Primary</ui-button>
+        <ui-button type="secondary">Secondary</ui-button>
+        <ui-button type="tertiary">Success</ui-button>
+        <ui-button type="danger">Danger</ui-button>
+        <ui-button type="positive">Positive</ui-button>
+    </div>
+</div>
+
+export const typecode = `
+  <ui-button type="primary"> Primary </ui-button>
+  <ui-button type="secondary"> Secondary </ui-button>
+  <ui-button type="tertiary"> Success </ui-button>
+  <ui-button type="danger"> Danger </ui-button>
+  <ui-button type="positive"> Positive </ui-button>
+  
+`;
+export const type = 'HTML';
+
+**Aplicación en código**
+
+<Code code={typecode} lang="js" title={type} />
+
+**Tabla de los atributos implementados**
+
+|<span style={{whiteSpace: "nowrap"}}>Atributo `type`</span>      | Uso Recomendado |
+|------------------------|-----------------------------|
+| `primary` _(Defecto)_ | **Acción Principal y Crítica.** Usado para confirmar flujos o enviar datos (ej. "Guardar", "Continuar"). Solo debe haber **uno por vista**. |
+| `secondary`          | **Acción Secundaria.** Acciones importantes pero no críticas, o filtros (ej. "Regresar", "Ver Detalles"). |
+| `tertiary`           | **Acción Terciaria o Ligera.** Para acciones de bajo impacto o navegación (ej. "Cancelar", "Cerrar Modal"). |
+| `danger`            | **Acción Destructiva.** Para acciones que eliminan o causan cambios permanentes (ej. "Eliminar Usuario", "Cerrar Sesión"). |
+| `positive`           | **Acción Positiva o de Éxito.** Confirmar operaciones exitosas o añadir elementos (ej. "Añadir Nuevo", "Aceptar"). |
+
+### Atributo `size`
+
+**Vista previa**
+  <div class="components-structure">
+    <div class="responsive-structure"> 
+        <ui-button type="primary"> Medium button </ui-button>
+        <ui-button type="primary" size="small"> Small button </ui-button>
+    </div>
+    <div class="responsive-structure"> 
+        <ui-button type="secondary" size="medium"> Medium button </ui-button>
+        <ui-button type="secondary" size="small"> Small button </ui-button>
+    </div>
+    <div class="responsive-structure"> 
+        <ui-button type="tertiary"> Medium button </ui-button>
+        <ui-button type="tertiary" size="small"> Small button </ui-button>
+    </div>
+</div>
+
+export const sizecode = `
+  <ui-button type="primary"> Medium button </ui-button>
+  <ui-button type="primary" size="small"> Small button </ui-button>
+
+  <ui-button type="secondary" size="medium"> Medium button </ui-button>
+  <ui-button type="secondary" size="small"> Small button </ui-button>
+
+  <ui-button type="tertiary" size="medium"> Medium button </ui-button>
+  <ui-button type="tertiary" size="small"> Small button </ui-button    
+
+  <ui-button type="danger" size="medium"> Medium button </ui-button>
+  <ui-button type="danger" size="small"> Small button </ui-button>
+
+  <ui-button type="positive" size="medium"> Medium button </ui-button>
+  <ui-button type="positive" size="small"> Small button </ui-button>
+`;
+
+**Aplicación en código**
+
+<Code code={sizecode} lang="js" title={type} />
+
+
+**Tabla de los atributos implementados**
+
+| <span style={{whiteSpace: "nowrap"}}>Atributo `size`</span>       | Uso Recomendado |
+|----------------------|------------------|
+| `medium` _(Defecto)_ | La opción estándar para acciones en flujos principales, formularios y áreas de interacción comunes. |
+| `small`           | Ideal para interfaces compactas, tablas o barras de herramientas donde el espacio es limitado y se requiere una acción discreta. |
+
+
+### Atributos de `estado`
+
+**Vista previa**
+  <div class="components-structure">
+    <div class="responsive-structure"> 
+        <ui-button disabled> disabled button </ui-button>
+        <ui-button type="secondary" disabled> disabled button </ui-button>
+        <ui-button type="tertiary" disabled> disabled button </ui-button>
+    </div>
+    <div class="responsive-structure-full"> 
+        <ui-button fullWidth> FullWidth button </ui-button>
+        <ui-button type="secondary" fullWidth> FullWidth button </ui-button>
+    </div>
+</div>
+
+export const estado = `
+<!-- Ejemplo ui-button disabled -->
+  <ui-button disabled> disabled button </ui-button>
+  <ui-button type="secondary" disabled> disabled button </ui-button>
+  <ui-button type="tertiary" disabled> disabled button </ui-button>
+
+<!-- Ejemplo ui-button fullWidth -->
+  <ui-button fullWidth> FullWidth button </ui-button>
+  <ui-button type="secondary" fullWidth> FullWidth button </ui-button>
+`;
+
+**Aplicación en código**
+
+<Code code={estado} lang="js" title={type} />
+
+
+**Tabla de los atributos implementados**
+
+| <span style={{whiteSpace: "nowrap"}}>Atributo `(HTML)`</span>   | Uso Recomendado |
+|------------------|------------------|
+| `disabled`     | Desactiva el botón, impidiendo clics y aplicando un estilo de opacidad. Útil cuando una acción no está disponible (ej. campos de formulario incompletos). |
+| `fullwidth`    | Estira el botón al 100% del ancho de su contenedor padre. Ideal para botones de acción únicos en interfaces móviles o formularios amplios. |
+
+## Uso de Iconos
+Los botones están diseñados para integrar iconos en formato **SVG (Scalable Vector Graphics)**, un formato que no contiene pérdida de calidad y permite modificar el color mediante CSS.
+
+El UI Kit utiliza **Slots Nombrados** para controlar la posición del icono, mostrando flexibilidad y variedad en la composición del botón:
+
+### Tipos de integración de iconos
+
+- **Icono al inicio (`slot="icon-start"`)**  
+  El icono aparece antes del texto del botón.
+  > _Etiqueta del boton: icono + texto = `<ui-button>`_
+
+- **Icono al final (`slot="icon-end"`)**  
+  El icono aparece después del texto.
+  > _Etiqueta del boton: texto + icono = `<ui-button>`_
+
+- **Botón solo icono (`slot="icon"`)**  
+  El botón contiene únicamente el **SVG**, sin texto en su interior.
+  > _Etiqueta del boton: solo icono = `<ui-icon-button>`_
+
+<Aside type="tip" title="Conoce más"> Sobre los `slot` consulta la sección "HTML Templates" en "Arquitectura y Tecnología".</Aside>
+
+### Iconos dentro del botón
+
+Para utilizar esta funcionalidad, inserta el código SVG dentro del componente e indica el slot correspondiente:
+
+**Vista previa**
+  <div class="components-structure">
+    <div class="responsive-structure"> 
+        <ui-button type="primary" >
+            <span>UI Button</span>
+            <svg slot="icon-start" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <path d="M20 6L9 17L4 12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+        </ui-button>
+        <ui-icon-button  type="secondary"> 
+            <svg slot="icon" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <path d="M12 5V19M5 12H19" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+        </ui-icon-button>
+        <ui-button type="tertiary" > 
+            <span>UI Button</span>
+            <svg slot="icon-end" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <path d="M18 6L6 18M6 6L18 18" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+        </ui-button>
+    </div>
+</div>
+
+export const iconos = `
+<!-- Ejemplo button Icono al inicio -->
+  <ui-button type="primary" >
+      <span>UI Button</span>
+      <svg slot="icon-start" width="24" height="24" viewBox="0 0 24 24" fill="none">
+          <path d="M20 6L9 17L4 12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+  </ui-button>
+
+<!-- Ejemplo button Solo Icono -->
+<!-- Etiqueta <ui-button> cambia a <ui-icon-button> para botones con solo icono -->
+  <ui-icon-button  type="secondary"> 
+      <svg slot="icon" width="24" height="24" viewBox="0 0 24 24" fill="none">
+          <path d="M12 5V19M5 12H19" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+  </ui-icon-button>
+
+<!-- Ejemplo button Icono al final -->
+  <ui-button type="tertiary" > 
+      <span>UI Button</span>
+      <svg slot="icon-end" width="24" height="24" viewBox="0 0 24 24" fill="none">
+          <path d="M18 6L6 18M6 6L18 18" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+  </ui-button>
+`;
+export const highlights = ['ui-icon-button', 'slot="icon-start"', 'slot="icon-end"', 'slot="icon"'];
+
+**Aplicación en código**
+
+<Code code={iconos} lang="js" title={type} mark={highlights}/>
+
+<Aside type="tip" title="Recomendación">Para obtener más detalles sobre el **formato de los íconos**, consulta la sección de _"Ajuste del SVG para su correcta implementación"_ en la Guía de Estilos _"Elementos Estáticos"_.</Aside>
+
+
+## Disparador de eventos
+
+El componente `<ui-button>` comunica la interacción del usuario a la aplicación emitiendo un **Evento Personalizado _(CustomEvent)_** llamado `click`.
+
+El evento disparado incluye un objeto `detail`, el cual proporciona información clave para identificar la fuente de la acción.
+
+### Estructura de `detail`
+
+| Propiedad | Tipo   | Descripción |
+|-----------|--------|-------------|
+| `id`      | string | Identificador único del botón. Esencial para distinguir cuál botón disparó el evento. |
+
+
+### Manejo del evento
+
+El componente `<ui-button>` (y `<ui-icon-button>`) está diseñado con una **red de seguridad** interna: si el atributo `id` se **omite**, el componente genera un ID único _(string aleatorio)_ para fines de accesibilidad y lógica interna.
+
+Sin embargo, la generación automática de IDs presenta serios inconvenientes en el desarrollo:
+
+- **Inestabilidad en Pruebas:** El ID generado cambia con cada recarga o compilación, haciendo imposible la automatización de pruebas y la depuración.  
+- **Falta de Trazabilidad:** Un ID aleatorio no tiene significado semántico, dificultando la lectura y el mantenimiento del código.
+
+<Aside type="caution" title='Importante'> Por lo tanto, es una **práctica obligatoria** asignar manualmente el atributo `id` a todas las instancias de los botones</Aside>
+
+export const id = `
+<!-- Ejemplo del uso de la implementación ID -->
+  <ui-button id="btn-enviar-formulario" type="positive">Enviar</ui-button>
+`;
+export const ids = ['id="btn-enviar-formulario"'];
+
+**Aplicación del ID en código**
+
+<Code code={id} lang="js" title={type} mark={ids}/>
+
+## Obtención del evento
+Para escuchar los eventos emitidos por los componentes de este UI Kit, la opción más confiable es usar **`addEventListener`**, ya que garantiza que los eventos personalizados se reciban **correctamente**.
+
+En **frameworks** _(Vue.js, React, Angular)_ también puede usarse **`addEventListener`**, aunque cada uno ofrece su propia forma de manejar eventos, que igualmente es válida y en la mayoría de los casos funcionan sin problema. Sin embargo, cada framework tiene particularidades importantes que tu como desarrollador debes considerar:
+
+- **Vue**: Normalmente funciona de forma nativa, ya que Vue respeta los **eventos del DOM** tal como se emiten.
+- **Angular**: Suele funcionar, en algunas versiones antiguas del framework tenían **limitaciones** con eventos provenientes de Web Components.
+- **React**: Puede detectar eventos personalizados pero no siempre. Su sistema interno de `Synthetic Events` no garantiza la **compatibilidad al 100%**, por lo que el comportamiento puede variar entre navegadores y versiones.
+
+
+export const html = `
+
+<script>
+  const btn = document.getElementById("btn-enviar");
+  btn.addEventListener("click", (event) => {
+    console.log("Evento OK:", event.detail.id);
+  });
+</script>
+
+<ui-button id="btn-enviar" type="positive">Enviar</ui-button>
+
+`;
+export const m = ['id="btn-enviar"', 'addEventListener'];
+
+
+<Aside type="tip" title="Uso de 'addEventListener'">
+
+Ejemplo sencillo de obtención del evento usando `addEventListener`
+<Code code={html} lang="js" mark={m}/>
+
+</Aside>
