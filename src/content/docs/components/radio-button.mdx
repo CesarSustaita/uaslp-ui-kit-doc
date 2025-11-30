@@ -1,0 +1,192 @@
+---
+title: Radio Button
+description: Sección de Componentes del UI Kit de NPM .
+---
+
+<script type="module" src="/public/ui-kit.js"></script>
+import { Aside, Steps, Code, Card, Tabs, TabItem} from '@astrojs/starlight/components';
+
+El componente **Radio Button** `<ui-radio-button>` es un control de interfaz diseñado para permitir al usuario seleccionar una única opción de un conjunto predefinido de alternativas.
+
+A diferencia del checkbox _(que permite selección múltiple)_, los botones de radio funcionan en **grupo**. Cuando un usuario selecciona una opción, cualquier otra opción previamente seleccionada en el mismo grupo se desmarca automáticamente.
+
+**Vista previa del componente**
+
+<div class="components-structure">
+    <div class="responsive-structure"> 
+        <ui-radio-button></ui-radio-button>
+        <ui-radio-button checked></ui-radio-button>
+    </div>
+</div>
+
+### ¿Cuándo debería usarse?
+
+Usa este componente cuando quieras:
+
+- Obligar a una decisión única: El usuario debe elegir una sola opción entre varias _(ej. "Método de pago: Tarjeta o Efectivo")_.
+- Mostrar todas las opciones a la vez: Tienes pocas opciones _(generalmente menos de 5)_ y quieres que el usuario las pueda comparar fácilmente, a diferencia de un menú desplegable _(Select)_ que oculta las alternativas.
+
+<Aside type="tip" title='Consejo de UX'>Si tienes una lista muy larga de opciones _(más de 5 o 6)_, considera usar un componente de Lista Desplegable _(Select/Dropdown)_ para ahorrar espacio y reducir la carga cognitiva.</Aside>
+
+## Uso básico del componente
+
+El componente se integra directamente en el DOM. Para renderizarlo en el sistema, utiliza la siguiente etiqueta:
+
+export const exampleCode = `<ui-radio-button></ui-radio-button>`;
+export const fileName = 'ejemplo.html';
+
+<Code code={exampleCode} lang="js" title={fileName} />
+
+## Variantes
+Estos atributos controlan el comportamiento del grupo, el estado de selección y la capacidad de interacción.
+
+export const type = 'HTML';
+
+### Atributos de `estado`
+
+**Vista previa**
+  <div class="components-structure">
+    <div class="responsive-structure"> 
+        <ui-radio-button></ui-radio-button>
+        <ui-radio-button checked></ui-radio-button>
+        <ui-radio-button disabled></ui-radio-button>
+        <ui-radio-button checked disabled></ui-radio-button>
+    </div>
+    
+</div>
+
+export const estado = `
+<!-- Estado por defecto (desactivado / unchecked) -->
+  <ui-radio-button name="radioB" id="R1"></ui-radio-button>
+
+<!-- Estado Check -->
+  <ui-radio-button name="radioB" id="R2" checked></ui-radio-button>
+
+<!-- Estado Deshabilitado (no se puede interactuar) -->
+  <ui-radio-button name="radioB" id="R3" disabled></ui-radio-button>
+
+<!-- Estado Check y Deshabilitado -->
+  <ui-radio-button name="radioB" id="R4" checked disabled></ui-radio-button>
+
+`;
+
+**Aplicación en código**
+
+<Code code={estado} lang="js" title={type} />
+
+
+**Tabla de los atributos implementados**
+
+| <span style={{whiteSpace: "nowrap"}}>Atributo `(Estado)`</span>   | Uso Recomendado |
+|------------------|------------------|
+| `name`     | Obligatorio para Grupos. Define el nombre del conjunto. Todos los radio buttons que compartan el mismo name serán mutuamente excluyentes _(solo uno puede estar seleccionado a la vez)_. |
+| `checked`    | Define si la opción está seleccionada por defecto. En un grupo, solo un radio button debe tener este atributo inicializado. |
+| `disabled`     | Desactiva el control individualmente, impidiendo su selección. Útil para opciones que no están disponibles temporalmente _(ej. "Envío Rápido no disponible para tu zona")_. |
+| `id`    | Identificador único. Crítico para vincular el control con su etiqueta `<label>` y para identificar la opción seleccionada en el evento `change`. |
+
+
+## Disparador de eventos
+
+El componente `<ui-radio-button>` comunica el cambio de estado mediante un **Evento Personalizado _(CustomEvent)_** llamado `change`.
+
+Este evento se dispara **únicamente cuando una opción es seleccionada** _(pasa a estado `checked`)_. El componente incluye un objeto detail con información clave para identificar la selección dentro del grupo.
+
+### Estructura de `detail`
+
+| Propiedad | Tipo   | Descripción |
+|-----------|--------|-------------|
+| `checked` | <span style={{whiteSpace: "nowrap"}}>`boolean` </span>| El nuevo estado del control. En el evento `change` del radio button, esto casi siempre será true _(seleccionado)_. |
+| `name`      | <span style={{whiteSpace: "nowrap"}}>`string`</span>| El nombre del grupo al que pertenece la opción. Fundamental para saber qué categoría de datos se está modificando _(ej. "metodo-pago")_. |
+| `id` | <span style={{whiteSpace: "nowrap"}}>`string` </span>| El ID único de la opción específica que fue seleccionada. |
+
+
+### Manejo del evento
+
+El evento `change` utiliza la misma lógica de seguridad que el botón para gestionar su identificación.
+
+El componente `<ui-switch>` está diseñado con una red de seguridad interna: si el atributo `id` se omite, el componente genera un **ID único** _(string aleatorio)_ para fines de accesibilidad y lógica interna.
+
+Consistencia de Datos: Esta seguridad garantiza que el objeto `detail` del evento `change` siempre incluya:
+
+- checked: El nuevo estado (true).
+- name: El grupo al que pertenece.
+- id: El identificador único.
+
+Sin embargo, la generación automática de IDs presenta serios inconvenientes en el desarrollo:
+
+- **Inestabilidad en Pruebas:** El ID generado cambia con cada recarga o compilación, haciendo imposible la automatización de pruebas y la depuración.  
+- **Falta de Trazabilidad:** Un ID aleatorio no tiene significado semántico, dificultando la lectura y el mantenimiento del código.
+
+<Aside type="caution" title='Importante'> Por lo tanto, es una **práctica obligatoria** asignar manualmente el atributo `id` a todas las instancias de los Radio Button</Aside>
+
+export const id = `
+<!-- Ejemplo: ID semántico y Nombre de grupo -->
+  <ui-radio-button id="pago-tarjeta" name="metodo-pago" checked></ui-radio-button>
+`;
+export const ids = ['id="pago-tarjeta"', 'name="metodo-pago"'];
+
+**Aplicación del ID en código**
+
+<Code code={id} lang="js" title={type} mark={ids}/>
+
+## Obtención del evento
+Para escuchar los eventos emitidos por los componentes de este UI Kit, la opción más confiable es usar **`addEventListener`**, ya que garantiza que los eventos personalizados se reciban **correctamente**.
+
+En **frameworks** _(Vue.js, React, Angular)_ también puede usarse **`addEventListener`**, aunque cada uno ofrece su propia forma de manejar eventos, que igualmente es válida y en la mayoría de los casos funcionan sin problema. Sin embargo, cada framework tiene particularidades importantes que tu como desarrollador debes considerar:
+
+- **Vue**: Normalmente funciona de forma nativa, ya que Vue respeta los **eventos del DOM** tal como se emiten.
+- **Angular**: Suele funcionar, en algunas versiones antiguas del framework tenían **limitaciones** con eventos provenientes de Web Components.
+- **React**: Puede detectar eventos personalizados pero no siempre. Su sistema interno de `Synthetic Events` no garantiza la **compatibilidad al 100%**, por lo que el comportamiento puede variar entre navegadores y versiones.
+
+
+export const js = `
+
+<script>
+  // Seleccionamos el contenedor padre
+  const grupoEnvio = document.getElementById('grupo-envio');
+
+  // Escuchamos el evento 'change' que burbujea desde los hijos
+  grupoEnvio.addEventListener('change', (event) => {
+    
+    // Validar que el evento viene de un ui-radio-button
+    if (event.target.tagName === 'UI-RADIO-BUTTON') {
+        
+        // Extraer los datos del detail
+        const { id, name, checked } = event.detail;
+
+        console.log(\`check: \${checked}\`);
+        console.log(\`Grupo: \${name}\`);
+        console.log(\`ID: \${id}\`);
+        
+        const group = document.querySelectorAll(\`ui-radio-button[name="\${name}"]\`);
+            
+        group.forEach(radio => {
+            if (radio.id !== id) {
+                radio.checked = false;
+            }
+        });
+    }
+  });
+</script>
+
+<!-- Contenedor del grupo (usado para escuchar el evento) -->
+<div id="grupo-envio">
+
+    <ui-radio-button id="envio-estandar" name="envio"></ui-radio-button>
+    <label for="envio-estandar">Envío Estándar (3-5 días)</label>   
+
+    <ui-radio-button id="envio-express" name="envio"></ui-radio-button>
+    <label for="envio-express">Envío Express (1 día)</label>
+
+</div>
+
+`;
+export const m = ['id="grupo-envio"', 'addEventListener', 'name="envio"'];
+
+
+<Aside type="tip" title="Uso de 'addEventListener'">
+
+Ejemplo sencillo de obtención del evento usando `addEventListener`
+<Code code={js} lang="js" mark={m}/>
+
+</Aside>

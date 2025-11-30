@@ -1,0 +1,330 @@
+---
+title: Labels
+description: Sección de Componentes del UI Kit de NPM .
+---
+
+<script type="module" src="/public/ui-kit.js"></script>
+import { Aside, Steps, Code, Card, Tabs, TabItem} from '@astrojs/starlight/components';
+
+El componente **Label** `<ui-label>` es un contenedor estructural diseñado para envolver y asociar un texto descriptivo con uno de los controles de formulario ***(Checkbox, Switch o Radio Button)***.
+
+Resolviendo problemas de usabilidad y accesibilidad al aumentar el área de click del control, permitiendo al usuario activar la opción haciendo click en el texto o la descripción, no solo en el pequeño control visual.
+
+**Vista previa de los componentes**
+
+<div class="components-structure">
+    <div class="responsive-structure"> 
+        <ui-label type="checkbox" label="Label" checked> 
+            <span slot="description">Description*</span>  
+        </ui-label>
+
+        <ui-label type="radio" label="Radio" name="servicio" id="a1" checked>
+            <span slot="description">Description*</span>  
+        </ui-label>
+
+        <ui-label type="switch" id="s1" label="Label" checked>
+            <span slot="description">Description* </span>  
+        </ui-label>
+    </div>
+</div>
+
+## ¿Cuándo debería usarse?
+Usa estos componentes cuando quieras:
+
+- Mejorar la Usabilidad (UX): Dar una amplia área de click para facilitar la interacción en dispositivos táctiles o pantallas complejas.
+- Proporcionar Contexto: Mostrar texto principal y una línea secundaria de descripción _(Slot description)_ para aclarar el propósito de la opción.
+
+## Uso básico del componente
+
+Los componentes se integra directamente en el DOM. Para renderizarlo en el sistema, utiliza la siguiente etiqueta:
+
+export const exampleCode = `
+<!-- Estructura general de componente -->
+    <ui-label label="Label" > 
+        <span slot="description">Description*</span>  
+    </ui-label>
+
+`;
+export const fileName = 'ejemplo.html';
+
+<Code code={exampleCode} lang="js" title={fileName} />
+
+## Variantes
+El componente `<ui-label>` es el **único** en el kit que actúa como un componente **Wrapper** _(envoltorio)_, permitiéndole renderizar cualquiera de los tres controles binarios que ya se han documentado _(Checkbox, Switch o Radio Button)_ según la necesidad.
+
+<Aside type="tip" title="Nota">La forma en que se utilizan los atributos checked, disabled, id y name en el `<ui-label>` es idéntica a la forma en que se utilizan en sus componentes individuales ***(Checkbox, Switch o Radio Button)***.</Aside>
+
+### Atributo `type`
+Es **obligatorio** y define qué control de formulario se renderizará internamente dentro del contenedor del label. Al pasar este atributo, el componente `<ui-label>` maneja automáticamente la asociación del texto con el control.
+
+<div class="components-structure">
+    <div class="responsive-structure"> 
+        <ui-label type="checkbox" label="Type Checkbox"></ui-label>
+
+        <ui-label type="radio" label="Type Radio" > </ui-label>
+
+        <ui-label type="switch" label="Type Switch"></ui-label>
+    </div>
+</div>
+
+export const estado = `
+<!-- Type checkbox -->
+  <ui-label type="checkbox" label="Type Checkbox"></ui-label>
+     
+<!-- Type radio -->
+  <ui-label type="radio" label="Type Radio" > </ui-label>
+
+<!-- Type switch -->
+  <ui-label type="switch" label="Type Switch"></ui-label>
+`;
+export const type = 'HTML';
+
+**Aplicación en código**
+
+<Code code={estado} lang="js" title={type} />
+
+**Tabla de los atributos implementados**
+| <span style={{whiteSpace: "nowrap"}}>Atributo `type`</span>   | Control Interno       | Uso Principal                                                                                 |
+|---------------|------------------------|------------------------------------------------------------------------------------------------|
+| `checkbox`    | <span style={{whiteSpace: "nowrap"}}>`<ui-checkbox>`</span>    | Permite la selección múltiple _(listas de opciones, aceptación de términos)._                   |
+| `radio`       | <span style={{whiteSpace: "nowrap"}}>`<ui-radio-button>`</span>| Permite la selección única dentro de un grupo definido por el atributo name.                 |
+| `switch`      | <span style={{whiteSpace: "nowrap"}}>`<ui-switch>`</span>      | Controla un estado binario de aplicación con efecto inmediato _(configuraciones, tema oscuro)._ |
+
+
+### Atributo de `Estados` y `Agrupación`
+Estos atributos se pasan directamente al componente interno ***(checkbox/radio/switch)*** y controlan su funcionalidad y estado. La forma de usarlos es igual a la de los componentes individuales.
+<Aside title="Nota">Visita la documentación de los componentes individuales ***(Checkbox, Switch o Radio Button)***.</Aside>
+
+**Vista previa de los componentes**
+
+<div class="components-structure">
+    <div class="responsive-structure"> 
+        <ui-label type="checkbox" label="Label Checkbox" id="C-1"></ui-label>
+
+        <ui-label type="checkbox" label="Label Checkbox" id="C-1" checked></ui-label>
+
+        <ui-label type="checkbox" label="Label Checkbox" id="C-1" checked disabled> </ui-label>
+    </div>
+    <div class="responsive-structure"> 
+        <ui-label type="radio" label="Label en Radio" name="r-grupo" id="R1"></ui-label>
+
+        <ui-label type="radio" label="Label en Radio" name="r-grupo" id="R2" checked></ui-label>
+
+        <ui-label type="radio" label="Label en Radio" name="r-grupo" id="R3" checked disabled></ui-label>
+    </div>
+    <div class="responsive-structure"> 
+        <ui-label type="switch" label="Label Switch" > </ui-label>
+
+        <ui-label type="switch" label="Label Switch" name="servicio" id="a1" checked></ui-label>
+
+        <ui-label type="switch" id="s1" label="Label Switch" checked disabled></ui-label>
+    </div>
+</div>
+
+export const label = `
+<!-- Type checkbox con los mismos atributos de ui-checkbox -->
+  <ui-label type="checkbox" label="Label checkbox" id="C-1"></ui-label>
+
+  <ui-label type="checkbox" label="Label checkbox" id="C-1" checked></ui-labe>
+
+  <ui-label type="checkbox" label="Label checkbox" id="C-1" checked disabled></ui-label>
+     
+<!-- Type radio con los mismos atributos de ui-radio -->
+  <ui-label type="radio" label="Label Radio" name="r-grupo" id="R1"></ui-label>
+
+  <ui-label type="radio" label="Label Radio" name="r-grupo" id="R2" checked></ui-label>
+
+  <ui-label type="radio" label="Label Radio" name="r-grupo" id="R3" checked disabled></ui-label>
+
+<!-- Type switch con los mismos atributos de ui-switch -->
+  <ui-label type="switch" label="Label Switch" id="S1"> </ui-label>
+
+  <ui-label type="switch" label="Label Switch" id="S2" checked></ui-label>
+
+  <ui-label type="switch" label="Label Switch" id="S3" checked disabled></ui-label>
+`;
+
+**Aplicación en código**
+
+<Code code={label} lang="js" title={type} />
+
+
+| <span style={{whiteSpace: "nowrap"}}>Atributo `html`</span>   | Uso y Propósito                                                                                                                                             |
+|------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `label`            | **Obligatorio**. El texto principal que se mostrará junto al control.                                                                                           |
+| `checked`          | **Define el estado inicial del control**. Se mapea a `active` en `ui-checkbox` y a `checked` en `ui-switch`/`ui-radio-button`.                                  |
+| `disabled`         | **Atributo booleano**. Deshabilita la interacción en el control interno y en el área de texto del label.                                                        |
+| `id`               | **Obligatorio para Eventos**. ID único para distinguir el control. Se utiliza para la emisión de eventos.                                                       |
+| `name`             | Requerido para `type="radio"`. Define el grupo de exclusividad para que solo una opción pueda ser seleccionada.                                             |
+
+
+### Atributo `slot="description"`
+El componente soporta un **Slot Nombrado** para proporcionar contexto o una descripción secundaria debajo del texto principal del label. Esto mejora la comprensión del usuario sin saturar la interfaz. Esta funcionalidad es opcional, si no es necesaria pudes **omitir** el **slot**.
+
+**Vista previa**
+
+<div class="components-structure">
+    <div class="responsive-structure"> 
+        <ui-label type="switch" label="Actualizaciones Automáticas">
+            <span slot="description">Descargar e instalar actualizaciones durante la noche.</span>
+        </ui-label>
+    </div>
+</div>
+
+export const slot = `
+<!-- Switch -->
+  <ui-label type="switch" label="Actualizaciones Automáticas">
+    <!-- El contenido de este slot se convierte en la descripción. -->
+    <span slot="description">Descargar e instalar actualizaciones críticas durante la noche.</span>
+  </ui-label>
+
+<!-- Checkbox -->
+  <ui-label type="checkbox" label="Acepto la Política de Privacidad" id="acepto-privacidad">
+    <!-- descripción en checkbox -->
+    <span slot="description"> Al marcar esta casilla, usted acepta que sus datos son correctos.</span>
+  </ui-label>
+
+<!-- Radio -->
+<div class="radio-group-container">
+  
+  <ui-label type="radio" label="Envío Rápido" id="envio-rapido" name="tipo-entrega">
+    <span slot="description">Entrega garantizada en 24 horas (Aplica costo adicional).</span>
+  </ui-label>
+
+  <ui-label type="radio" label="Envío Estándar" id="envio-estandar" name="tipo-entrega">
+    <span slot="description">Entrega gratuita, el tiempo estimado es de 5 a 7 días hábiles.</span>
+  </ui-label>
+
+</div>
+     
+`;
+
+export const m = ['slot="description"', 'addEventListener',];
+
+**Aplicación en código**
+
+<Code code={slot} lang="js" title={type} mark={m}/>
+
+## Disparador de Eventos
+El componente `<ui-label>` no genera un evento por sí mismo, sino que actúa como un Proxy de Eventos: escucha el evento `change` del control interno ***(Checkbox, Switch o Radio)*** y lo **re-emite** desde la etiqueta del label.
+
+Gracias a este mecanismo asegura que la interacción de click en el texto se traduzca correctamente en un **evento rastreable**.
+
+### Estructura de detail Re-Emitida
+
+El evento siempre se llama `change` y garantiza que la siguiente estructura de datos esté disponible, sin importar qué control esté usando internamente:
+
+| Propiedad | Tipo    | Descripción                                                                                                           |
+|-----------|---------|-------------------------------------------------------------------------------------------------------------------------|
+| `checked`   | <span style={{whiteSpace: "nowrap"}}>`boolean`</span>| El nuevo estado del control interno (`true` si está marcado/encendido, `false` si está desmarcado/apagado).            |
+| `id`        | <span style={{whiteSpace: "nowrap"}}>`string`</span>| El ID único del control. Este ID se utiliza para identificar el label completo.                                        |
+| `name`      | <span style={{whiteSpace: "nowrap"}}>`string`</span>| El nombre del grupo. Solo aplica y es útil si el `type` es `radio`.                                                     |
+
+<Aside type="caution" title='Práctica Obligatoria'> Asignar manualmente el atributo `id` a todas las instancias de `<ui-label>` </Aside>
+
+## Obtención del Evento
+
+Para escuchar los eventos emitidos por los componentes de este UI Kit, la opción más confiable es usar **`addEventListener`**, ya que garantiza que los eventos personalizados se reciban **correctamente**.
+
+En **frameworks** _(Vue.js, React, Angular)_ también puede usarse **`addEventListener`**, aunque cada uno ofrece su propia forma de manejar eventos, que igualmente es válida y en la mayoría de los casos funcionan sin problema. Sin embargo, cada framework tiene particularidades importantes que tu como desarrollador debes considerar:
+
+- **Vue**: Normalmente funciona de forma nativa, ya que Vue respeta los **eventos del DOM** tal como se emiten.
+- **Angular**: Suele funcionar, en algunas versiones antiguas del framework tenían **limitaciones** con eventos provenientes de Web Components.
+- **React**: Puede detectar eventos personalizados pero no siempre. Su sistema interno de `Synthetic Events` no garantiza la **compatibilidad al 100%**, por lo que el comportamiento puede variar entre navegadores y versiones.
+
+export const check = `
+<!-- Ejemplo de ui-label tipo Checkbox -->
+
+<ui-label type="checkbox" label="Aceptar notificaciones" id="label-noti"></ui-label>
+
+<script>
+  /*Se obtiene el id label contenedor*/
+  const labelControl = document.getElementById('label-noti');
+  /*Se escucha el evento 'change' que el label re-emite*/
+  labelControl.addEventListener('change', (event) => {
+
+    const { id, checked } = event.detail; 
+    console.log(\`id notificacion \${id} cambiado a: \${checked}\`);
+  });
+</script>
+
+`;
+export const checkm = ['id="label-noti"', 'addEventListener', 'type="checkbox"', 'label-noti'];
+
+export const rs = `
+<!-- Ejemplo de ui-label tipo radio -->
+
+<div id="radio-group">
+  <ui-label type="radio" label="Envío Estándar" id="envio-estandar" name="tipo-entrega"></ui-label>
+
+  <ui-label type="radio" label="Envío Rápido" id="envio-rapido" name="tipo-entrega" checked></ui-label>
+</div>
+
+<script>
+  const grupoContainer = document.getElementById('radio-group');
+  /*Se escucha el evento 'change'*/
+  grupoContainer.addEventListener('change', (event) => {
+    /*Se verifica que el evento provenga de la etiqueta UI-LABEL*/
+    if (event.target.tagName === 'UI-LABEL') {
+        /* El evento re-emitido por ui-label trae el details*/
+        const { id, name, checked } = event.detail;
+        if (checked) {
+            // Se obtienen los UI-LABELS que compartan el mismo 'name'
+            const group = document.querySelectorAll(\`ui-label[name="\${name}"]\`);
+            group.forEach(label => {
+                if (label.id !== id) {
+                    // La propiedad 'checked' del Label se pasa al control interno.
+                    // Por lo tanto, el Radio Button se desmarca.
+                    label.checked = false;
+                }
+            });
+            console.log(\`Grupo: \${name}, Opción ID: \${id}\`);
+        }
+    }
+  });
+</script>
+
+`;
+export const rsm = ['id="radio-group"','radio-group', 'addEventListener', 'name="tipo-entrega"', 'id="envio-estandar"', 'id="envio-rapido"' ];
+
+
+export const switchs = `
+<!-- Ejemplo de ui-label tipo switch -->
+
+<ui-label type="switch" label="Modo desarrollador" id="modo-dev" checked></ui-label>
+
+<script>
+  /*Se obtiene el id label contenedor*/
+  const switchControl = document.getElementById('modo-dev');
+  /* Se escucha el evento 'change' que el label re-emite*/
+  switchControl.addEventListener('change', (event) => {
+    const { id, checked } = event.detail; 
+
+    console.log(\`ID: \${id}\`);
+    console.log(\`Modo Desarrollador: \${checked ? 'Activado' : 'Desactivado'}\`);
+
+  });
+</script>
+
+`;
+export const switchsm = ['id="modo-dev"', 'addEventListener', "modo-dev" ];
+
+
+<Aside type="tip" title="Uso de 'addEventListener'">
+
+Ejemplo sencillo de obtención del evento usando `addEventListener`
+
+
+<Tabs>
+  <TabItem label="Usando Checkbox">
+    <Code code={check} lang="js" mark={checkm}/>
+  </TabItem>
+  <TabItem label="Usando Radio">
+    <Code code={rs} lang="js" mark={rsm}/>
+  </TabItem>
+  <TabItem label="Usando Switch">
+    <Code code={switchs} lang="js" mark={switchsm}/>
+  </TabItem>
+</Tabs>
+
+</Aside>

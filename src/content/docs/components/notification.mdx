@@ -1,0 +1,165 @@
+---
+title: Notifications (Toast / Snackbar)
+description: Sección de Componentes del UI Kit de NPM .
+---
+
+<script type="module" src="/public/ui-kit.js"></script>
+import { Aside, Steps, Code, Card, Tabs, TabItem} from '@astrojs/starlight/components';
+
+El componente **Notification** `<ui-notification>` es un mensaje temporal y no intrusivo que aparece flotando sobre la interfaz para informar al usuario sobre el estado de una operación.
+
+Proporcionar retroalimentación inmediata del sistema _(ej. "Guardado exitosamente", "Error de conexión")_ sin interrumpir el flujo de trabajo del usuario ni requerir una acción de cierre obligatoria
+
+<Aside title='Ciclo de Vida'>Por defecto, se muestra durante un tiempo definido (`duration`) y luego se **elimina** automáticamente del **DOM**, limpiando la memoria de la aplicación.</Aside>
+
+**Vista previa del componente**
+<div class="components-structure">
+    <div class="responsive-structure-full"> 
+        <img src="/public/img/notifications.svg" alt="IMG - Vista previa del componente Dialog" />
+    </div>
+</div>
+
+## ¿Cuándo debería usarse?
+Usa este componente cuando quieras:
+
+- Confirmar Acciones: 'Cambios guardados', 'Correo enviado'.
+- Alertas de Sistema Pasivas: 'Conexión restablecida', 'Nueva versión disponible'.
+- Errores No Críticos: Problemas que no impiden seguir usando la app.
+
+## Estructura de Uso Básico
+
+export const exampleCode = `
+<!-- Uso del componente Notification-->
+
+<ui-notification 
+    type="info" 
+    open
+    position="TR" 
+    message="UI Notification"
+    description="de tipo Info Estilo de notificacion acorde a UI Kit UASLP">
+</ui-notification>
+`;
+export const fileName = 'ejemplo.html';
+
+export const s = ['slot="header"', 'slot="body"', 'slot="footer"' ];
+
+<Code code={exampleCode} lang="js" title={fileName} mark={s}/>
+
+## Atributos de Configuración
+La notificación es altamente configurable en cuanto a su semántica _(color/ícono)_ y su ubicación en la pantalla.
+
+### Atributo `type`
+Controla el color y el icono del mensaje.
+
+export const type = `
+<!-- Uso del atributo type -->
+<ui-notification type="info"></ui-notification>
+`;
+
+export const t = ['type="info"'];
+
+<Code code={type} lang="js" title={fileName} mark={t}/>
+
+| Atributo `type` | Color / Significado     | Uso Recomendado |
+|---------------|--------------------------|------------------|
+| `info` _(Defecto)_ | **Azul. Informativo neutral.** | Mensajes generales del sistema. |
+| `positive`       | **Verde. Éxito.**              | Confirmación de que una acción se completó correctamente. |
+| `warning`        | **Amarillo. Advertencia.**     | Alertas que requieren atención pero no bloquean (ej. "Tu sesión expira pronto"). |
+| `negative`       | **Rojo. Error.**               | Fallos en operaciones (ej. "No se pudo guardar"). |
+
+
+### Atributo `position`
+El componente utiliza códigos de dos letras para ubicarse en la ventana.
+
+export const position = `
+<!-- Uso del atributo position -->
+<ui-notification position="TR"></ui-notification>
+`;
+
+export const p = ['position="TR"'];
+
+<Code code={position} lang="js" title={fileName} mark={p}/>
+
+| Código      | Posición en Pantalla                                      |
+|-------------|------------------------------------------------------------|
+| `TR` _(Defecto)_ | **Top-Right** (Arriba Derecha). Estándar para aplicaciones de escritorio. |
+| `TL`          | **Top-Left** (Arriba Izquierda).                               |
+| `TC`          | **Top-Center** (Arriba Centro). Muy visible.                   |
+| `BR`          | **Bottom-Right** (Abajo Derecha). Estándar secundario.         |
+| `BL`          | **Bottom-Left** (Abajo Izquierda).                             |
+| `BC`          | **Bottom-Center** (Abajo Centro). Común en móviles.            |
+
+### Atributo de `textos` y `tiempo`
+Atributos para ingresar texto y comportamiento.
+
+export const txt = `
+<!-- Uso del atributo position -->
+<ui-notification 
+    type="info" 
+    position="TR" 
+    message="UI Notification"
+    description="de tipo Info Estilo de notificacion acorde a UI Kit UASLP"
+    duration="5000"
+    removable
+    open>
+</ui-notification>
+`;
+
+export const x = ['message', 'description', 'duration', 'removable' , 'open' ];
+
+<Code code={txt} lang="js" title={fileName} mark={x}/>
+
+| Atributo   | Tipo     | Descripción                                                                           |
+|------------|----------|----------------------------------------------------------------------------------------|
+| <span style={{whiteSpace: "nowrap"}}>`message` </span> | **string**   | Texto Principal. El mensaje corto y destacado (Título).                                |
+| <span style={{whiteSpace: "nowrap"}}>`description` </span>| **string**   | Descripción (Opcional). Texto secundario para explicar la causa o detalles.                |
+| <span style={{whiteSpace: "nowrap"}}>`duration` </span>| **number**   | Tiempo en milisegundos. Tiempo antes de autodestruirse. Defecto: 4000 (4 segundos).    |
+| <span style={{whiteSpace: "nowrap"}}>`removable` </span>| **boolean**  | Si es true, muestra una "X" para permitir al usuario cerrarla manualmente antes de tiempo. |
+| <span style={{whiteSpace: "nowrap"}}>`open` </span>| **boolean**  | Controla la visibilidad. Al pasar a true, inicia el temporizador.                      |
+
+
+## Disparador de eventos
+El componente `<ui-notification>` **NO dispara eventos propios**. 
+
+Debido a su naturaleza, el componente gestiona su propia apertura, cierre y eliminación del DOM. La aplicación padre no necesita "limpiar" nada, ya que la notificación se encarga de sí misma.
+
+## Muestra de notificación
+
+export const js = `
+<!-- Botón para mostrar la notificación -->
+
+<ui-button id="btn-lanzar-notificacion" type="secondary">
+    Probar Notificación
+</ui-button>
+<script>
+    const btns = document.getElementById('btn-lanzar-notificacion');
+    btns.addEventListener('click', () => {
+        // Se crea el elemento web component
+        const notificacion = document.createElement('ui-notification');
+        // Se configuran sus atributos básicos
+        notificacion.setAttribute('type', 'positive');
+        notificacion.setAttribute('message', 'Notificación Abierta');
+        notificacion.setAttribute('description', 'El button ha activado esta alerta.');
+        notificacion.setAttribute('position', 'TR'); // Top-Right
+        notificacion.setAttribute('duration', '3000'); // 3 segundos
+        notificacion.setAttribute('removable', ''); // Habilitado el cierre manual
+        // Se agrega al DOM (aún es invisible porque no tiene 'open')
+        document.body.appendChild(notificacion);
+        // Atributo Open
+        requestAnimationFrame(() => {
+            notificacion.setAttribute('open', '');
+            console.log('Notificación abierta: atributo open=true');
+        });
+    });
+</script>
+
+`;
+export const m = ['type', 'message', 'description', 'position', 'duration', 'removable','ui-notification' ];
+
+
+<Aside type="tip" title="Disparando el componente'">
+
+Ejemplo sencillo mostrando el ui-notification
+<Code code={js} lang="js" mark={m}/>
+
+</Aside>

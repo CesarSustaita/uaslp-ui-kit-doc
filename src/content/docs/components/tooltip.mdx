@@ -1,0 +1,178 @@
+---
+title: Tooltip
+description: Sección de Componentes del UI Kit de NPM .
+---
+
+<script type="module" src="/public/ui-kit.js"></script>
+import { Aside, Steps, Code, Card, Tabs, TabItem} from '@astrojs/starlight/components';
+
+El componente **Tooltip** `<ui-tooltip>` es un pequeño mensaje de ayuda que aparece cuando el usuario sitúa el puntero sobre un elemento _(hover)_ o navega hasta él con el teclado _(focus)_.
+
+Proporcionar información contextual breve y no esencial que ayude al usuario a comprender la función, el estado o el formato de un elemento de la interfaz sin interrumpir su flujo de trabajo.
+
+
+**Vista previa del componente**
+
+<div class="components-structure">
+    <div class="responsive-structure"> 
+        <ui-tooltip text="Este es un Tooltip" >
+        <span style="cursor: help;">Implementación de Tooltip haciendo hover en el texto</span>
+        </ui-tooltip>
+    </div>
+</div>
+
+## ¿Cuándo debería usarse?
+Usa este componente cuando quieras:
+
+- Aclarar Acrónimos/Términos: Explicar un término técnico o una abreviatura compleja.
+- Proporcionar Consejos Breves: Dar una pista rápida sobre cómo usar un campo o un botón (ej. "Solo acepta caracteres alfanuméricos").
+- Identificar Iconos: Nombrar una acción representada solo por un icono (ej. el icono de un engranaje).
+
+<Aside type="caution" title='Advertencia de uso'> El Tooltip nunca debe usarse para mostrar información crítica o acciones principales, ya que desaparece fácilmente.</Aside>
+
+
+## Uso Básico del Componente
+El Tooltip funciona como un **Wrapper** ***(envoltorio)*** alrededor del elemento que lo activa. El contenido que el usuario quiere ver se pasa mediante los atributos `text` y `body`.
+
+
+**Vista previa del componente**
+
+<div class="components-structure">
+    <div class="responsive-structure"> 
+        <ui-tooltip text="Exportar Documento" position="bottom" id="help-export">
+        <ui-icon-button type="tertiary">
+          <svg slot="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+              <polyline points="7 10 12 15 17 10"></polyline>
+              <line x1="12" y1="15" x2="12" y2="3"></line>
+          </svg>
+        </ui-icon-button>
+        </ui-tooltip>
+    </div>
+</div>
+
+export const dialogs = `
+<ui-tooltip text="Exportar Documento" position="bottom" id="export-doc">
+   <ui-icon-button type="tertiary">
+     <svg slot="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+         <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+         <polyline points="7 10 12 15 17 10"></polyline>
+         <line x1="12" y1="15" x2="12" y2="3"></line>
+     </svg>
+   </ui-icon-button>
+</ui-tooltip>
+
+`;
+export const fileName = 'ejemplo.html';
+export const a = ['id="dialog-form"', 'open', 'disabledClose' ];
+
+**Aplicación en código**
+
+<Code code={dialogs} lang="js" title={fileName} mark={a}/>
+
+## Variantes y Atributos
+El Tooltip se configura mediante atributos de Contenido y Posición.
+
+**Vista previa del componente**
+
+<div class="components-structure">
+    <div class="responsive-structure"> 
+        <ui-tooltip text="Texto Principal" body="Cuerpo de texto" id="Ejemplo">
+        <span style="cursor: help;">Implementación de Tooltip en posición Top (default)</span>
+        </ui-tooltip>
+    </div>
+</div>
+
+
+export const tool = `
+<!-- Tooltip ejemplo -->
+<ui-tooltip text="Texto Principal" body="Cuerpo de texto" id="Ejemplo">
+    <span style="cursor: help;">Implementación de Tooltip en posición Top (default)</span>
+</ui-tooltip>
+
+`;
+export const t = ['text="Texto Principal"', 'body="Cuerpo de texto"', 'id="Ejemplo"' ];
+
+**Aplicación en código**
+
+<Code code={tool} lang="js" title={fileName} mark={t}/>
+
+**Tabla de los atributos implementados**
+
+| Atributo (HTML) | Tipo               | Propósito y Comportamiento |
+|------------------|--------------------|-----------------------------|
+| `text`           | **string**             | **Contenido Principal.** El mensaje más corto y relevante. Se muestra en negrita como título. |
+| `body`           | **string**             | **Contenido Secundario (Opcional).** Texto auxiliar que aparece debajo del mensaje principal. |
+| `id`             | **string**             | **Identificación Única.** Necesario si se desea mostrar u ocultar el tooltip mediante JavaScript. |
+
+## Variante de `position`
+El atributo position controla la dirección en la que aparece la caja de ayuda, asegurando que no se salga de los límites de la pantalla.
+
+**Vista previa del componente**
+
+<div class="components-structure">
+    <div class="responsive-structure"> 
+        <ui-tooltip text="Tooltip Top Position." position="top">
+            <span  style="cursor: help;">Tooltip en posicion TOP </span> 
+        </ui-tooltip>
+    </div>
+    <div class="responsive-structure"> 
+        <ui-tooltip text="Tooltip Bottom Position." position="bottom">
+            <span  style="cursor: help;">Tooltip en posicion BOTTOM</span> 
+        </ui-tooltip>
+    </div>
+    <div class="responsive-structure"> 
+        <ui-tooltip text="Tooltip right Position." position="right">
+            <span  style="cursor: help;">Tooltip en posicion RIGHT</span> 
+        </ui-tooltip>
+    </div>
+    <div class="responsive-structure"> 
+        <ui-tooltip text="Tooltip left Position." position="left">
+            <span  style="cursor: help;">Tooltip en posicion LEFT</span> 
+        </ui-tooltip>
+    </div>
+</div>
+
+export const pos = `
+<!-- Tooltip position: TOP - BOTTOM - RIGHT - LEFT -->
+
+    <ui-tooltip text="Tooltip Top Position." position="top">
+        <span  style="cursor: help;">Tooltip en posicion TOP </span> 
+    </ui-tooltip>
+
+    <ui-tooltip text="Tooltip Bottom Position." position="bottom">
+        <span  style="cursor: help;">Tooltip en posicion BOTTOM</span> 
+    </ui-tooltip>
+
+    <ui-tooltip text="Tooltip right Position." position="right">
+        <span  style="cursor: help;">Tooltip en posicion RIGHT</span> 
+    </ui-tooltip>
+
+    <ui-tooltip text="Tooltip left Position." position="left">
+        <span  style="cursor: help;">Tooltip en posicion LEFT</span> 
+    </ui-tooltip>
+
+`;
+export const p = ['position="top"', 'position="bottom"', 'position="right"', 'position="left"' ];
+
+**Aplicación en código**
+
+<Code code={pos} lang="js" title={fileName} mark={p}/>
+
+**Tabla de los atributos implementados**
+
+| Atributo `position` | Dirección de Despliegue                       | Uso Recomendado                                                                 |
+|----------------------|-----------------------------------------------|----------------------------------------------------------------------------------|
+| `top` (Defecto)      | El Tooltip aparece arriba del elemento.       | Estándar. Ideal cuando hay espacio suficiente por encima del elemento.           |
+| `bottom`             | El Tooltip aparece debajo del elemento.       | Recomendado cuando el elemento está cerca de la parte superior (ej. navbar).     |
+| `left`               | El Tooltip aparece a la izquierda del elemento.| Útil cuando el espacio a la derecha es limitado.                                |
+| `right`              | El Tooltip aparece a la derecha del elemento. | Útil cuando el espacio a la izquierda es limitado.                              |
+
+
+## Disparador de Eventos
+
+**Comportamiento de Estado (No Emite Eventos)**
+
+El componente Tooltip **NO emite Eventos** Personalizados `CustomEvent` como `tooltip-show` o `tooltip-hide`.
+
+El Tooltip gestiona su propia visibilidad internamente en respuesta a eventos nativos del navegador ***(mouseenter, mouseleave, focus, blur)***. Al no ser un componente de acción o entrada de datos, no es necesario que notifique al sistema padre sobre su cambio de estado.

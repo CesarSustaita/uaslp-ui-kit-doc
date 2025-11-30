@@ -1,0 +1,282 @@
+---
+title: List 
+description: Sección de Componentes del UI Kit de NPM .
+---
+
+<script type="module" src="/public/ui-kit.js"></script>
+import { Aside, Steps, Code, Card, Tabs, TabItem} from '@astrojs/starlight/components';
+
+El componente **List** `<ui-list>` es la unidad para construir listas verticales, menús de navegación o paneles de configuración.
+
+Diseñado para presentar datos de manera lineal y compacta. El **List** está optimizado para la repetición y la navegación lineal.
+
+**Vista previa del componente**
+
+<div class="components-structure">
+    <div class="responsive-structure-full"> 
+        <ui-list text="Item" description="Description">
+            <svg slot="end-element" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M9 18L15 12L9 6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+        </ui-list>
+    </div>
+</div>
+
+## ¿Cuándo debería usarse?
+Usa este componente cuando quieras:
+
+- Menús de Configuración: Listas de opciones donde cada fila lleva a una pantalla de detalle o ajuste _(ej. Ajustes del perfil)_.
+- Navegación Lateral: Elementos de un drawer o menú principal.
+- Listas de Selección: Cuando necesitas mostrar múltiples opciones seleccionables de forma vertical.
+
+## Uso Básico del Componente
+El componente acepta atributos simples para el contenido textual _(text y description)_ y utiliza **Slots Nombrados** para los elementos visuales al inicio o al final.
+
+export const exampleCode = `
+<!-- Lista simple de texto -->
+<ui-list text="Perfil de Usuario" description="Administra tus datos personales"></ui-list>
+`;
+export const fileName = 'ejemplo.html';
+
+<Code code={exampleCode} lang="js" title={fileName} />
+
+## Variantes
+La versatilidad del componente `<ui-list>` radica en su capacidad para combinar información textual con elementos visuales de apoyo. Su estructura se divide en tres áreas clave:
+
+- **Contenido Principal (Texto):** El núcleo del componente, definido por atributos.
+- **Elemento de Inicio (Slot):** Generalmente reservado para iconos o avatares que categorizan la entrada.
+- **Elemento Final (Slot):** Reservado para iconos de navegación, interruptores, o metadatos.
+
+### Atributos de Texto
+El componente se configura principalmente a través de dos atributos de texto que establecen la jerarquía de la información.
+
+**Vista previa del componente**
+
+<div class="components-structure">
+    <div class="responsive-structure-full"> 
+        <ui-list text="Perfil de Usuario" description="Administra tus datos personales"></ui-list>
+    </div>
+</div>
+
+**Aplicación en código**
+<Code code={exampleCode} lang="js" title={fileName} />
+
+**Tabla de los atributos implementados**
+
+| Atributo     | Tipo   | Requisito     | Propósito |
+|--------------|--------|---------------|-----------|
+| <span style={{whiteSpace: "nowrap"}}>`text` </span> | <span style={{whiteSpace: "nowrap"}}>`string` </span>  | **Obligatorio**   | Define el título o etiqueta principal del ítem. Es el dato más importante para el usuario. |
+| <span style={{whiteSpace: "nowrap"}}>`description` </span> | <span style={{whiteSpace: "nowrap"}}>`string` </span>  | **Opcional**      | Añade una línea de texto secundaria debajo del título, útil para dar contexto adicional (por ejemplo: “Administrador” debajo de un nombre). |
+
+
+### Flexibilidad de Contenido `Slots`
+Se utiliza **Slots Nombrados** para insertar elementos visuales a los extremos del texto principal. Esta arquitectura permite mantener la alineación perfecta de la lista sin importar el tipo de contenido que agregues.
+
+**Vista previa del componente**
+
+<div class="components-structure">
+    <div class="responsive-structure-full"> 
+        <ui-list text="Inicio" >
+        <svg slot="start-element" width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <path d="M3 10.5651C3 9.9907 3 9.70352 3.07403 9.43905C3.1396 9.20478 3.24737 8.98444 3.39203 8.78886C3.55534 8.56806 3.78202 8.39175 4.23539 8.03912L11.0177 2.764C11.369 2.49075 11.5447 2.35412 11.7387 2.3016C11.9098 2.25526 12.0902 2.25526 12.2613 2.3016C12.4553 2.35412 12.631 2.49075 12.9823 2.764L19.7646 8.03913C20.218 8.39175 20.4447 8.56806 20.608 8.78886C20.7526 8.98444 20.8604 9.20478 20.926 9.43905C21 9.70352 21 9.9907 21 10.5651V17.8C21 18.9201 21 19.4801 20.782 19.908C20.5903 20.2843 20.2843 20.5903 19.908 20.782C19.4802 21 18.9201 21 17.8 21H6.2C5.07989 21 4.51984 21 4.09202 20.782C3.71569 20.5903 3.40973 20.2843 3.21799 19.908C3 19.4801 3 18.9201 3 17.8V10.5651Z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        </ui-list>
+    </div>
+    <div class="responsive-structure-full"> 
+        <ui-list text="Item" description="Description">
+            <svg slot="end-element" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M9 18L15 12L9 6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+        </ui-list>
+    </div>
+    <div class="responsive-structure-full"> 
+        <ui-list text="Item" description="Description">
+        <img slot="start-element" src="/public/img/Avatar.svg" alt="Mi Imagen"></img>
+        </ui-list>
+    </div>
+    <div class="responsive-structure-full">
+        <ui-list text="Dato Calculado" description="El dato exacto es">
+            <span slot="end-element">88.8</span>
+        </ui-list>
+    </div>
+</div>
+
+export const estado = `
+<!-- list con Slot= start-element icon-->
+  <ui-list text="Inicio" >
+    <svg slot="start-element" width="24" height="24" viewBox="0 0 24 24" fill="none">
+        <path d="M3 10.5651C3 9.9907 3 9.70352 3.07403 9.43905C3.1396 9.20478 3.24737 8.98444 3.39203 8.78886C3.55534 8.56806 3.78202 8.39175 4.23539 8.03912L11.0177 2.764C11.369 2.49075 11.5447 2.35412 11.7387 2.3016C11.9098 2.25526 12.0902 2.25526 12.2613 2.3016C12.4553 2.35412 12.631 2.49075 12.9823 2.764L19.7646 8.03913C20.218 8.39175 20.4447 8.56806 20.608 8.78886C20.7526 8.98444 20.8604 9.20478 20.926 9.43905C21 9.70352 21 9.9907 21 10.5651V17.8C21 18.9201 21 19.4801 20.782 19.908C20.5903 20.2843 20.2843 20.5903 19.908 20.782C19.4802 21 18.9201 21 17.8 21H6.2C5.07989 21 4.51984 21 4.09202 20.782C3.71569 20.5903 3.40973 20.2843 3.21799 19.908C3 19.4801 3 18.9201 3 17.8V10.5651Z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </ui-list>
+
+<!-- list con Slot= end-element icon-->
+  <ui-list text="Item" description="Description">
+      <svg slot="end-element" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M9 18L15 12L9 6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+  </ui-list>
+
+<!-- list con Slot= start-element img-->
+  <ui-list text="Item" description="Description">
+     <img slot="start-element" src="/public/img/Avatar.svg" alt="Mi Imagen"></img>
+  </ui-list>
+
+<!-- list con Slot= end-element txt-->
+  <ui-list text="Dato Calculado" description="El dato exacto es:">
+     <span slot="end-element">88.8</span>
+  </ui-list>
+
+`;
+export const type = 'HTML';
+
+export const s = ['imageUrl="/img/Imgcard.svg"' ];
+
+**Aplicación en código**
+
+<Code code={estado} lang="js" title={type} mark={s}/>
+
+
+**Tabla de los atributos implementados**
+
+| Slot Nombrado | Posición             | Uso Recomendado                                                                 | Tipo de Contenido Ideal |
+|---------------|-----------------------|----------------------------------------------------------------------------------|--------------------------|
+| `start-element` | Izquierda (Inicio)    | Identificación visual. Se usa para categorizar el ítem mediante iconos, logotipos o avatares. | SVG (iconos) o `img` (avatares pequeños). |
+| `end-element`   | Derecha (Final)       | Metadatos o navegación. Ideal para mostrar estados, fechas cortas, contadores o indicadores (flechas). | `span` (texto corto) o SVG (flechas, iconos de estado). |
+
+<Aside type="tip" title="Recomendación">Para obtener más detalles sobre el **formato de los íconos**, consulta la sección de _"Ajuste del SVG para su correcta implementación"_ en la Guía de Estilos _"Elementos Estáticos"_.</Aside>
+
+
+### Atributo de estado
+Para gestionar correctamente la lógica de una lista, el componente ofrece atributos que controlan tanto la capacidad de interacción como la identificación del elemento seleccionado.
+
+**Vista previa del componente**
+
+<div class="components-structure">
+    <div class="responsive-structure-full" > 
+        <ui-list text="Inicio" disabled>
+        <svg slot="start-element" width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <path d="M3 10.5651C3 9.9907 3 9.70352 3.07403 9.43905C3.1396 9.20478 3.24737 8.98444 3.39203 8.78886C3.55534 8.56806 3.78202 8.39175 4.23539 8.03912L11.0177 2.764C11.369 2.49075 11.5447 2.35412 11.7387 2.3016C11.9098 2.25526 12.0902 2.25526 12.2613 2.3016C12.4553 2.35412 12.631 2.49075 12.9823 2.764L19.7646 8.03913C20.218 8.39175 20.4447 8.56806 20.608 8.78886C20.7526 8.98444 20.8604 9.20478 20.926 9.43905C21 9.70352 21 9.9907 21 10.5651V17.8C21 18.9201 21 19.4801 20.782 19.908C20.5903 20.2843 20.2843 20.5903 19.908 20.782C19.4802 21 18.9201 21 17.8 21H6.2C5.07989 21 4.51984 21 4.09202 20.782C3.71569 20.5903 3.40973 20.2843 3.21799 19.908C3 19.4801 3 18.9201 3 17.8V10.5651Z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        </ui-list>
+    </div>
+    <div class="responsive-structure-full"> 
+        <ui-list text="Item" description="Description" disabled>
+            <svg slot="end-element" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M9 18L15 12L9 6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+        </ui-list>
+    </div>
+    <div class="responsive-structure-full" > 
+        <ui-list text="Item" description="Description" disabled>
+        <img slot="start-element" src="/public/img/Avatar.svg" alt="Mi Imagen"></img>
+        </ui-list>
+    </div>
+    <div class="responsive-structure-full" >
+        <ui-list text="Dato Calculado" description="El dato exacto es" disabled>
+            <span slot="end-element">88.8</span>
+        </ui-list>
+    </div>
+</div>
+
+export const disabled = `
+<!-- list con Slot= start-element icon-->
+  <ui-list text="Inicio" disabled>
+    <svg slot="start-element" width="24" height="24" viewBox="0 0 24 24" fill="none">
+        <path d="M3 10.5651C3 9.9907 3 9.70352 3.07403 9.43905C3.1396 9.20478 3.24737 8.98444 3.39203 8.78886C3.55534 8.56806 3.78202 8.39175 4.23539 8.03912L11.0177 2.764C11.369 2.49075 11.5447 2.35412 11.7387 2.3016C11.9098 2.25526 12.0902 2.25526 12.2613 2.3016C12.4553 2.35412 12.631 2.49075 12.9823 2.764L19.7646 8.03913C20.218 8.39175 20.4447 8.56806 20.608 8.78886C20.7526 8.98444 20.8604 9.20478 20.926 9.43905C21 9.70352 21 9.9907 21 10.5651V17.8C21 18.9201 21 19.4801 20.782 19.908C20.5903 20.2843 20.2843 20.5903 19.908 20.782C19.4802 21 18.9201 21 17.8 21H6.2C5.07989 21 4.51984 21 4.09202 20.782C3.71569 20.5903 3.40973 20.2843 3.21799 19.908C3 19.4801 3 18.9201 3 17.8V10.5651Z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </ui-list>
+
+<!-- list con Slot= end-element icon-->
+  <ui-list text="Item" description="Description" disabled>
+      <svg slot="end-element" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M9 18L15 12L9 6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+  </ui-list>
+
+`;
+
+export const d = ['disabled' ];
+
+**Aplicación en código**
+
+<Code code={disabled} lang="js" title={type} mark={d}/>
+
+**Tabla de los atributos implementados**
+
+| Atributo (HTML) | Tipo    | Propósito y Comportamiento |
+|------------------|---------|-----------------------------|
+| `disabled`       | **boolean** | **Control de interacción.** <br/> • **Visual:** Aplica un estilo de baja opacidad (texto gris) y elimina el efecto hover. <br/> • **Funcional:** Bloquea completamente la emisión del evento `list-item-click`. El usuario no puede seleccionar este ítem. |
+| `id`             | **string**  | **Identificación única.** <br/> • **Propósito:** Asigna una clave única al ítem. <br/> • **Importancia:** Es el dato crítico enviado en el evento de clic. Sin un `id` explícito, tu código no puede identificar qué opción específica eligió el usuario. |
+
+
+## Disparador de Eventos
+Cuando el usuario hace clic en un ítem de la lista que no está deshabilitado, el componente **emite** el Evento Personalizado `list-item-click`.
+
+Si el atributo `disabled` está presente, el componente ignora los clics y no emite el evento, protegiendo la lógica de tu aplicación de interacciones no deseadas.
+
+### Estructura de `detail`
+El evento entrega un objeto detail con el identificador único del elemento seleccionado.
+
+| Propiedad | Tipo   | Descripción |
+|-----------|--------|-------------|
+| `id`      | **string** | ID único del ítem. Es indispensable para identificar qué opción específica de la lista fue seleccionada. |
+
+<Aside type="caution" title='Importante'> Por lo tanto, es una **práctica obligatoria** asignar manualmente el atributo `id` a todas las instancias de los inputs para saber identificarlos</Aside>
+
+## Obtención del evento
+Para escuchar los eventos emitidos por los componentes de este UI Kit, la opción más confiable es usar **`addEventListener`**, ya que garantiza que los eventos personalizados se reciban **correctamente**.
+
+En **frameworks** _(Vue.js, React, Angular)_ también puede usarse **`addEventListener`**, aunque cada uno ofrece su propia forma de manejar eventos, que igualmente es válida y en la mayoría de los casos funcionan sin problema. Sin embargo, cada framework tiene particularidades importantes que tu como desarrollador debes considerar:
+
+- **Vue**: Normalmente funciona de forma nativa, ya que Vue respeta los **eventos del DOM** tal como se emiten.
+- **Angular**: Suele funcionar, en algunas versiones antiguas del framework tenían **limitaciones** con eventos provenientes de Web Components.
+- **React**: Puede detectar eventos personalizados pero no siempre. Su sistema interno de `Synthetic Events` no garantiza la **compatibilidad al 100%**, por lo que el comportamiento puede variar entre navegadores y versiones.
+
+
+export const js = `
+<div id="menu-ajustes" >
+
+  <!-- list 1 -->
+  <ui-list 
+    id="id-wifi" 
+    text="Wi-Fi" 
+    description="Red: UASLP_Segura"
+  >
+    <svg slot="end-element" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
+        <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </ui-list>
+
+  <!-- list 2 -->
+  <ui-list 
+    id="id-bluetooth" 
+    text="Bluetooth" 
+    description="Desactivado"
+  >
+    <svg slot="end-element" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
+        <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </ui-list>
+
+</div>
+<script>
+  const menuContainer = document.getElementById('menu-ajustes');
+    // evento 'list-item-click'
+  menuContainer.addEventListener('list-item-click', (event) => {
+    
+    const selectedId = event.detail.id;
+    console.log(\`Opción: \${selectedId}\`);
+  });
+</script>
+
+`;
+export const m = ['id="id-wifi"', 'addEventListener', 'id="id-bluetooth"' ];
+
+
+<Aside type="tip" title="Uso de 'addEventListener' usando el atributo 'isInteractive'">
+
+Ejemplo sencillo de obtención del evento usando `addEventListener`
+<Code code={js} lang="js" mark={m}/>
+
+</Aside>
+

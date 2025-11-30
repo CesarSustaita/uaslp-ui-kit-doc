@@ -1,0 +1,539 @@
+---
+title: Card
+description: Sección de Componentes del UI Kit de NPM .
+---
+
+<script type="module" src="/public/ui-kit.js"></script>
+import { Aside, Steps, Code, Card, Tabs, TabItem} from '@astrojs/starlight/components';
+
+El componente **Card** `<ui-card>` es un contenedor estructural y modular que agrupa contenido relacionado, actuando como un punto de entrada o resumen de información.
+
+**Propósito principal:**
+
+- **Jerarquía** Visual: Delimitar secciones de la interfaz para reducir la carga cognitiva del usuario.
+- **Modularidad**: Servir como un espacio reutilizable para listas de artículos, noticias, productos o tareas.
+- **Interacción**: Actuar como un elemento clicable que navega a una vista de detalle.
+
+**Vista previa del componente**
+
+<div class="components-structure">
+    <div class="responsive-structure-full"> 
+        <ui-card imageUrl="/img/Imgcard.svg">
+        <span slot="title">Title</span>
+        <span slot="description">Body text for whatever you’d like to say. Add main takeaway points, quotes, anecdotes, or even a very short story. </span>
+        <div slot="footer">
+            <ui-button type="tertiary">Visita el sitio oficial</ui-button>
+            <ui-button type="primary">Conoce más</ui-button> 
+        </div>
+    </ui-card>
+    </div>
+</div>
+
+## ¿Cuándo debería usarse?
+Usa este componente cuando quieras:
+
+- Listar Elementos: Mantener la consistencia en dashboards o galerías _(ej. una lista de trámites o documentos)_.
+- Agrupar Contenido: Unir una imagen, un título, una descripción y acciones relacionadas en una sola unidad.
+- Navegación Clicable: Proporcionar una área de click para dirigir al usuario a otra página.
+
+## Uso Básico del Componente
+El componente utiliza **Slots Nombrados** para estructurar su contenido. La estructura mínima requiere al menos un **título** y una **descripción**, envueltos en sus respectivos slots.
+
+export const exampleCode = `
+<ui-card>
+    <span slot="title">Title</span>
+    <span slot="description">Body text for whatever you’d like to say.</span>
+</ui-card>
+`;
+export const fileName = 'ejemplo.html';
+
+<Code code={exampleCode} lang="js" title={fileName} />
+
+
+## Variantes
+El componente **Card** es altamente personalizable, permitiendo adaptar su orientación y tamaño mediante atributos, y su contenido interno mediante Slots.
+
+**Comportamiento de Dimensiones:** Es importante tener en cuenta cómo el componente maneja el espacio:
+
+- **Altura**: Mantiene una altura consistente basada en su contenido y el atributo `size`.
+- **Ancho Fluido (100%)**: _Por defecto_, la tarjeta ocupará el **100% del ancho** disponible de su contenedor.
+
+<Aside type="caution" title='Recomendación de Implementación'>
+Para controlar el ancho de la tarjeta, se recomienda colocarla dentro de un contenedor padre que defina las dimensiones ***(como una columna de una grilla CSS o un contenedor con max-width)***. Esto te otorga control total para ajustar la tarjeta al diseño de tu interfaz.
+</Aside>
+
+### Atributo de `imageUrl`
+Este atributo define la imagen de cabecera (o lateral) de la tarjeta.
+
+- **Opcional**: No es obligatorio definirlo. Si se omite, la tarjeta simplemente no renderizará el área de imagen y ajustará el texto para ocupar el espacio restante.
+- **Requisito**: Para su correcta visualización, debes proporcionar una ruta válida ***(relativa o absoluta)*** al recurso de imagen alojado en tu proyecto ***(ej. /img/tarjeta-banner.svg o una URL externa)***.
+
+
+**Vista previa del componente**
+
+<div class="components-structure">
+    <div class="responsive-structure"> 
+        <ui-card imageUrl="/img/Imgcard.svg">
+        <span slot="title">Title</span>
+        <span slot="description">Body text for whatever you’d like to say. Add main takeaway points, quotes, anecdotes, or even a very short story. </span>
+        <div slot="footer">
+            <ui-button type="tertiary">Visita el sitio oficial</ui-button>
+            <ui-button type="primary">Conoce más</ui-button> 
+        </div>
+    </ui-card>
+    </div>
+    <div class="responsive-structure"> 
+        <ui-card>
+        <span slot="title">Title</span>
+        <span slot="description">Body text for whatever you’d like to say. Add main takeaway points, quotes, anecdotes, or even a very short story. </span>
+        <div slot="footer">
+            <ui-button type="tertiary">Visita el sitio oficial</ui-button>
+            <ui-button type="primary">Conoce más</ui-button> 
+        </div>
+    </ui-card>
+    </div>
+</div>
+
+export const estado = `
+<!-- Card aplicando - imageUrl -->
+  <ui-card imageUrl="/img/Imgcard.svg">
+     <span slot="title">Title</span>
+     <span slot="description">Body text for whatever you’d like to say. Add main takeaway points, quotes, anecdotes, or even a very short story. </span>
+     <div slot="footer">
+         <ui-button type="tertiary">Visita el sitio oficial</ui-button>
+         <ui-button type="primary">Conoce más</ui-button> 
+     </div>
+  </ui-card>
+
+<!-- Card SIN aplicar - imageUrl -->
+  <ui-card>
+     <span slot="title">Title</span>
+     <span slot="description">Body text for whatever you’d like to say. Add main takeaway points, quotes, anecdotes, or even a very short story. </span>
+     <div slot="footer">
+         <ui-button type="tertiary">Visita el sitio oficial</ui-button>
+         <ui-button type="primary">Conoce más</ui-button> 
+     </div>
+  </ui-card>
+
+`;
+export const type = 'HTML';
+
+export const s = ['imageUrl="/img/Imgcard.svg"' ];
+
+**Aplicación en código**
+
+<Code code={estado} lang="js" title={type} mark={s}/>
+
+### Atributo `type`
+Se ofrece dos variantes estructurales principales que permiten adaptar su presentación visual sin perder la jerarquía de la información. El atributo `type` controla la dirección del flujo de contenido.
+
+**Comportamiento por Defecto:** Al implementar el componente sin atributos adicionales, se aplica automáticamente la variante vertical.
+
+**Vista previa del componente**
+
+<div class="components-structure">
+    <div class="responsive-structure-full"> 
+        <ui-card imageUrl="/img/Imgcard.svg" type="vertical">
+        <span slot="title">Title</span>
+        <span slot="description">Body text for whatever you’d like to say. Add main takeaway points, quotes, anecdotes, or even a very short story. </span>
+        <div slot="footer">
+            <ui-button type="tertiary">Visita el sitio oficial</ui-button>
+            <ui-button type="primary">Conoce más</ui-button> 
+        </div>
+    </ui-card>
+    </div>
+
+    <div class="responsive-structure-full"> 
+        <ui-card imageUrl="/img/Imgcard.svg" type="horizontal">
+        <span slot="title">Title</span>
+        <span slot="description">Body text for whatever you’d like to say. Add main takeaway points, quotes, anecdotes, or even a very short story. </span>
+        <div slot="footer" >
+            <ui-button type="primary">Conoce más</ui-button> 
+        </div>
+    </ui-card>
+    </div>
+</div>
+
+export const types = `
+<ui-card imageUrl="/img/Imgcard.svg" type="vertical">
+    <span slot="title">Title</span>
+    <span slot="description">Body text for whatever you’d like to say. Add main takeaway points, quotes, anecdotes, or even a very short story. </span>
+    <div slot="footer">
+        <ui-button type="tertiary">Visita el sitio oficial</ui-button>
+        <ui-button type="primary">Conoce más</ui-button> 
+    </div>
+</ui-card>
+
+
+<ui-card imageUrl="/img/Imgcard.svg" type="horizontal">
+    <span slot="title">Title</span>
+    <span slot="description">Body text for whatever you’d like to say. Add main takeaway points, quotes, anecdotes, or even a very short story. </span>
+    <div slot="footer" >
+        <ui-button type="primary">Conoce más</ui-button> 
+    </div>
+</ui-card>
+`;
+
+export const d = ['type="vertical"', 'type="horizontal"' ];
+
+<Code code={types} lang="js" title={fileName} mark={d}/>
+
+
+| Atributo `type` | Orientación Visual | Uso Recomendado |
+|-----------------|--------------------|------------------|
+| `vertical` _(Defecto)_ | Apilado (Stack). La imagen se muestra arriba, seguida del contenido y luego el footer en una columna. | Ideal para rejillas (grids) de tarjetas, catálogos de productos o galerías de noticias donde el ancho es limitado. |
+| `horizontal` | Fila (Row). La imagen se coloca a la izquierda y el contenido a la derecha en disposición horizontal. | Perfecto para listas de elementos (list views), resultados de búsqueda o pantallas con ancho amplio disponible. |
+
+
+### Atributo `size`
+El atributo `size` controla la densidad visual de la tarjeta. Aunque el contenido _(título, descripción, imagen)_ se mantiene idéntico, el atributo modifica los márgenes internos y el espaciado entre elementos.
+
+**Comportamiento por Defecto:** Si no se especifica el atributo, el componente renderiza el **tamaño default** _(estándar)_, diseñado para una legibilidad óptima en espacios amplios.
+
+**Vista previa del componente `size="default"`**
+
+<div class="components-structure">
+    <div class="components-structure-full"> 
+        <ui-card imageUrl="/img/Imgcard.svg" size="default">
+        <span slot="title">Title</span>
+        <span slot="description">Body text for whatever you’d like to say. Add main takeaway points, quotes, anecdotes, or even a very short story. </span>
+        <div slot="footer">
+            <ui-button type="tertiary">Visita el sitio oficial</ui-button>
+            <ui-button type="primary">Conoce más</ui-button> 
+        </div>
+    </ui-card>
+    </div>
+    <div class="components-structure-full">
+    <ui-card imageUrl="/img/Imgcard.svg" size="small">
+        <span slot="title">Title</span>
+        <span slot="description">Body text for whatever you’d like to say. Add main takeaway points, quotes, anecdotes, or even a very short story. </span>
+        <div slot="footer">
+            <ui-button type="tertiary">Visita el sitio oficial</ui-button>
+            <ui-button type="primary">Conoce más</ui-button> 
+        </div>
+    </ui-card>
+    </div>
+</div>
+
+export const size1 = `
+<ui-card imageUrl="/img/Imgcard.svg" size="default">
+    <span slot="title">Title</span>
+    <span slot="description">Body text for whatever you’d like to say. Add main takeaway points, quotes, anecdotes, or even a very short story. </span>
+    <div slot="footer">
+        <ui-button type="tertiary">Visita el sitio oficial</ui-button>
+        <ui-button type="primary">Conoce más</ui-button> 
+    </div>
+</ui-card>
+
+
+<ui-card imageUrl="/img/Imgcard.svg" size="small">
+    <span slot="title">Title</span>
+    <span slot="description">Body text for whatever you’d like to say. Add main takeaway points, quotes, anecdotes, or even a very short story. </span>
+    <div slot="footer" >
+        <ui-button type="primary">Conoce más</ui-button> 
+    </div>
+</ui-card>
+`;
+
+export const a = ['size="default"', 'size="small"' ];
+
+<Code code={size1} lang="js" title={fileName} mark={a}/>
+
+
+**Vista previa del componente `size="default"` y `type="horizontal"`**
+
+<div class="components-structure">
+    <div class="components-structure-full"> 
+        <ui-card imageUrl="/img/Imgcard.svg" type="horizontal" size="default">
+        <span slot="title">Title</span>
+        <span slot="description">Body text for whatever you’d like to say. Add main takeaway points, quotes, anecdotes, or even a very short story. </span>
+        <div slot="footer">
+            <ui-button type="primary">Conoce más</ui-button> 
+        </div>
+    </ui-card>
+    </div>
+    <div class="components-structure-full">
+    <ui-card imageUrl="/img/Imgcard.svg" type="horizontal" size="small">
+        <span slot="title">Title</span>
+        <span slot="description">Body text for whatever you’d like to say. Add main takeaway points, quotes, anecdotes, or even a very short story. </span>
+        <div slot="footer">
+            <ui-button type="primary">Conoce más</ui-button> 
+        </div>
+    </ui-card>
+    </div>
+</div>
+
+export const size2 = `
+<ui-card imageUrl="/img/Imgcard.svg" type="vertical" size="default">
+    <span slot="title">Title</span>
+    <span slot="description">Body text for whatever you’d like to say. Add main takeaway points, quotes, anecdotes, or even a very short story. </span>
+    <div slot="footer">
+        <ui-button type="tertiary">Visita el sitio oficial</ui-button>
+        <ui-button type="primary">Conoce más</ui-button> 
+    </div>
+</ui-card>
+
+
+<ui-card imageUrl="/img/Imgcard.svg" type="horizontal"  size="small">
+    <span slot="title">Title</span>
+    <span slot="description">Body text for whatever you’d like to say. Add main takeaway points, quotes, anecdotes, or even a very short story. </span>
+    <div slot="footer" >
+        <ui-button type="primary">Conoce más</ui-button> 
+    </div>
+</ui-card>
+`;
+
+export const w = ['size="default"', 'type="horizontal"' , 'type="vertical"', 'size="small"'];
+
+<Code code={size2} lang="js" title={fileName} mark={w}/>
+
+
+| Atributo `size` | Características Visuales | Uso Recomendado |
+|------------------|---------------------------|------------------|
+| `default` (Defecto) | Espaciado. Padding amplio y mayor separación entre la imagen y el texto. | Estándar para galerías de destacados, noticias principales o dashboards con pocas tarjetas. |
+| `small` | Diseño compacto. Reduce el padding y disminuye el espacio vertical entre elementos. La altura de la imagen también se ajusta ligeramente. | Ideal para listas largas, resultados de búsqueda densos, widgets laterales o interfaces móviles donde el espacio es crítico. |
+
+
+### Atributos de `Slots Nombrados`
+La arquitectura del componente `<ui-card>` se basa en la flexibilidad de sus **Slots Nombrados**. Se definen tres áreas principales: ***title, description y footer***.
+
+**Ventaja de Diseño** 
+
+Cada una de estas secciones es completamente **opcional e independiente**. Esto significa que no estás obligado a utilizar todas; puedes configurar desde una tarjeta **minimalista** ***(solo título)*** hasta una tarjeta **compleja** de producto ***(imagen, descripción y acciones)***, adaptándose perfectamente a la densidad de información que tu interfaz requiera.
+
+
+#### slot `title`
+
+**Vista previa del componente**
+
+<div class="components-structure">
+    <div class="responsive-structure"> 
+        <ui-card>
+        <span slot="title">Title</span>
+        <span slot="description">Body text for whatever you’d like to say. Add main takeaway points, quotes, anecdotes, or even a very short story. </span>
+        <div slot="footer">
+            <ui-button type="tertiary">Visita el sitio oficial</ui-button>
+            <ui-button type="primary">Conoce más</ui-button> 
+        </div>
+    </ui-card>
+    </div>
+    <div class="responsive-structure"> 
+        <ui-card>
+        <span slot="description">Body text for whatever you’d like to say. Add main takeaway points, quotes, anecdotes, or even a very short story. </span>
+        <div slot="footer">
+            <ui-button type="tertiary">Visita el sitio oficial</ui-button>
+            <ui-button type="primary">Conoce más</ui-button> 
+        </div>
+    </ui-card>
+    </div>
+</div>
+
+export const title = `
+<ui-card>
+    <span slot="title">Title</span>
+</ui-card>
+`;
+
+<Code code={title} lang="js" title={fileName} />
+
+| Slot  | Propósito y Estrategia | Qué esperar |
+|--------------|------------------------|-------------|
+| <span style={{whiteSpace: "nowrap"}}>`title` </span> | Actúa como el encabezado principal de la tarjeta. Es el elemento de mayor jerarquía visual. | El usuario debe identificar inmediatamente de qué trata el contenido (ej. nombre de un trámite, título de una noticia). |
+
+
+#### slot `description`
+
+**Vista previa del componente**
+
+<div class="components-structure">
+    <div class="responsive-structure"> 
+        <ui-card>
+        <span slot="title">Title</span>
+        <span slot="description">Body text for whatever you’d like to say. Add main takeaway points, quotes, anecdotes, or even a very short story. </span>
+        <div slot="footer">
+            <ui-button type="tertiary">Visita el sitio oficial</ui-button>
+            <ui-button type="primary">Conoce más</ui-button> 
+        </div>
+    </ui-card>
+    </div>
+    <div class="responsive-structure"> 
+        <ui-card>
+        <span slot="title">Title</span>
+        <div slot="footer">
+            <ui-button type="tertiary">Visita el sitio oficial</ui-button>
+            <ui-button type="primary">Conoce más</ui-button> 
+        </div>
+    </ui-card>
+    </div>
+</div>
+
+export const description = `
+<ui-card>
+    <span slot="description">Body text for whatever you’d like to say.</span>
+</ui-card>
+`;
+
+<Code code={title} lang="js" title={fileName} />
+
+| Slot  | Propósito y Estrategia | Qué esperar |
+|--------------|------------------------|-------------|
+| <span style={{whiteSpace: "nowrap"}}>`description` </span> | Espacio para cuerpo de texto, resúmenes o metadatos secundarios. | Proporciona el contexto necesario para que el usuario decida si vale la pena interactuar con la tarjeta. |
+
+<Aside title='Contexto y Recomendaciones'> Ideal para extractos de texto o fechas. Evita párrafos excesivamente largos que rompan la alineación visual en filas de tarjetas.</Aside>
+
+
+#### slot `footer`
+
+**Vista previa del componente**
+
+<div class="components-structure">
+    <div class="responsive-structure"> 
+        <ui-card>
+        <span slot="title">Title</span>
+        <span slot="description">Body text for whatever you’d like to say. Add main takeaway points, quotes, anecdotes, or even a very short story. </span>
+        <div slot="footer">
+            <ui-button type="tertiary">Visita el sitio oficial</ui-button>
+            <ui-button type="primary">Conoce más</ui-button> 
+        </div>
+    </ui-card>
+    </div>
+    <div class="responsive-structure"> 
+        <ui-card>
+        <span slot="title">Title</span>
+        <span slot="description">Body text for whatever you’d like to say. Add main takeaway points, quotes, anecdotes, or even a very short story. </span>
+    </ui-card>
+    </div>
+</div>
+
+export const footer = `
+<ui-card>
+    <div slot="footer">
+        <ui-button type="tertiary">Visita el sitio oficial</ui-button>
+        <ui-button type="primary">Conoce más</ui-button> 
+    </div>
+</ui-card>
+`;
+
+<Code code={footer} lang="js" title={fileName} />
+
+| Slot  | Propósito y Estrategia | Qué esperar |
+|--------------|------------------------|-------------|
+| | Espacio para acciones y componentes compuestos como `<ui-button>` o `<ui-tag>`. | Aquí se colocan las llamadas a la acción o estados finales del contenido. |
+
+<Aside type="caution" title='Advertencia de Diseño'> 
+El uso de botones depende del espacio disponible y la variante de la tarjeta:
+
+- **Vertical**: Soporta cómodamente 1 o 2 botones.
+- **Horizontal**: Debido al ancho compartido con la imagen, el espacio es reducido. Si usas esta variante, se recomienda usar **un solo botón o botones de solo icono** _(ui-icon-button)_ para evitar que el diseño se rompa o se vea saturado.
+</Aside>
+
+
+### Atributo `isInteractive`
+
+El atributo booleano `isInteractive` transforma el comportamiento de la tarjeta, convirtiendo toda su superficie en un elemento activable _("clicable")_.
+
+**Propósito de Diseño** 
+Este atributo permite crear interfaces más limpias al eliminar la necesidad de botones explícitos _(como "Ver más" o "Detalles")_ cuando la acción principal es navegar al contenido de la tarjeta.
+
+Comportamiento Visual: Al activar esta propiedad, el componente proporciona estilos hover automáticos al usuario _(para saber que se ha dado click)._
+
+
+**Vista previa del componente**
+
+<div class="components-structure">
+    <div class="responsive-structure-full"> 
+        <ui-card imageUrl="/img/Imgcard.svg" type="vertical" isInteractive>
+        <span slot="title">Title</span>
+        <span slot="description">Body text for whatever you’d like to say. Add main takeaway points, quotes, anecdotes, or even a very short story. </span>
+    </ui-card>
+    </div>
+
+    <div class="responsive-structure-full"> 
+        <ui-card imageUrl="/img/Imgcard.svg" type="horizontal" isInteractive>
+        <span slot="title">Title</span>
+        <span slot="description">Body text for whatever you’d like to say. Add main takeaway points, quotes, anecdotes, or even a very short story. </span>
+    </ui-card>
+    </div>
+</div>
+
+export const interactive = `
+<ui-card imageUrl="/img/Imgcard.svg" id="Card-1" isInteractive>
+    <span slot="title">Title</span>
+    <span slot="description">Body text for whatever you’d like to say. Add main takeaway points, quotes, anecdotes, or even a very short story. </span>
+</ui-card>
+
+
+<ui-card imageUrl="/img/Imgcard.svg" type="horizontal" id="Card-2" isInteractive>
+    <span slot="title">Title</span>
+    <span slot="description">Body text for whatever you’d like to say. Add main takeaway points, quotes, anecdotes, or even a very short story. </span>
+</ui-card>
+`;
+
+export const i = ['isInteractive', 'id="Card-1"', 'id="Card-2"'];
+
+<Code code={interactive} lang="js" title={fileName} mark={i}/>
+
+## Disparador de Eventos
+El componente `<ui-card>` está diseñado para ser **estático por defecto**. Para habilitar la navegación o la selección, debes activar explícitamente el **atributo** booleano `isInteractive`. 
+
+Cuando una tarjeta interactiva es presionada, emite un Evento Personalizado ***(CustomEvent)*** llamado `card-click`. Este evento está diseñado para manejar la navegación principal _(ej. ir al detalle del producto)_.
+
+<Aside type="tip"> El evento de clic de la `<ui-card>` solo se disparará si este atributo está presente. Si se omite, la tarjeta ignorará los clics del usuario ***(excepto en los botones del footer)***.</Aside>
+
+
+### Estructura de `detail`
+El evento entrega un objeto `detail` con la información necesaria para identificar el elemento seleccionado.
+
+| Propiedad | Tipo          | Descripción                                                                              |
+|-----------|---------------|--------------------------------------------------------------------------------------------|
+| `id`      | <span style={{whiteSpace: "nowrap"}}>`string` </span>     | El ID único de la tarjeta. Es el dato crítico para saber qué elemento fue seleccionado.|
+
+<Aside type="caution" title='Importante'> Por lo tanto, es una **práctica obligatoria** asignar manualmente el atributo `id` a todas las instancias de los inputs para saber identificarlos</Aside>
+
+
+## Obtención del evento
+Para escuchar los eventos emitidos por los componentes de este UI Kit, la opción más confiable es usar **`addEventListener`**, ya que garantiza que los eventos personalizados se reciban **correctamente**.
+
+En **frameworks** _(Vue.js, React, Angular)_ también puede usarse **`addEventListener`**, aunque cada uno ofrece su propia forma de manejar eventos, que igualmente es válida y en la mayoría de los casos funcionan sin problema. Sin embargo, cada framework tiene particularidades importantes que tu como desarrollador debes considerar:
+
+- **Vue**: Normalmente funciona de forma nativa, ya que Vue respeta los **eventos del DOM** tal como se emiten.
+- **Angular**: Suele funcionar, en algunas versiones antiguas del framework tenían **limitaciones** con eventos provenientes de Web Components.
+- **React**: Puede detectar eventos personalizados pero no siempre. Su sistema interno de `Synthetic Events` no garantiza la **compatibilidad al 100%**, por lo que el comportamiento puede variar entre navegadores y versiones.
+
+
+export const js = `
+<!-- Ejemplo de Card cuando es interactiva -->
+
+<div id="cards-section">
+  <!-- Tarjeta 1: Interactiva con ID -->
+  <ui-card type="vertical" isInteractive id="Card-1">
+        <span slot="title">Card I</span>
+        <span slot="description">Esta es la Card I </span>
+    </ui-card>
+  
+  <!-- Tarjeta 2: Interactiva con ID -->
+  <ui-card type="horizontal" isInteractive id="Card-2">
+        <span slot="title">Card II</span>
+        <span slot="description">Esta es la Card II </span>
+    </ui-card>
+</div>
+
+<script>
+  const cards = document.getElementById('cards-section');
+  cards.addEventListener('card-click', (event) => {
+
+    const cardId = event.detail.id;
+    console.log(\`Card seleccionado ID: \${cardId}\`);
+  });
+</script>
+
+`;
+export const m = ['isInteractive', 'addEventListener', 'id="Card-1"','id="Card-2"' ];
+
+
+<Aside type="tip" title="Uso de 'addEventListener' usando el atributo 'isInteractive'">
+
+Ejemplo sencillo de obtención del evento usando `addEventListener`
+<Code code={js} lang="js" mark={m}/>
+
+</Aside>
