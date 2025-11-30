@@ -40,6 +40,7 @@
   padding: 16px !important;
   background: var(--background-background-component) !important;
   border-radius: 8px !important;
+  color: var(--text-default-default)!important;
 }
 
 .components-structure > * {
@@ -71,3 +72,18 @@
   display: block !important; 
     width: 100%;
 }
+
+[slot="footer"] ui-button {
+    margin: 0 !important;
+}
+
+[slot="end-element"] ui-list {
+    margin: 0 !important;
+}
+
+.responsive-structure ui-tab-list,
+.responsive-structure ui-tab-list > * {
+    vertical-align: top !important; 
+	margin: 0 !important;
+}
+
