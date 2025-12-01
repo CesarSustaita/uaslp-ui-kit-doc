@@ -11,15 +11,9 @@ export default defineConfig({
             })],
         title: 'UASLP UI Kit',
         social: [{ icon: 'github', label: 'GitHub', href: 'https://github.com/withastro/starlight' }],
-        head: [
-        {
-          tag: 'script',
-          attrs: {
-            type: 'module',
-            src: '/src/ui-kit.js',
-          },
-        },
-        ],
+        components: {
+        Head: './src/components/StarlightHead.astro',
+      },
         sidebar: [
             {
                 label: 'Getting Started',
