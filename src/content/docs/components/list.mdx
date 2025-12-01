@@ -3,7 +3,6 @@ title: List
 description: Sección de Componentes del UI Kit de NPM .
 ---
 
-<script type="module" src="/public/ui-kit.js"></script>
 import { Aside, Steps, Code, Card, Tabs, TabItem} from '@astrojs/starlight/components';
 
 El componente **List** `<ui-list>` es la unidad para construir listas verticales, menús de navegación o paneles de configuración.
@@ -91,7 +90,7 @@ Se utiliza **Slots Nombrados** para insertar elementos visuales a los extremos d
     </div>
     <div class="responsive-structure-full"> 
         <ui-list text="Item" description="Description">
-        <img slot="start-element" src="/public/img/Avatar.svg" alt="Mi Imagen"></img>
+        <img slot="start-element" src="/img/Avatar.svg" alt="Mi Imagen"></img>
         </ui-list>
     </div>
     <div class="responsive-structure-full">
@@ -118,7 +117,7 @@ export const estado = `
 
 <!-- list con Slot= start-element img-->
   <ui-list text="Item" description="Description">
-     <img slot="start-element" src="/public/img/Avatar.svg" alt="Mi Imagen"></img>
+     <img slot="start-element" src="/img/Avatar.svg" alt="Mi Imagen"></img>
   </ui-list>
 
 <!-- list con Slot= end-element txt-->
@@ -168,7 +167,7 @@ Para gestionar correctamente la lógica de una lista, el componente ofrece atrib
     </div>
     <div class="responsive-structure-full" > 
         <ui-list text="Item" description="Description" disabled>
-        <img slot="start-element" src="/public/img/Avatar.svg" alt="Mi Imagen"></img>
+        <img slot="start-element" src="/img/Avatar.svg" alt="Mi Imagen"></img>
         </ui-list>
     </div>
     <div class="responsive-structure-full" >

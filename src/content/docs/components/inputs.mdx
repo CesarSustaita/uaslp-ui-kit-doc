@@ -3,7 +3,6 @@ title: Inputs
 description: Sección de Componentes del UI Kit de NPM .
 ---
 
-<script type="module" src="/public/ui-kit.js"></script>
 import { Aside, Steps, Code, Card, Tabs, TabItem} from '@astrojs/starlight/components';
 
 El componente **Input** `ui-input` es el campo estándar para la recolección de datos de formato libre del usuario (texto, números, etc.). Este componente centraliza la gestión de toda la experiencia de entrada: etiquetas, descripciones, íconos y estados de error. 
@@ -312,7 +311,7 @@ export const rs = `
     };
     const inputUsuario = document.getElementById('input-usuario');
     const btnSubmit = document.getElementById('btn-submit-form');
-    
+
     // Función para actualizar el dato al perder el foco (evento 'change')
     const updateFormData = (event) => {
         const { id, value } = event.detail;
