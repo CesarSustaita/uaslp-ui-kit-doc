@@ -59,6 +59,15 @@ export default defineConfig({
                     { label: 'Notifications', link: 'components/notification' }, 
                 ]
             },
+            {
+                label: 'About',
+                items: [
+                    // Se asume que los archivos están en docs/StylesGuide/
+                    { label: 'Sobre este proyecto', link: 'about/acerca-proyecto' }, 
+                    { label: 'Contribuir', link: 'about/contribuir' }, 
+                    { label: 'Licencia', link: 'about/licencia' }, 
+                ]
+            },
         ],
         customCss:[
             //Ruta alternativa al css personalizado
