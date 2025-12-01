@@ -1,1 +1,0 @@
-import 'uaslp-ui-kit';
