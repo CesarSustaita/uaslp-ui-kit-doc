@@ -9,8 +9,13 @@ export default defineConfig({
         plugins: [starlightThemeObsidian({
                graph: false
             })],
-        title: 'UASLP UI Kit',
-        social: [{ icon: 'github', label: 'GitHub', href: 'https://github.com/withastro/starlight' }],
+        title:'',
+        logo: {
+            src: './src/assets/logo.svg',
+        },
+        social: [{ 
+            icon: 'github', label: 'GitHub', href: 'https://github.com/CesarSustaita/uaslp-ui-kit',
+        }],
         components: {
         Head: './src/components/StarlightHead.astro',
       },
