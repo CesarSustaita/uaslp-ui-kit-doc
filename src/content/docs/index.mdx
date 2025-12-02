@@ -5,45 +5,152 @@ description: Get started building your docs site with Starlight.
 template: splash
 pageClass: home-page
 
-hero:
-  tagline: Congrats on setting up a new Starlight project!
-  image:
-    file: ../../assets/Page.svg
-  actions:
-    - text: Inicio Rápido
-      link: /getting-started/introduccion
-      icon: right-arrow
-    - text: Visita Figma
-      link: https://starlight.astro.build
-      icon: external
-      variant: minimal
 ---
 
 import { Card, CardGrid } from '@astrojs/starlight/components';
 
 
-<section style="padding: 40px 0; text-align: center;">
-  <h2 style="font-size: 2.2rem; margin-bottom: 1rem;">Construye interfaces consistentes</h2>
-  <p style="max-width: 600px; margin: 0 auto; opacity: .8;">
-    Diseñado para proyectos universitarios y administrativos, con enfoque en claridad, accesibilidad y consistencia.
+<style>{`
 
-  </p>
+  .stro-7nkwcw3z {
+    display: none !important;
+  }
+  .astro-j6tvhyss{
+    display: none !important;
+  }
 
-</section>
-
-<section
-  style="
-    width: 100%;
-    min-height: 100vh;
-    padding: 80px 24px;
+  .custom-hero {
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    border-radius: 24px;
-  "
->
-  <h1 style="font-size: 3rem; margin: 0;">UASLP UI Kit</h1>
-  <p style="font-size: 1.25rem; opacity: .7; max-width: 500px;">
-    Sistema de diseño oficial para interfaces administrativas y académicas.
-  </p>
-</section>
+    align-items: center;
+    text-align: center;
+    padding: 1rem 1rem;
+    border: 0px solid black;
+    margin: 0 !important;
+  }
+  .hero-title {
+    display: flex;
+    flex-direction: column;
+    aling-items: center;
+    text-align: center;
+    width: 200px;
+    color: var(--sl-color-gray-1);
+    border: 0px solid black;
+  }
+  .hero-txt {
+    font-size: 3rem;
+    font-weight: 800;
+    line-height: 1.1;
+  }
+  .hero-subtitle {
+    font-size: 17px;
+    color: var(--sl-color-gray-2);
+    max-width: 800px;
+    border: 0px solid black;
+    margin-top: 2rem;
+  }
+  .hero-actions {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap !important;
+    justify-content: space-evenly !important;
+    aling-items: center !important;
+    vertical-align: top !important; 
+    border: 0px solid black;
+    align-items: center !important;
+    width: 100%; 
+    gap: 16px;            
+    max-width: 500px;         
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+  }
+  ui-button  {
+    margin: 0 !important;
+  }
+  svg  {
+    margin: 0 !important;
+  }
+  .demo-container {
+    margin-top: 3rem;
+    padding: 2rem;
+    border: 1px solid var(--sl-color-gray-5);
+    border-radius: 1rem;
+    background: var(--sl-color-black);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+  }
+`}</style>
+
+
+
+<div class="custom-hero">
+  <div class="hero-title">
+    <img src="/img/UASLP.svg" ></img>
+    
+  </div>
+  <div class="hero-txt">
+      <span > Uaslp UI Kit</span>
+  </div>
+
+  <div class="hero-subtitle">
+    El sistema de diseño oficial para estandarizar, agilizar y profesionalizar el desarrollo de interfaces de la Universidad Autónoma de San Luis Potosí.
+  </div>
+
+  <div class="hero-actions">
+
+    <ui-button type="primary" onclick="window.location.href='/getting-started/introduccion'">
+      Ver Documentación
+      <svg slot="icon-end" width="100%" height="100%" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M4 12H20M20 12L14 6M20 12L14 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </ui-button>
+    <ui-button type="secondary" onclick="window.open('https://www.figma.com/community/file/1516891092600893832', '_blank')">
+      Visita la comunidad de Figma
+      <svg slot="icon-start" width="100%" height="100%" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M12 1.5H8.5C6.567 1.5 5 3.067 5 5C5 6.933 6.567 8.5 8.5 8.5M12 1.5V8.5M12 1.5H15.5C17.433 1.5 19 3.067 19 5C19 6.933 17.433 8.5 15.5 8.5M12 8.5H8.5M12 8.5V15.5M12 8.5H15.5M8.5 8.5C6.567 8.5 5 10.067 5 12C5 13.933 6.567 15.5 8.5 15.5M12 15.5H8.5M12 15.5V19C12 20.933 10.433 22.5 8.5 22.5C6.567 22.5 5 20.933 5 19C5 17.067 6.567 15.5 8.5 15.5M15.5 8.5C17.433 8.5 19 10.067 19 12C19 13.933 17.433 15.5 15.5 15.5C13.567 15.5 12 13.933 12 12C12 10.067 13.567 8.5 15.5 8.5Z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </ui-button>
+  </div>
+
+</div>
+
+---
+
+
+<div style="text-align: center; margin-top: 4rem; margin-bottom: 4rem;">
+    <h2>¿Qué incluye el kit?</h2>
+</div>
+
+
+<CardGrid stagger>
+	<Card title="10+ Componentes" icon="puzzle">
+		Accede a la librería completa directamente desde **NPM** y usalos en tu siguiente proyecto.
+	</Card>
+	<Card title="Tokens de Diseño" icon="setting">
+		Obten el control sobre colores y tipografía mediante **variables CSS** estandarizadas.
+	</Card>
+	<Card title="Figma" icon="rocket">
+		Utiliza la biblioteca de componentes en **Figma** para crear tus propias interfaces.
+	</Card>
+    <Card title="Documentación Lista" icon="open-book">
+		Usa la documentación para conocer todo sobre el uso de los **componentes**.
+	</Card>
+</CardGrid>
+
+<br/>
+
+
+----
+
+
+<div style="text-align: center; margin-top: 4rem; display:flex; flex-direction: column; align-items: center; text-align: center;">
+    <h3>¿Listo para usarlo en tus proyectos?</h3>
+    <p>Sigue la guía de inicio rápido y comienza a usar los componentes en tus proyectos.</p>
+    <br/>
+    <ui-button type="primary" onclick="window.location.href='/getting-started/inicio-rapido'">
+        Guía de Instalación
+        <svg slot="icon-end" width="100%" height="100%" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M4 12H20M20 12L14 6M20 12L14 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+    </ui-button>
+</div>
+
