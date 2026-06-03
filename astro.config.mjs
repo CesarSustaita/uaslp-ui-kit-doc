@@ -65,6 +65,7 @@ export default defineConfig({
                     { label: 'Accordion', link: 'components/accordion' }, 
                     { label: 'Menu', link: 'components/menu' }, 
                     { label: 'Notifications', link: 'components/notification' }, 
+                    { label: 'File Uploader', link: 'components/file-uploader', badge: { text: 'Nuevo', variant: 'success' } }, 
                 ]
             },
             {

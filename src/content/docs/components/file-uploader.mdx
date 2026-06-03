@@ -1,0 +1,422 @@
+---
+title: File Uploader
+description: Componente modular del Sistema de Diseño para la carga de archivos.
+badge:
+  text: New v1.2.1
+  variant: success
+---
+
+import { Aside, Steps, Code, Card, Tabs, TabItem} from '@astrojs/starlight/components';
+
+El componente **File Uploader** `ui-file-uploader` es el campo estándar para la recolección y gestión de archivos cargados por el usuario desde su dispositivo. Este componente centraliza toda la experiencia de interacción para la carga de documentos: zonas de arrastre **(drag and drop)**, exploración de archivos, limitación de formatos, validación de tamaños y visualización de estados de alerta o error.
+Proporcionar una experiencia de entrada de datos pre-estilizada y validada que se adapta a las reglas de tu sistema.
+
+**Vista previa del componente**
+
+<div class="components-structure">
+    <div class="responsive-structure-full"> 
+        <ui-file-uploader 
+        label="Arrastra y suelta tus archivos aquí o busca en tu equipo"
+        helperText="Tamaño máximo por archivo: 5 MB"
+        showBrowseButton
+        multiple
+        accept="*"
+        maxSize="5"
+    ></ui-file-uploader>
+    </div>
+</div>
+
+## ¿Cuándo debería usarse?
+Usa este componente cuando quieras:
+
+- **Permitir la carga de documentos:** Facilitar la recepción de archivos locales (como identificaciones, comprobantes, imágenes o reportes) mediante selección directa o arrastrando el archivo a la interfaz.
+- **Controlar restricciones técnicas en el cliente:** Validar automáticamente el peso máximo en megabytes (maxSize) o formatos específicos (accept) antes de que el archivo sature o viaje innecesariamente hacia el servidor.
+- **Gestionar cargas individuales o múltiples:** Resolver flujos que requieran un único archivo de soporte o permitir la selección masiva de elementos según lo dicte el formulario.
+
+## Uso básico del componente
+
+El componente se integra directamente en el DOM. Para renderizarlo en el sistema, utiliza la siguiente etiqueta básica:
+
+export const exampleCode = `<ui-file-uploader></ui-file-uploader>`;
+export const fileName = 'ejemplo.html';
+
+<Code code={exampleCode} lang="js" title={fileName} />
+
+## Propiedades
+
+### Atributos de `contenido` y `estructura`
+Estos atributos controlan el comportamiento central, el tipo de datos que recibe el componente y sus restricciones técnicas.
+
+**Vista previa**
+<div class="components-structure">
+    <div class="responsive-structure-full"> 
+        <div class="responsive-structure-full"> 
+        <ui-file-uploader 
+        accept=".pdf"
+        maxSize="5"
+        multiple
+        required
+        ></ui-file-uploader>
+    </div>
+    </div>
+    <div class="responsive-structure-full"> 
+     <ui-file-uploader 
+        accept=".pdf"
+        maxSize="5"
+        multiple
+        disabled
+        ></ui-file-uploader>
+    </div>
+</div>
+
+export const estado = `
+<!-- Atributos usados: accept, maxSize, multiple, required -->
+    <ui-file-uploader 
+        accept=".pdf"
+        maxSize="5"
+        multiple
+        required
+    ></ui-file-uploader>
+
+<!-- Atributos usados: disabled-->
+    <ui-file-uploader 
+        accept=".pdf"
+        maxSize="5"
+        disabled
+    ></ui-file-uploader>
+ 
+
+`;
+export const type = 'HTML';
+
+export const s = ['accept', 'maxSize', 'multiple', 'required', 'disabled'  ];
+
+**Aplicación en código**
+
+<Code code={estado} lang="js" title={type} mark={s}/>
+
+**Tabla de los atributos implementados**
+
+| Atributo (HTML) | Función y Tipo    | Propósito y Contenido                                                                                                      |
+|------------------|--------------|-----------------------------------------------------------------------------------------------------------------------------|
+| `accept`         | **Opcional** `String`  | Define las extensiones o tipos de archivos permitidos por el navegador separados por comas (ej: .pdf,.png).                                                                               |
+| `maxSize`        | **Opcional** `Number`  | Especifica el límite de peso máximo permitido por archivo individual, medido en Megabytes (MB).                          |
+| `multiple`       | **Opcional** `Boolean`  | Habilita la capacidad de seleccionar, arrastrar y cargar múltiples archivos de forma simultánea.                                   |
+| `required`       | **Opcional** `Boolean`  | Restringe el flujo del formulario indicando que el componente es obligatorio y debe contener al menos un archivo válido.                             |
+| `disabled`       | **Opcional** `Boolean`  | Deshabilita por completo cualquier tipo de interacción visual o funcional con el cargador de archivos.                                  |
+
+
+### Atributos de `interfaz` y `diseño`
+Estos atributos gestionan los textos descriptivos visibles, las dimensiones y la visibilidad de los controles internos.
+
+**Vista previa**
+<div class="components-structure">
+    <div class="responsive-structure-full"> 
+        <ui-file-uploader
+        accept=".pdf"
+        maxSize="5"
+        multiple
+        required
+        label="Arrastra y suelta tus archivos aquí o busca en tu equipo"
+        helperText="Tamaño máximo por archivo: 5 MB" 
+        width ="100%"
+        showBrowseButton
+    ></ui-file-uploader>
+    </div>
+    <div class="responsive-structure-full"> 
+        <ui-file-uploader 
+        label="Arrastra y suelta tus archivos aquí o busca en tu equipo"
+        helperText="Tamaño máximo por archivo: 5 MB"
+        width ="100%"
+        showBrowseButton
+        sizeBrowseButton ="small"
+    ></ui-file-uploader>
+    </div>
+</div>
+
+export const slot = `
+<!-- Propiedades de interfaz y diseño -->
+    <ui-file-uploader
+        accept=".pdf"
+        maxSize="5"
+        multiple
+        required
+        label="Arrastra y suelta tus archivos aquí o busca en tu equipo"
+        helperText="Tamaño máximo por archivo: 5 MB" 
+        width ="100%"
+        showBrowseButton
+    ></ui-file-uploader>
+
+<!-- Propiedad sizeBrowseButton ="small"-->
+    <ui-file-uploader
+        accept=".pdf"
+        maxSize="5"
+        multiple
+        required
+        label="Arrastra y suelta tus archivos aquí o busca en tu equipo"
+        helperText="Tamaño máximo por archivo: 5 MB" 
+        width ="100%"
+        showBrowseButton
+        sizeBrowseButton ="small"
+    ></ui-file-uploader>
+
+`;
+export const m = ['label', 'helperText', 'width', 'showBrowseButton', 'sizeBrowseButton' ];
+
+**Aplicación en código**
+
+<Code code={slot} lang="js" title={type} mark={m}/>
+
+**Tabla de los atributos implementados**
+
+| Atributo (HTML) | Función y Tipo    | Propósito y Contenido                                                                                                      |
+|------------------|--------------|-----------------------------------------------------------------------------------------------------------------------------|
+| `label`           | **Obligatorio** `String`  | Título o etiqueta principal que se muestra sobre la zona de carga para identificar el campo.  |
+| `helperText`      | **Opcional** `String`  | Mensaje secundario de asistencia o instrucciones colocado debajo de la etiqueta principal.                    |
+| `width`           | **Opcional** `String`  | Controla el ancho del contenedor del componente aceptando cualquier unidad CSS (ej: 400px, 100%).                                 |
+| `showBrowseButton`| **Opcional** `Boolean`  | Determina si se muestra u oculta el botón interno para explorar archivos del dispositivo.                          |
+| `sizeBrowseButton`| **Opcional** `String`  | Define el tamaño visual del botón de exploración nativo (small, medium ***por defecto***).                           |
+
+### Atributos de `mensajes` y `estados de alerta`
+Estos atributos permiten personalizar los títulos y las descripciones de los banners informativos que se disparan dinámicamente según las validaciones del componente.
+
+**Vista previa**
+<div class="components-structure">
+    <div class="responsive-structure-full"> 
+        <ui-file-uploader
+        accept="*"
+        maxSize="1"
+        multiple
+        required
+        label="Arrastra un archivo mayor a 1MB para ver el estado de error"
+        helperText="Tamaño máximo por archivo: 1 MB" 
+        requiredErrorText= "Este campo es obligatorio. Por favor, sube un archivo."
+        width ="100%"
+        showBrowseButton
+        warningMessage="Error al subir el archivo"
+        warningDescription="El archivo excede el tamaño máximo permitido"
+        negativeMessage="Tipo de archivo no permitido"
+        negativeDescription="El archivo no cumple con el tipo de archivo permitido"
+        ></ui-file-uploader>
+    </div>
+    <div class="responsive-structure-full"> 
+        <ui-file-uploader
+        accept=".pdf"
+        maxSize="5"
+        multiple
+        required
+        label="Arrastra dos archivos un PDF y otro formato para ver el estado de advertencia"
+        helperText="Tamaño máximo por archivo: 5 MB" 
+        width ="100%"
+        showBrowseButton
+        ></ui-file-uploader>
+    </div>
+</div>
+
+export const estados = `
+<!-- Ejemplo de propiedades de mensajes y estados de alerta-->
+    <ui-file-uploader
+        accept="*"
+        maxSize="1"
+        multiple
+        required
+        label="Arrastra un archivo mayor a 1MB para ver el estado de error"
+        helperText="Tamaño máximo por archivo: 1 MB" 
+        requiredErrorText= "Este campo es obligatorio. Por favor, sube un archivo."
+        width ="100%"
+        showBrowseButton
+        warningMessage="Error al subir el archivo"
+        warningDescription="El archivo excede el tamaño máximo permitido"
+        negativeMessage="Tipo de archivo no permitido"
+        negativeDescription="El archivo no cumple con el tipo de archivo permitido"
+    ></ui-file-uploader>
+
+    <ui-file-uploader
+        accept=".pdf"
+        maxSize="5"
+        multiple
+        required
+        label="Arrastra dos archivos un PDF y otro formato para ver el estado de advertencia"
+        helperText="Tamaño máximo por archivo: 5 MB" 
+        width ="100%"
+        showBrowseButton
+    ></ui-file-uploader>
+
+`;
+export const e = ['requiredErrorText', 'warningMessage', 'warningDescription', 'negativeMessage', 'negativeDescription'];
+
+**Aplicación en código**
+
+<Code code={estados} lang="js" title={type} mark={e}/>
+
+**Tabla de los atributos implementados**
+
+| Atributo (HTML) | Función y Tipo    | Propósito y Contenido                                                                                                      |
+|------------------|--------------|-----------------------------------------------------------------------------------------------------------------------------|
+| `requiredErrorText`   | **Opcional** `String`  | Mensaje de error específico que se despliega si el componente está vacío y es marcado como requerido.  |
+| `warningMessage`      | **Opcional** `String`  | Título para el banner de advertencia preventiva (ej: aviso de carga lenta o archivos pesados).                  |
+| `warningDescription`  | **Opcional** `String`  | Detalle descriptivo extendido que acompaña al mensaje de advertencia.                                |
+| `negativeMessage`     | **Opcional** `String`  | Título para el banner de error crítico (ej: cuando un formato de archivo no es válido).                         |
+| `negativeDescription` | **Opcional** `String`  | Detalle explicativo de la falla para guiar al usuario a corregir el archivo cargado.                        |
+
+<Aside type="tip" title="Recomendación de Personalización">
+  Los atributos de **mensajes y estados de alerta** son completamente **opcionales**. Por defecto, el componente ya incluye mensajes generales preconfigurados que informan de manera clara si ocurrió un error crítico o si un archivo fue rechazado. 
+  
+  Utiliza estas propiedades únicamente si necesitas adaptar el texto al contexto específico de tu aplicación. En la sección de ejemplos, podrás observar cómo se comporta el cargador tanto en su estado nativo por defecto como en su versión personalizada.
+</Aside>
+
+## Manejo y subida de archivos
+El componente `<ui-file-uploader>` no realiza subidas automáticas ni conexiones directas con ningún servidor o API de backend por sí solo. Su función principal es actuar como una capa intermedia de validación, filtrado y preparación de archivos en el lado del cliente (frontend).
+
+### Flujo de preparación del archivo
+Cuando un usuario interactúa con el componente, ya sea arrastrando archivos a la zona de caída (Drag and Drop) o utilizando el explorador nativo del dispositivo (Examinar), el componente ejecuta el siguiente flujo lógico:
+
+- **1. Intercepción y Validación:** El componente captura el archivo localmente y evalúa de inmediato si cumple con las restricciones técnicas que definiste (formatos permitidos en accept y peso máximo en maxSize).
+
+- **2. Filtrado Excluyente:** Si el archivo es válido, se añade automáticamente a una lista interna de preparación.
+<Aside  title="Si el archivo falla alguna regla">
+Es rechazado de inmediato, el componente no lo almacena y activa visualmente el estado correspondiente **(warning o negative)** para notificar al usuario el motivo del rechazo.
+</Aside>
+
+- **3. Acoplamiento en Lista de Espera:** Los archivos aprobados se guardan en un arreglo temporal dentro del componente. Si la propiedad multiple está inactiva, cada archivo nuevo que sea válido reemplazará al anterior; si está activa, se irán acumulando en una lista interactiva donde el usuario final puede previsualizarlos o eliminarlos individualmente antes de confirmar.
+
+- **4. Cohesión con el Formulario:** Esta lista de archivos válidos permanece "en espera" y perfectamente integrada con el estado del resto de tus campos (como campos de texto, selectores, etc.), permitiendo que toda la información del formulario se mantenga unificada.
+
+- **5. Listo para el Procesamiento (Backend):** Una vez que el usuario decide enviar el formulario completo, el desarrollador tiene dos formas de obtener la lista de archivos limpios y validados para procesarlos: ya sea escuchando en tiempo real el evento personalizado `ui-files-changed` mediante un listener, o accediendo directamente a la propiedad `.files` del componente. Con cualquiera de estos dos métodos, se pueden empaquetar los archivos (por ejemplo, en un objeto **FormData**) y realizar de forma segura la petición de subida hacia los servicios de su Backend.
+
+## Disparador de Eventos
+El componente `<ui-file-uploader>` es un proxy para los eventos del campo de carga de archivos nativo. Re-emite un evento clave para la gestión de datos como un Evento Personalizado (CustomEvent):
+
+- `ui-files-changed`: Se dispara en tiempo real cada vez que la lista de archivos válidos seleccionados cambia (ya sea porque el usuario arrastró nuevos archivos, usó el explorador, o eliminó un archivo de la lista interactiva). Es el evento ideal para el binding instantáneo y el manejo del estado del formulario.
+
+### Estructura de `detail`
+Este evento emite un objeto detail que mantiene la consistencia técnica del sistema de diseño:
+
+| Propiedad | Tipo          | Descripción                                                                              |
+|-----------|---------------|--------------------------------------------------------------------------------------------|
+| `files`   | <span style={{whiteSpace: "nowrap"}}>`Array<File>` </span> | Un arreglo con los objetos nativos de tipo File que ya pasaron las validaciones de formato y tamaño, listos para procesar.                   |
+| `id`      | <span style={{whiteSpace: "nowrap"}}>`string` </span>     | El ID único del File Uploader. Obligatorio para la trazabilidad, el debugging y la gestión del formulario.
+
+<Aside type="caution" title='Importante'> Por lo tanto, es una **práctica obligatoria** asignar manualmente el atributo `id` a todas las instancias de los inputs para saber identificarlos</Aside>
+
+## Obtención de archivos y eventos
+Para escuchar los eventos emitidos por los componentes de este UI Kit, la opción más confiable es usar **`addEventListener`**, ya que garantiza que los eventos personalizados se reciban **correctamente**.
+
+Para recuperar y procesar los archivos validados para este componente se tiene dos enfoques válidos según la arquitectura de tu aplicación: mediante la escucha del evento personalizado **`ui-files-changed`** o consultando directamente la propiedad **`.files`** mediante la referencia del elemento en JavaScript.
+
+En **frameworks** _(Vue.js, React, Angular)_ también puede usarse **`addEventListener`**, aunque cada uno ofrece su propia forma de manejar eventos, que igualmente es válida y en la mayoría de los casos funcionan sin problema. Sin embargo, cada framework tiene particularidades importantes que tu como desarrollador debes considerar:
+
+- **Vue**: Normalmente funciona de forma nativa, ya que Vue respeta los **eventos del DOM** tal como se emiten.
+- **Angular**: Suele funcionar, en algunas versiones antiguas del framework tenían **limitaciones** con eventos provenientes de Web Components.
+- **React**: Puede detectar eventos personalizados pero no siempre. Su sistema interno de `Synthetic Events` no garantiza la **compatibilidad al 100%**, por lo que el comportamiento puede variar entre navegadores y versiones.
+
+export const check = `
+<!-- Ejemplo de obtención de archivos utilizando la propiedad file-->
+
+<ui-file-uploader 
+    id="obtencion-archivos"
+    accept=".pdf"
+    maxSize="5"
+    multiple
+    required
+    label="Arrastra y suelta tus archivos aquí o busca en tu equipo"
+    helperText="Tamaño máximo por archivo: 5 MB"
+    width ="100%"
+    multiple
+    showBrowseButton>
+</ui-file-uploader>
+
+<ui-button id="btn-procesar">Procesar Archivos</ui-button>
+
+<script>
+    const uploader = document.getElementById('obtencion-archivos');
+    const boton = document.getElementById('btn-procesar');
+
+    // La acción ocurre únicamente cuando el usuario decide procesar o enviar
+    boton.addEventListener('click', () => {
+    
+    // 1. Acceso directo y agnóstico a la propiedad del componente
+    const archivos = uploader.files;
+
+    // 2. Imprime el arreglo de archivos nativos actualizados
+    console.log('Arreglo de archivos:', archivos);
+
+    // 3. Empaqueta en FormData
+    const formData = new FormData();
+    archivos.forEach((archivo) => {
+      formData.append('archivos[]', archivo);
+    });
+
+    // 4. Imprime el contenido del FormData para verificarlo
+    console.log('Contenido del FormData:');
+    for (let [key, value] of formData.entries()) {
+      console.log('Clave:', key, '| Valor:', value);
+    }
+  });
+</script>
+
+`;
+export const checkm = ['id="input-usuario"', 'addEventListener', 'input-usuario'];
+
+export const rs = `
+<!-- Ejemplo de obtención de archivos usando el evento personalizado ui-files-changed -->
+
+<ui-file-uploader
+    id="obtencion-archivos"
+    accept=".pdf"
+    maxSize="5"
+    multiple
+    required
+    label="Arrastra y suelta tus archivos aquí o busca en tu equipo"
+    helperText="Tamaño máximo por archivo: 5 MB"
+    width ="100%"
+    multiple
+    showBrowseButton>
+</ui-file-uploader>
+
+<script>
+    const uploader = document.getElementById('obtencion-archivos');
+
+    uploader.addEventListener('ui-files-changed', (event) => {
+    const { files } = event.detail;
+
+    // 1. Imprime el arreglo de archivos nativos
+    console.log('Arreglo de archivos:', files);
+
+    // 2. Empaqueta en FormData
+    const formData = new FormData();
+    files.forEach((archivo) => {
+      formData.append('archivos[]', archivo); 
+    });
+
+    // 3. Imprime el contenido del FormData para verificarlo
+    console.log('Contenido del FormData:');
+    for (let [key, value] of formData.entries()) {
+      console.log('Clave:', key, '| Valor:', value);
+    }
+  });
+</script>
+
+`;
+export const rsm = ['obtencion-archivos','id="obtencion-archivos"', 'addEventListener'];
+
+<Aside type="tip" title="Obtención de archivos mediante el evento y la propiedad">
+A continuación, se muestran los dos métodos disponibles para extraer los archivos del componente y utilizarlos en tus flujos de desarrollo:
+
+<Tabs>
+    <TabItem label="Usando la propiedad (Recomendado)">
+    <Code code={check} lang="js" mark={rsm}/>
+  </TabItem>
+  <TabItem label="Usando Event Listeners">
+    <Code code={rs} lang="js" mark={checkm}/>
+  </TabItem>
+</Tabs>
+
+</Aside>
+
+<Aside type="tip" title="Recomendación">
+  Aunque ambos métodos son completamente funcionales, se **recomienda ampliamente** utilizar el acceso directo por la propiedad **`.files`** para el procesamiento y envío de formularios. 
+  
+  * **Uso de sincronización nativa:** Al consultar la propiedad de forma imperativa (por ejemplo, en el evento `submit`), garantizas capturar la lista exacta y depurada de archivos, asimilando correctamente las altas y bajas en la interfaz.
+  
+</Aside>
