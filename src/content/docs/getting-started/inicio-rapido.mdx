@@ -37,8 +37,13 @@ export const fileName = 'index.html';
    ```
    El kit está diseñado para ser cargado con un solo `import`. Esta línea de JavaScript se encarga de **inyectar automáticamente** todos los estilos y registrar los componentes en tu proyecto.
 
-2. Añade la siguiente línea en tu archivo principal de JavaScript **(ej: main.js o app.js)**:
+2. **Importar la librería** Una vez instalada, debes registrar los Web Components importando la librería en el **punto de entrada principal** (archivo raíz) de tu aplicación. Esto asegura que los componentes globales estén disponibles en todo tu proyecto. 
+    
+    <Aside type="note" title="Nota">
+    Dependiendo de tu stack tecnológico, busca uno de los siguientes archivos en la carpeta `src/` o en la raíz de tu proyecto **(ej: main.js, app.js, index.js, main.ts, app.ts, index.t)**:
 
+    </Aside>
+  
     <Code code={js} lang="js" title={jsname} />
 
 4. Una vez que has importado la librería, puedes usar inmediatamente cualquier componente en tu archivo HTML, como si fuera una **etiqueta nativa.**
